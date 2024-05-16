@@ -64,7 +64,7 @@
 			</div>
 			<div id="register-content" class="register-content">
 				<div id="box-title-register">
-					<h1 class="text-center mt-3 mb-3 xxxxxx">Đăng ký hồ sơ tuyển sinh</h1>
+					<h1 class="text-center mt-3 mb-3">Đăng ký hồ sơ tuyển sinh</h1>
 					<div class="alert alert-primary" role="alert">
 						Đăng ký hồ sơ trực tuyến: Hotline/Zalo: <a
 							href="tel:+09216685555"><strong>092.1668.555</strong></a>
