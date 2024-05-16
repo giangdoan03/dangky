@@ -1,7 +1,7 @@
 <?php
 $servername='localhost';
 $username='root';
-$password='';
+$password='23432434';
 $dbname = "oksqpeoc_tonggiang";
 $conn=mysqli_connect($servername,$username,$password,"$dbname");
 mysqli_set_charset($conn, 'UTF8');
