@@ -43,6 +43,28 @@ $sql_data = "SELECT * FROM hoc_sinh ORDER BY id DESC LIMIT $start_from, $records
 // Thực thi câu truy vấn và lấy dữ liệu
 $result_data = $conn->query($sql_data);
 
+
+// Get status message
+if (!empty($_GET['status'])) {
+    switch ($_GET['status']) {
+        case 'succ':
+            $statusType = 'alert-success';
+            $statusMsg = 'Member data has been imported successfully.';
+            break;
+        case 'err':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Something went wrong, please try again.';
+            break;
+        case 'invalid_file':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Please upload a valid Excel file.';
+            break;
+        default:
+            $statusType = '';
+            $statusMsg = '';
+    }
+}
+
 ?>
 <div class="container-fluid" id="main-content">
     <div class="row">
@@ -50,9 +72,6 @@ $result_data = $conn->query($sql_data);
             <h3 class="mb-4">Phiếu dự thi</h3>
 
             <div class="action-in">
-                <input type="file"> <input type="submit" value="Tạo danh sách">
-                <br>
-                <br>
                 <p>Tổng: <strong><?php echo $total_records; ?></strong> phiếu</p>
 
                 <div class="">
@@ -60,6 +79,86 @@ $result_data = $conn->query($sql_data);
                 </div>
             </div>
             <!-- General settings section -->
+            <!-- Display status message -->
+            <?php if (!empty($statusMsg)) { ?>
+                <div class="col-xs-12 p-3">
+                    <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
+                </div>
+            <?php } ?>
+            <div class="card border-0 shadow-sm mb-4" id="importFrm">
+                <div class="list-student card-body">
+                    <div class="row">
+                        <div class="form-import">
+                            <form action="importData.php" method="post" enctype="multipart/form-data">
+                                <div class="col-auto">
+                                    <label for="fileInput" class="visually-hidden">File</label>
+                                    <input type="file" class="form-control" name="file" id="fileInput">
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" class="btn btn-primary mb-3" name="importSubmit"
+                                           value="Import">
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <table class="table table-triped table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                            <tr>STT</tr>
+                            <tr>Họ tên học sinh</tr>
+                            <tr>Mã học sinh</tr>
+                            <tr>Giới tính</tr>
+                            <tr>Ngày sinh</tr>
+                            <tr>Số báo danh</tr>
+                            <tr>Số phòng</tr>
+                            <tr>Thời gian</tr>
+                            <tr>Địa điểm</tr>
+                            <tr>Địa chỉ</tr>
+                            <tr>Ảnh(3x4)</tr>
+                            <tr>Trạng thái</tr>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            // get member record from the database
+                            $result = $conn->query("SELECT * FROM phieu_du_thi");
+                            if ($result->num_rows > 0) {
+                                $i = 0;
+                                while ($row = $result->fetch_assoc()) {
+                                    $i++;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $row['hoten_hocsinh']; ?></td>
+                                        <td><?php echo $row['ma_hoc_sinh']; ?></td>
+                                        <td><?php echo $row['gioi_tinh']; ?></td>
+                                        <td><?php echo $row['ngay_sinh']; ?></td>
+                                        <td><?php echo $row['so_bao_danh']; ?></td>
+                                        <td><?php echo $row['so_phong']; ?></td>
+                                        <td><?php echo $row['thoi_gian']; ?></td>
+                                        <td><?php echo $row['dia_diem']; ?></td>
+                                        <td><?php echo $row['dia_chi']; ?></td>
+                                        <td><?php echo $row['ten_anh']; ?></td>
+                                        <td><?php echo $row['trang_thai']; ?></td>
+                                    </tr>
+                                    <?php
+
+                                }
+                            } else { ?>
+                                <tr>
+                                    <td colspan="12">No member(s) found...</td>
+                                </tr>
+                                <?php
+
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="card border-0 shadow-sm mb-4">
                 <div class="list-student card-body">
                     <div class="list-pagination-top">
@@ -74,7 +173,7 @@ $result_data = $conn->query($sql_data);
                     <table>
                         <tr>
                             <th>
-                                <div> <span>All</span></div>
+                                <div><span>All</span></div>
                                 <input type="checkbox" id="checkAll">
                             </th>
                             <th>STT</th>
@@ -100,29 +199,33 @@ $result_data = $conn->query($sql_data);
                                 $path = IMAGE_AVATAR_PATH;
                                 $count++;
                                 ?>
-                        <tr>
-                                <td><input type="checkbox" class="checkbox" data-id="<?php echo $row['id']; ?>"></td>
-                                <td><?php echo $count; ?></td>
-                                <td><a href="student.php?id=<?php echo $row['id']; ?>"><?php echo $row['ma_hocsinh']; ?></a></td>
-                                <td><?php echo $row['hoten_hocsinh']; ?></td>
-                                <td><?php echo $row['ngaysinh']; ?></td>
-                                <td><?php echo $row['noisinh']; ?></td>
-                                <td><?php echo $row['gioitinh']; ?></td>
-                                <td><?php echo $row['dantoc']; ?></td>
-                                <td>Số báo danh</td>
-                                <td>
-                                    <label for="inputFile_<?php echo $row['id']; ?>" style="cursor: pointer;">
-                                        <img
-                                                onerror="this.onerror=null;this.src='../images/common/default_filetype.png';"
-                                                id="anh_chan_dung_<?php echo $row['id']; ?>"
-                                                class="anh_chan_dung" src="<?php echo $path . $row['ten_anh']; ?>"
-                                                alt="Ảnh học sinh"
-                                        >
-                                    </label>
-                                    <input type="file" id="inputFile_<?php echo $row['id']; ?>" style="display: none;" onchange="updateImage(<?php echo $row['id']; ?>)">
-                                </td>
-                                <td>Xuất phiếu</td>
-                        </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox" data-id="<?php echo $row['id']; ?>">
+                                    </td>
+                                    <td><?php echo $count; ?></td>
+                                    <td>
+                                        <a href="student.php?id=<?php echo $row['id']; ?>"><?php echo $row['ma_hocsinh']; ?></a>
+                                    </td>
+                                    <td><?php echo $row['hoten_hocsinh']; ?></td>
+                                    <td><?php echo $row['ngaysinh']; ?></td>
+                                    <td><?php echo $row['noisinh']; ?></td>
+                                    <td><?php echo $row['gioitinh']; ?></td>
+                                    <td><?php echo $row['dantoc']; ?></td>
+                                    <td>Số báo danh</td>
+                                    <td>
+                                        <label for="inputFile_<?php echo $row['id']; ?>" style="cursor: pointer;">
+                                            <img
+                                                    onerror="this.onerror=null;this.src='../images/common/default_filetype.png';"
+                                                    id="anh_chan_dung_<?php echo $row['id']; ?>"
+                                                    class="anh_chan_dung" src="<?php echo $path . $row['ten_anh']; ?>"
+                                                    alt="Ảnh học sinh"
+                                            >
+                                        </label>
+                                        <input type="file" id="inputFile_<?php echo $row['id']; ?>"
+                                               style="display: none;" onchange="updateImage(<?php echo $row['id']; ?>)">
+                                    </td>
+                                    <td>Xuất phiếu</td>
+                                </tr>
                                 <?php
                             }
 
@@ -169,7 +272,8 @@ $result_data = $conn->query($sql_data);
             image.src = '../images/common/default_filetype.png';
         }
     }
-    document.getElementById("checkAll").onclick = function() {
+
+    document.getElementById("checkAll").onclick = function () {
         var checkboxes = document.getElementsByClassName("checkbox");
         for (var i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = this.checked;
@@ -178,20 +282,20 @@ $result_data = $conn->query($sql_data);
 
     var checkboxes = document.getElementsByClassName("checkbox");
     for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].onclick = function() {
+        checkboxes[i].onclick = function () {
             var checkedCount = document.querySelectorAll('.checkbox:checked').length;
             document.getElementById("checkAll").checked = checkedCount === checkboxes.length;
         };
     }
 
-    document.getElementById("downloadPdfBtn").addEventListener("click", function(event) {
+    document.getElementById("downloadPdfBtn").addEventListener("click", function (event) {
         console.log("Button clicked!");
         event.preventDefault();
         // Tạo một yêu cầu tải xuống
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'generate_pdf.php', true);
         xhr.responseType = 'blob'; // Sử dụng kiểu dữ liệu blob để tải xuống tệp
-        xhr.onload = function() {
+        xhr.onload = function () {
             // Kiểm tra nếu yêu cầu thành công
             if (this.status === 200) {
                 // Tạo một URL tạm thời cho dữ liệu blob
