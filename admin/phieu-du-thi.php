@@ -50,6 +50,9 @@ $result_data = $conn->query($sql_data);
             <h3 class="mb-4">Phiếu dự thi</h3>
 
             <div class="action-in">
+                <input type="file"> <input type="submit" value="Tạo danh sách">
+                <br>
+                <br>
                 <p>Tổng: <strong><?php echo $total_records; ?></strong> phiếu</p>
 
                 <div class="">
