@@ -41,7 +41,7 @@
 	</script>
 </head>
 
-<body class="bg-light">
+<body class="bg-light xxxx">
 	<?php //require('inc/header.php'); ?>
 
 	<div class="page-register">
