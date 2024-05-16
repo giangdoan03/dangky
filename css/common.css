@@ -1,0 +1,140 @@
+:root {
+    --teal: #279e8c;
+    --teal_hover: #1dceb5;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.h-font {
+    font-family: 'Merienda', cursive;
+}
+
+.custom-bg {
+    background-color: var(--teal);
+    border: 1px solid var(--teal);
+}
+
+.custom-bg:hover {
+    background-color: var(--teal_hover);
+    border-color: var(--teal_hover);
+}
+
+.h-line {
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
+
+#dashboard-menu {
+    position: fixed;
+    height: 100%;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 80px;
+    right: 25px;
+}
+.text-red {
+    color: red;
+}
+.register-content {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+.img-preview img {
+    display: none;
+}
+.img-preview img.active {
+    display: block;
+    width: 100px;
+    object-fit: cover;
+}
+
+#box-title-register-success {
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+#box-title-register {
+    display: block;
+}
+
+#box-title-register a {
+    text-decoration: none;
+}
+
+#box-title-register-success.active {
+    display: block;
+}
+
+#register-content.inactive {
+    display: none;
+}
+.banner {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.banner h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.banner .logo {
+    width: 100px;
+}
+.banner .text p {
+    margin-bottom: 0;
+    font-size: 14px;
+    text-align: center;
+}
+.banner .text {
+    padding-left: 10px;
+}
+.banner .logo img {
+    width: 100%;
+}
+
+.btn-send-form .inactive {
+    position: relative;
+}
+
+.btn-send-form .inactive:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    border-left-color: #61a1fe;
+    animation: spin 1s linear infinite;
+    right: 15px;
+    top: 9px;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (max-width: 767px) {
+    .table-container {
+        overflow-x: auto;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+    }
+
+    .table-container table {
+        width: 600px !important;
+        border-collapse: collapse;
+        white-space: nowrap;
+    }
+
+    .table-container table table td {
+        width: 100px !important;
+    }
+}

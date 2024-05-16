@@ -1,0 +1,8 @@
+{
+  "require": {
+    "phpmailer/phpmailer": "^6.9",
+    "google/apiclient": "^2.0",
+    "ext-mysqli": "*",
+    "dompdf/dompdf": "^2.0"
+  }
+}
