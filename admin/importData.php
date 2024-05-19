@@ -1,7 +1,6 @@
 <?php
 require '../vendor/autoload.php'; // Đảm bảo autoload của Composer đã được nạp
-require('inc/essentials.php');
-include('./inc/db_config.php');
+
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 if (isset($_POST['importSubmit'])) {
@@ -18,10 +17,10 @@ if (isset($_POST['importSubmit'])) {
         unset($worksheet_arr[0]);
 
         // Kiểm tra kết nối cơ sở dữ liệu
-//        $conn = new mysqli('localhost', 'root', '', 'dangky');
-//        if ($conn->connect_error) {
-//            die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
-//        }
+        $conn = new mysqli('localhost', 'oksqpeoc_tonggiang', '}7L1u*Vm2T~S', 'oksqpeoc_tonggiang');
+        if ($conn->connect_error) {
+            die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+        }
 
         // Lặp qua từng hàng và thêm hoặc cập nhật dữ liệu trong cơ sở dữ liệu
         foreach ($worksheet_arr as $row) {
