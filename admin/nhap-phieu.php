@@ -126,6 +126,7 @@ if (!empty($_GET['status'])) {
                             // get member record from the database
                             $result = $conn->query("SELECT * FROM phieu_du_thi");
                             if ($result->num_rows > 0) {
+                                $path = IMAGE_AVATAR_CHAN_DUNG;
                                 $i = 0;
                                 while ($row = $result->fetch_assoc()) {
                                     $i++;
@@ -141,7 +142,7 @@ if (!empty($_GET['status'])) {
                                         <td><?php echo $row['thoi_gian']; ?></td>
                                         <td><?php echo $row['dia_diem']; ?></td>
                                         <td><?php echo $row['dia_chi']; ?></td>
-                                        <td><?php echo $row['ten_anh']; ?></td>
+                                        <td><img style="width: 50px" src="<?php echo $path.$row['ten_anh']; ?>" alt=""></td>
                                         <td><?php echo $row['trang_thai']; ?></td>
                                     </tr>
                                     <?php
