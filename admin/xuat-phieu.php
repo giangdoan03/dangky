@@ -75,7 +75,7 @@ adminLogin();
 
         .ticket-head .title-left:before {
             content: '';
-            background: url('./image/logo_thcs_thanh_xuan.png');
+            background: url('./images/logo_thcs_thanh_xuan.png');
             background-repeat: repeat;
             background-size: 100%;
             display: block;
