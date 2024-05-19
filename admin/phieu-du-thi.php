@@ -13,7 +13,7 @@ adminLogin();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel - Settings</title>
-    <?php require('inc/links.php'); ?>
+    <?php require('./inc/links.php'); ?>
 </head>
 <body class="bg-light">
 <?php require('inc/header.php'); ?>
@@ -90,13 +90,14 @@ if (!empty($_GET['status'])) {
                     <div class="row">
                         <div class="form-import">
                             <form action="importData.php" method="post" enctype="multipart/form-data">
-                                <div class="col-auto">
-                                    <label for="fileInput" class="visually-hidden">File</label>
-                                    <input type="file" class="form-control" name="file" id="fileInput">
-                                </div>
-                                <div class="col-auto">
-                                    <input type="submit" class="btn btn-primary mb-3" name="importSubmit"
-                                           value="Import">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <label for="fileInput" class="visually-hidden">File</label>
+                                        <input type="file" class="form-control" name="file" id="fileInput">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="submit" class="btn btn-primary mb-3" name="importSubmit" value="Import">
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -106,18 +107,18 @@ if (!empty($_GET['status'])) {
                         <table class="table table-triped table-bordered">
                             <thead class="table-dark">
                             <tr>
-                            <tr>STT</tr>
-                            <tr>Họ tên học sinh</tr>
-                            <tr>Mã học sinh</tr>
-                            <tr>Giới tính</tr>
-                            <tr>Ngày sinh</tr>
-                            <tr>Số báo danh</tr>
-                            <tr>Số phòng</tr>
-                            <tr>Thời gian</tr>
-                            <tr>Địa điểm</tr>
-                            <tr>Địa chỉ</tr>
-                            <tr>Ảnh(3x4)</tr>
-                            <tr>Trạng thái</tr>
+                                <td>STT</td>
+                                <td>Họ tên học sinh</td>
+                                <td>Mã học sinh</td>
+                                <td>Giới tính</td>
+                                <td>Ngày sinh</td>
+                                <td>Số báo danh</td>
+                                <td>Số phòng</td>
+                                <td>Thời gian</td>
+                                <td>Địa điểm</td>
+                                <td>Địa chỉ</td>
+                                <td>Ảnh(3x4)</td>
+                                <td>Trạng thái</td>
                             </tr>
                             </thead>
                             <tbody>

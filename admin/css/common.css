@@ -58,9 +58,9 @@ td, th {
 .list-student tr:nth-child(even) {
     background-color: #dddddd;
 }
-.table>:not(caption)>*>* {
-    background-color: #fff;
-}
+/*.table>:not(caption)>*>* {*/
+/*    background-color: #fff;*/
+/*}*/
 .img-preview {
     width: 200px;
 }

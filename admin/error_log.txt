@@ -1,0 +1,309 @@
+[18-May-2024 02:05:28 UTC] Starting PDF generation...
+[18-May-2024 02:05:28 UTC] Options set.
+[18-May-2024 02:05:28 UTC] PHP Fatal error:  Uncaught TypeError: Dompdf\Options::validateArtifactPath(): Argument #1 ($path) must be of type ?string, array given, called in D:\laragon\www\dangky\vendor\dompdf\dompdf\src\Options.php on line 902 and defined in D:\laragon\www\dangky\vendor\dompdf\dompdf\src\Options.php:1150
+Stack trace:
+#0 D:\laragon\www\dangky\vendor\dompdf\dompdf\src\Options.php(902): Dompdf\Options->validateArtifactPath(Array, 'fontDir')
+#1 D:\laragon\www\dangky\vendor\dompdf\dompdf\src\Options.php(366): Dompdf\Options->setFontDir(Array)
+#2 D:\laragon\www\dangky\admin\generate_pdf.php(38): Dompdf\Options->set(Array, Array)
+#3 {main}
+  thrown in D:\laragon\www\dangky\vendor\dompdf\dompdf\src\Options.php on line 1150
+[18-May-2024 02:08:08 UTC] Starting PDF generation...
+[18-May-2024 02:08:08 UTC] Options set.
+[18-May-2024 02:08:08 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:08:08 UTC] Default font set to times.
+[18-May-2024 02:08:08 UTC] HTML content created.
+[18-May-2024 02:08:08 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:08:08 UTC] Paper size and orientation set.
+[18-May-2024 02:08:08 UTC] PDF rendered successfully.
+[18-May-2024 02:08:08 UTC] PDF streamed to browser.
+[18-May-2024 02:09:41 UTC] Starting PDF generation...
+[18-May-2024 02:09:41 UTC] Options set.
+[18-May-2024 02:09:41 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:09:41 UTC] Default font set to Times New Roman.
+[18-May-2024 02:09:41 UTC] HTML content created.
+[18-May-2024 02:09:41 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:09:41 UTC] Paper size and orientation set.
+[18-May-2024 02:09:41 UTC] PDF rendered successfully.
+[18-May-2024 02:09:41 UTC] PDF streamed to browser.
+[18-May-2024 02:09:55 UTC] Starting PDF generation...
+[18-May-2024 02:09:55 UTC] Options set.
+[18-May-2024 02:09:55 UTC] Font directory set: D:\laragon\www\dangky\adminadmin/fonts
+[18-May-2024 02:09:55 UTC] Default font set to Times New Roman.
+[18-May-2024 02:09:55 UTC] HTML content created.
+[18-May-2024 02:09:55 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:09:55 UTC] Paper size and orientation set.
+[18-May-2024 02:09:55 UTC] PDF rendered successfully.
+[18-May-2024 02:09:55 UTC] PDF streamed to browser.
+[18-May-2024 02:10:12 UTC] Starting PDF generation...
+[18-May-2024 02:10:12 UTC] Options set.
+[18-May-2024 02:10:12 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:10:12 UTC] Default font set to Times New Roman.
+[18-May-2024 02:10:12 UTC] HTML content created.
+[18-May-2024 02:10:12 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:10:12 UTC] Paper size and orientation set.
+[18-May-2024 02:10:12 UTC] PDF rendered successfully.
+[18-May-2024 02:10:12 UTC] PDF streamed to browser.
+[18-May-2024 02:11:10 UTC] Starting PDF generation...
+[18-May-2024 02:11:10 UTC] Options set.
+[18-May-2024 02:11:10 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:11:10 UTC] Default font set to Times New Roman.
+[18-May-2024 02:11:10 UTC] HTML content created.
+[18-May-2024 02:11:10 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:11:10 UTC] Paper size and orientation set.
+[18-May-2024 02:11:10 UTC] PDF rendered successfully.
+[18-May-2024 02:11:10 UTC] PDF streamed to browser.
+[18-May-2024 02:12:46 UTC] Starting PDF generation...
+[18-May-2024 02:12:46 UTC] Options set.
+[18-May-2024 02:12:46 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:12:46 UTC] Default font set to Times New Roman.
+[18-May-2024 02:12:46 UTC] HTML content created.
+[18-May-2024 02:12:46 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:12:46 UTC] Paper size and orientation set.
+[18-May-2024 02:12:46 UTC] PDF rendered successfully.
+[18-May-2024 02:12:46 UTC] PDF streamed to browser.
+[18-May-2024 02:13:14 UTC] Starting PDF generation...
+[18-May-2024 02:13:14 UTC] Options set.
+[18-May-2024 02:13:14 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:13:14 UTC] Default font set to Times New Roman.
+[18-May-2024 02:13:14 UTC] HTML content created.
+[18-May-2024 02:13:14 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:13:14 UTC] Paper size and orientation set.
+[18-May-2024 02:13:14 UTC] PDF rendered successfully.
+[18-May-2024 02:13:14 UTC] PDF streamed to browser.
+[18-May-2024 02:15:05 UTC] Starting PDF generation...
+[18-May-2024 02:15:05 UTC] Options set.
+[18-May-2024 02:15:05 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:15:05 UTC] Default font set to Times New Roman.
+[18-May-2024 02:15:05 UTC] HTML content created.
+[18-May-2024 02:15:05 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:15:05 UTC] Paper size and orientation set.
+[18-May-2024 02:15:05 UTC] PDF rendered successfully.
+[18-May-2024 02:15:05 UTC] PDF streamed to browser.
+[18-May-2024 02:18:17 UTC] Starting PDF generation...
+[18-May-2024 02:18:17 UTC] Options set.
+[18-May-2024 02:18:17 UTC] Font directory set: D:\laragon\www\dangky\admin/admin/fonts
+[18-May-2024 02:18:17 UTC] Default font set to Times New Roman.
+[18-May-2024 02:18:17 UTC] HTML content created.
+[18-May-2024 02:18:17 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:18:17 UTC] Paper size and orientation set.
+[18-May-2024 02:18:17 UTC] PDF rendered successfully.
+[18-May-2024 02:18:17 UTC] PDF streamed to browser.
+[18-May-2024 02:20:31 UTC] Starting PDF generation...
+[18-May-2024 02:20:31 UTC] Options set.
+[18-May-2024 02:20:31 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:20:31 UTC] Default font set to Times New Roman.
+[18-May-2024 02:20:31 UTC] HTML content created.
+[18-May-2024 02:20:31 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:20:31 UTC] Paper size and orientation set.
+[18-May-2024 02:20:31 UTC] PDF rendered successfully.
+[18-May-2024 02:20:31 UTC] PDF streamed to browser.
+[18-May-2024 02:23:01 UTC] Starting PDF generation...
+[18-May-2024 02:23:01 UTC] Options set.
+[18-May-2024 02:23:01 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:23:01 UTC] Default font set to Times New Roman.
+[18-May-2024 02:23:01 UTC] HTML content created.
+[18-May-2024 02:23:01 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:23:01 UTC] Paper size and orientation set.
+[18-May-2024 02:23:01 UTC] PDF rendered successfully.
+[18-May-2024 02:23:01 UTC] PDF streamed to browser.
+[18-May-2024 02:24:35 UTC] Starting PDF generation...
+[18-May-2024 02:24:35 UTC] Options set.
+[18-May-2024 02:24:35 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:24:35 UTC] Default font set to Times New Roman.
+[18-May-2024 02:24:35 UTC] HTML content created.
+[18-May-2024 02:24:35 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:24:35 UTC] Paper size and orientation set.
+[18-May-2024 02:24:35 UTC] PDF rendered successfully.
+[18-May-2024 02:24:35 UTC] PDF streamed to browser.
+[18-May-2024 02:25:07 UTC] Starting PDF generation...
+[18-May-2024 02:25:07 UTC] Options set.
+[18-May-2024 02:25:07 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:25:07 UTC] Default font set to Times New Roman.
+[18-May-2024 02:25:07 UTC] HTML content created.
+[18-May-2024 02:25:07 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:25:07 UTC] Paper size and orientation set.
+[18-May-2024 02:25:07 UTC] PDF rendered successfully.
+[18-May-2024 02:25:07 UTC] PDF streamed to browser.
+[18-May-2024 02:26:21 UTC] Starting PDF generation...
+[18-May-2024 02:26:21 UTC] Options set.
+[18-May-2024 02:26:21 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:26:21 UTC] Default font set to Times New Roman.
+[18-May-2024 02:26:21 UTC] HTML content created.
+[18-May-2024 02:26:21 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:26:21 UTC] Paper size and orientation set.
+[18-May-2024 02:26:21 UTC] PDF rendered successfully.
+[18-May-2024 02:26:21 UTC] PDF streamed to browser.
+[18-May-2024 02:28:02 UTC] Starting PDF generation...
+[18-May-2024 02:28:02 UTC] Options set.
+[18-May-2024 02:28:02 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:28:02 UTC] Default font set to Times New Roman.
+[18-May-2024 02:28:02 UTC] HTML content created.
+[18-May-2024 02:28:02 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:28:02 UTC] Paper size and orientation set.
+[18-May-2024 02:28:02 UTC] PDF rendered successfully.
+[18-May-2024 02:28:02 UTC] PDF streamed to browser.
+[18-May-2024 02:29:29 UTC] Starting PDF generation...
+[18-May-2024 02:29:29 UTC] Options set.
+[18-May-2024 02:29:29 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:29:29 UTC] Default font set to Times New Roman.
+[18-May-2024 02:29:29 UTC] HTML content created.
+[18-May-2024 02:29:29 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:29:29 UTC] Paper size and orientation set.
+[18-May-2024 02:29:29 UTC] PDF rendered successfully.
+[18-May-2024 02:29:29 UTC] PDF streamed to browser.
+[18-May-2024 02:30:28 UTC] Starting PDF generation...
+[18-May-2024 02:30:28 UTC] Options set.
+[18-May-2024 02:30:28 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:30:28 UTC] Default font set to Times New Roman.
+[18-May-2024 02:30:28 UTC] HTML content created.
+[18-May-2024 02:30:28 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:30:28 UTC] Paper size and orientation set.
+[18-May-2024 02:30:28 UTC] PDF rendered successfully.
+[18-May-2024 02:30:28 UTC] PDF streamed to browser.
+[18-May-2024 02:31:03 UTC] Starting PDF generation...
+[18-May-2024 02:31:03 UTC] Options set.
+[18-May-2024 02:31:03 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:31:03 UTC] Default font set to Times New Roman.
+[18-May-2024 02:31:03 UTC] HTML content created.
+[18-May-2024 02:31:03 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:31:03 UTC] Paper size and orientation set.
+[18-May-2024 02:31:03 UTC] PDF rendered successfully.
+[18-May-2024 02:31:03 UTC] PDF streamed to browser.
+[18-May-2024 02:31:33 UTC] Starting PDF generation...
+[18-May-2024 02:31:33 UTC] Options set.
+[18-May-2024 02:31:33 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:31:33 UTC] Default font set to Times New Roman.
+[18-May-2024 02:31:33 UTC] HTML content created.
+[18-May-2024 02:31:33 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:31:33 UTC] Paper size and orientation set.
+[18-May-2024 02:31:33 UTC] PDF rendered successfully.
+[18-May-2024 02:31:33 UTC] PDF streamed to browser.
+[18-May-2024 02:32:03 UTC] Starting PDF generation...
+[18-May-2024 02:32:03 UTC] Options set.
+[18-May-2024 02:32:03 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:32:03 UTC] Default font set to Times New Roman.
+[18-May-2024 02:32:03 UTC] HTML content created.
+[18-May-2024 02:32:03 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:32:03 UTC] Paper size and orientation set.
+[18-May-2024 02:32:03 UTC] PDF rendered successfully.
+[18-May-2024 02:32:03 UTC] PDF streamed to browser.
+[18-May-2024 02:41:05 UTC] Starting PDF generation...
+[18-May-2024 02:41:05 UTC] Options set.
+[18-May-2024 02:41:05 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:41:05 UTC] Failed to load font into Dompdf.
+[18-May-2024 02:42:49 UTC] Starting PDF generation...
+[18-May-2024 02:42:49 UTC] Options set.
+[18-May-2024 02:42:49 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:42:49 UTC] Failed to load font into Dompdf.
+[18-May-2024 02:43:28 UTC] Starting PDF generation...
+[18-May-2024 02:43:28 UTC] Options set.
+[18-May-2024 02:43:28 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:43:28 UTC] Failed to load font into Dompdf.
+[18-May-2024 02:44:49 UTC] Starting PDF generation...
+[18-May-2024 02:44:49 UTC] Options set.
+[18-May-2024 02:44:49 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:44:49 UTC] Default font set to Times New Roman.
+[18-May-2024 02:44:49 UTC] HTML content created.
+[18-May-2024 02:44:49 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:44:49 UTC] Paper size and orientation set.
+[18-May-2024 02:44:49 UTC] PDF rendered successfully.
+[18-May-2024 02:44:49 UTC] PDF streamed to browser.
+[18-May-2024 02:51:19 UTC] Starting PDF generation...
+[18-May-2024 02:51:19 UTC] Options set.
+[18-May-2024 02:51:19 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:51:19 UTC] Default font set to Times New Roman.
+[18-May-2024 02:51:19 UTC] HTML content created.
+[18-May-2024 02:51:19 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:51:19 UTC] Paper size and orientation set.
+[18-May-2024 02:51:19 UTC] PDF rendered successfully.
+[18-May-2024 02:51:19 UTC] PDF streamed to browser.
+[18-May-2024 02:55:47 UTC] Starting PDF generation...
+[18-May-2024 02:55:47 UTC] Options set.
+[18-May-2024 02:55:47 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 02:55:47 UTC] Default font set to Times New Roman.
+[18-May-2024 02:55:47 UTC] HTML content created.
+[18-May-2024 02:55:47 UTC] HTML content loaded into Dompdf.
+[18-May-2024 02:55:47 UTC] Paper size and orientation set.
+[18-May-2024 02:55:48 UTC] PDF rendered successfully.
+[18-May-2024 02:55:48 UTC] PDF streamed to browser.
+[18-May-2024 03:00:04 UTC] Starting PDF generation...
+[18-May-2024 03:00:04 UTC] Options set.
+[18-May-2024 03:00:04 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:00:04 UTC] Default font set to Times New Roman.
+[18-May-2024 03:00:04 UTC] HTML content created.
+[18-May-2024 03:00:04 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:00:04 UTC] Paper size and orientation set.
+[18-May-2024 03:00:05 UTC] PDF rendered successfully.
+[18-May-2024 03:00:05 UTC] PDF streamed to browser.
+[18-May-2024 03:02:09 UTC] Starting PDF generation...
+[18-May-2024 03:02:09 UTC] Options set.
+[18-May-2024 03:02:09 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:02:09 UTC] Default font set to Times New Roman.
+[18-May-2024 03:02:09 UTC] HTML content created.
+[18-May-2024 03:02:09 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:02:09 UTC] Paper size and orientation set.
+[18-May-2024 03:02:10 UTC] PDF rendered successfully.
+[18-May-2024 03:02:10 UTC] PDF streamed to browser.
+[18-May-2024 03:02:44 UTC] Starting PDF generation...
+[18-May-2024 03:02:44 UTC] Options set.
+[18-May-2024 03:02:44 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:02:44 UTC] Default font set to Times New Roman.
+[18-May-2024 03:02:44 UTC] HTML content created.
+[18-May-2024 03:02:44 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:02:44 UTC] Paper size and orientation set.
+[18-May-2024 03:02:44 UTC] PDF rendered successfully.
+[18-May-2024 03:02:44 UTC] PDF streamed to browser.
+[18-May-2024 03:03:20 UTC] Starting PDF generation...
+[18-May-2024 03:03:20 UTC] Options set.
+[18-May-2024 03:03:20 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:03:20 UTC] Default font set to Times New Roman.
+[18-May-2024 03:03:20 UTC] HTML content created.
+[18-May-2024 03:03:20 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:03:20 UTC] Paper size and orientation set.
+[18-May-2024 03:03:21 UTC] PDF rendered successfully.
+[18-May-2024 03:03:21 UTC] PDF streamed to browser.
+[18-May-2024 03:06:43 UTC] Starting PDF generation...
+[18-May-2024 03:06:43 UTC] Options set.
+[18-May-2024 03:06:43 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:06:43 UTC] Default font set to Times New Roman.
+[18-May-2024 03:06:43 UTC] HTML content created.
+[18-May-2024 03:06:43 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:06:43 UTC] Paper size and orientation set.
+[18-May-2024 03:06:46 UTC] PDF rendered successfully.
+[18-May-2024 03:06:46 UTC] PDF streamed to browser.
+[18-May-2024 03:07:24 UTC] Starting PDF generation...
+[18-May-2024 03:07:24 UTC] Options set.
+[18-May-2024 03:07:24 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:07:24 UTC] Default font set to Times New Roman.
+[18-May-2024 03:07:24 UTC] HTML content created.
+[18-May-2024 03:07:24 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:07:24 UTC] Paper size and orientation set.
+[18-May-2024 03:07:24 UTC] PDF rendered successfully.
+[18-May-2024 03:07:24 UTC] PDF streamed to browser.
+[18-May-2024 03:11:50 UTC] Starting PDF generation...
+[18-May-2024 03:11:50 UTC] Options set.
+[18-May-2024 03:11:50 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:11:50 UTC] Default font set to Times New Roman.
+[18-May-2024 03:11:50 UTC] HTML content created.
+[18-May-2024 03:11:50 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:11:50 UTC] Paper size and orientation set.
+[18-May-2024 03:13:51 UTC] PDF rendered successfully.
+[18-May-2024 03:13:51 UTC] PDF streamed to browser.
+[18-May-2024 03:13:51 UTC] Starting PDF generation...
+[18-May-2024 03:13:51 UTC] Options set.
+[18-May-2024 03:13:51 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:13:51 UTC] Default font set to Times New Roman.
+[18-May-2024 03:13:51 UTC] HTML content created.
+[18-May-2024 03:13:51 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:13:51 UTC] Paper size and orientation set.
+[18-May-2024 03:15:35 UTC] PDF rendered successfully.
+[18-May-2024 03:15:36 UTC] PDF streamed to browser.
+[18-May-2024 03:15:36 UTC] Starting PDF generation...
+[18-May-2024 03:15:36 UTC] Options set.
+[18-May-2024 03:15:36 UTC] Font directory set: D:\laragon\www\dangky\admin/fonts
+[18-May-2024 03:15:36 UTC] Default font set to Times New Roman.
+[18-May-2024 03:15:36 UTC] HTML content created.
+[18-May-2024 03:15:36 UTC] HTML content loaded into Dompdf.
+[18-May-2024 03:15:36 UTC] Paper size and orientation set.
+[18-May-2024 03:17:22 UTC] PDF rendered successfully.
+[18-May-2024 03:17:22 UTC] PDF streamed to browser.

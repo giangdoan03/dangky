@@ -18,10 +18,13 @@ $html_content = '<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif; /* Chọn font hỗ trợ tiếng Việt */
-        }
+        body { font-family: DejaVu Sans, sans-serif; }
+        h1 { color: blue; }
+        p { font-size: 14px; }
     </style>
 </head>
 <body>';
