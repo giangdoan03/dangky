@@ -170,20 +170,6 @@ if (!empty($_GET['status'])) {
 <?php require('inc/scripts.php'); ?>
 
 <script>
-    function updateImage(studentId) {
-        const inputFile = document.getElementById(`inputFile_${studentId}`);
-        const image = document.getElementById(`anh_chan_dung_${studentId}`);
-
-        const file = inputFile.files[0];
-        if (file) {
-            const imageURL = URL.createObjectURL(file);
-            image.src = imageURL;
-            // Có thể thêm mã Ajax để tải lên và lưu trữ ảnh tại đây
-        } else {
-            // Nếu không có tệp được chọn, hiển thị ảnh mặc định
-            image.src = '../images/common/default_filetype.png';
-        }
-    }
 
 </script>
 </body>
