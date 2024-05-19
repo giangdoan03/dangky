@@ -246,7 +246,7 @@ adminLogin();
 <?php require('inc/header.php'); ?>
 <?php
 // Số bản ghi trên mỗi trang
-$records_per_page = 4;
+$records_per_page = 24;
 
 // Số bản ghi trong cơ sở dữ liệu
 $sql_total_records = "SELECT COUNT(*) AS total_records FROM phieu_du_thi";
