@@ -65,7 +65,7 @@ adminLogin();
             width: 650px;
             margin-left: 80px;
             position: relative;
-            top: -28px;
+            top: -15px;
         }
 
         .ticket-head .title-left {

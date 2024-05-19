@@ -1,5 +1,5 @@
 <?php
-require('inc/essentials.php');
+require('./inc/essentials.php');
 include('./inc/db_config.php');
 //include('./generate_pdf.php');
 adminLogin();
@@ -101,6 +101,19 @@ if (!empty($_GET['status'])) {
                                 </div>
                             </form>
                         </div>
+                        <div class="import_file_zip">
+                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <label for="file">Choose a ZIP file:</label>
+                                        <input type="file" class="form-control" name="file" id="file" accept=".zip">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
                     </div>
                     <div class="row">
@@ -126,7 +139,7 @@ if (!empty($_GET['status'])) {
                             // get member record from the database
                             $result = $conn->query("SELECT * FROM phieu_du_thi");
                             if ($result->num_rows > 0) {
-                                $path = IMAGE_AVATAR_PATH;
+                                $path = IMAGE_AVATAR_NEW_NAME;
                                 $i = 0;
                                 while ($row = $result->fetch_assoc()) {
                                     $i++;
