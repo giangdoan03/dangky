@@ -63,6 +63,7 @@ if (!empty($_GET['status'])) {
 
 ?>
 
+
 <?php
 // Số bản ghi trên mỗi trang
 $records_per_page = 50;
@@ -90,22 +91,34 @@ $sql_data = "SELECT * FROM hoc_sinh LIMIT $start_from, $records_per_page";
 $result_data = $conn->query($sql_data);
 
 ?>
-
 <div class="container-fluid" id="main-content">
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h3 class="mb-4">Danh sách học sinh</h3>
-            <!-- General settings section -->
             <?php if (!empty($statusMsg)) { ?>
                 <div class="col-xs-12 p-3">
                     <div id="successMessage" class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
                 </div>
             <?php } ?>
+            <div class="action-in">
+                <p>Tổng: <strong><?php echo $total_records; ?></strong> hồ sơ</p>
+            </div>
+            <!-- General settings section -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="list-student card-body">
+                    <div class="list-pagination-top">
+                        <?php
+
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            $active_class = ($current_page == $i) ? "active" : "";
+                            echo "<a class='item $active_class' href='?page=$i'>$i</a>";
+                        }
+                        ?>
+                    </div>
                     <table>
                         <tr>
                             <th>STT</th>
+                            <th>Thời gian</th>
                             <th>Mã Học sinh</th>
                             <th>Họ tên học sinh</th>
                             <th>Ngày sinh</th>
@@ -119,22 +132,32 @@ $result_data = $conn->query($sql_data);
                             <th>Tổng điểm xét tuyển</th>
                             <th>Thao tác</th>
                         </tr>
+
+
                         <?php
-                        $sql = "SELECT id,ma_hocsinh,hoten_hocsinh,ngaysinh,noisinh,gioitinh,dantoc,tenlop,ten_truong,dien_uu_tien,diem_uu_tien,tong_diem_xet_tuyen FROM hoc_sinh ORDER BY id DESC";
+
+                        $sql = "SELECT id,ma_hocsinh,hoten_hocsinh,ngaysinh,noisinh,gioitinh,dantoc,tenlop,ten_truong,dien_uu_tien,diem_uu_tien,tong_diem_xet_tuyen,thoi_gian FROM hoc_sinh";
                         $result = $conn->query($sql_data);
                         if ($result->num_rows > 0) {
                             // output data of each row
                             $headers = $col = "";
                             $count = 0;
                             while ($row = $result->fetch_assoc()) {
+                                $gioi_tinh = '';
+                                if ($row['gioitinh'] === 'nu') {
+                                    $gioi_tinh = 'Nữ';
+                                } else {
+                                    $gioi_tinh = 'Nam';
+                                }
                                 $count++;
                                 echo "<tr>";
                                 echo "<td>" . $count . "</td>";
+                                echo "<td>" . $row['thoi_gian'] . "</td>";
                                 echo "<td>" . "<a href='student.php?id=".$row['id']."'>".$row['ma_hocsinh']."</a>" . "</td>";
                                 echo "<td>" . $row['hoten_hocsinh'] . "</td>";
                                 echo "<td>" . $row['ngaysinh'] . "</td>";
                                 echo "<td>" . $row['noisinh'] . "</td>";
-                                echo "<td>" . $row['gioitinh'] . "</td>";
+                                echo "<td>" . $gioi_tinh . "</td>";
                                 echo "<td>" . $row['dantoc'] . "</td>";
                                 echo "<td>" . $row['tenlop'] . "</td>";
                                 echo "<td>" . $row['ten_truong'] . "</td>";
@@ -150,6 +173,15 @@ $result_data = $conn->query($sql_data);
                         }
                         ?>
                     </table>
+                    <div class="list-pagination">
+                        <?php
+
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            $active_class = ($current_page == $i) ? "active" : "";
+                            echo "<a class='item $active_class' href='?page=$i'>$i</a>";
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
 

@@ -325,183 +325,183 @@ adminLogin();
                                     </table>
                                 </div>
                             </div>
-<!--                            <div class="capacity">-->
-<!--                                <div class="title mb-1 mt-2">-->
-<!--                                    3. Các năng lực, phẩm chất theo học bạ:-->
-<!--                                </div>-->
-<!--                                <div class="col-12">-->
-<!--                                    <table class="table table-bordered">-->
-<!--                                        <thead>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="col" style="width: 16%">Năng lực</th>-->
-<!--                                            <th scope="col">Lớp 1</th>-->
-<!--                                            <th scope="col">Lớp 2</th>-->
-<!--                                            <th scope="col">Lớp 3</th>-->
-<!--                                            <th scope="col">Lớp 4</th>-->
-<!--                                            <th scope="col">Lớp 5</th>-->
-<!--                                        </tr>-->
-<!--                                        </thead>-->
-<!--                                        <tbody>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Tự phục vụ, tự quản</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tuquan'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Hợp tác</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'hoptac'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Tự học, giải quyết vấn đề</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tuhoc'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
-<!--                                </div>-->
-<!--                                <div class="col-12">-->
-<!--                                    <table class="table table-bordered">-->
-<!--                                        <thead>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="col" style="width: 16%">Phẩm chất</th>-->
-<!--                                            <th scope="col">Lớp 1</th>-->
-<!--                                            <th scope="col">Lớp 2</th>-->
-<!--                                            <th scope="col">Lớp 3</th>-->
-<!--                                            <th scope="col">Lớp 4</th>-->
-<!--                                            <th scope="col">Lớp 5</th>-->
-<!--                                        </tr>-->
-<!--                                        </thead>-->
-<!--                                        <tbody>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Chăm học, chăm làm</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'chamhoc'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Tự tin, trách nhiệm</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tutin'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Trung thực, kỷ luật</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'kiluat'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="row">Đoàn kết, yêu thương</th>-->
-<!--                                            --><?php
-//                                            if (isset($_GET["id"])) {
-//                                                $id = $_GET["id"];
-//                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'doanket'";
-//                                                $result = mysqli_query($conn, $sql);
-//                                                $resultCheck = mysqli_num_rows($result);
-//                                                if ($resultCheck > 0) {
-//                                                    while ($row = mysqli_fetch_assoc($result)) {
-//                                                        ?>
-<!--                                                        <td>-->
-<!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
-<!--                                                        </td>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                            }
-//                                            ?>
-<!--                                        </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="capacity">-->
+                            <!--                                <div class="title mb-1 mt-2">-->
+                            <!--                                    3. Các năng lực, phẩm chất theo học bạ:-->
+                            <!--                                </div>-->
+                            <!--                                <div class="col-12">-->
+                            <!--                                    <table class="table table-bordered">-->
+                            <!--                                        <thead>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="col" style="width: 16%">Năng lực</th>-->
+                            <!--                                            <th scope="col">Lớp 1</th>-->
+                            <!--                                            <th scope="col">Lớp 2</th>-->
+                            <!--                                            <th scope="col">Lớp 3</th>-->
+                            <!--                                            <th scope="col">Lớp 4</th>-->
+                            <!--                                            <th scope="col">Lớp 5</th>-->
+                            <!--                                        </tr>-->
+                            <!--                                        </thead>-->
+                            <!--                                        <tbody>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Tự phục vụ, tự quản</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tuquan'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Hợp tác</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'hoptac'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Tự học, giải quyết vấn đề</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tuhoc'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        </tbody>-->
+                            <!--                                    </table>-->
+                            <!--                                </div>-->
+                            <!--                                <div class="col-12">-->
+                            <!--                                    <table class="table table-bordered">-->
+                            <!--                                        <thead>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="col" style="width: 16%">Phẩm chất</th>-->
+                            <!--                                            <th scope="col">Lớp 1</th>-->
+                            <!--                                            <th scope="col">Lớp 2</th>-->
+                            <!--                                            <th scope="col">Lớp 3</th>-->
+                            <!--                                            <th scope="col">Lớp 4</th>-->
+                            <!--                                            <th scope="col">Lớp 5</th>-->
+                            <!--                                        </tr>-->
+                            <!--                                        </thead>-->
+                            <!--                                        <tbody>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Chăm học, chăm làm</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'chamhoc'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Tự tin, trách nhiệm</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'tutin'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Trung thực, kỷ luật</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'kiluat'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        <tr>-->
+                            <!--                                            <th scope="row">Đoàn kết, yêu thương</th>-->
+                            <!--                                            --><?php
+                            //                                            if (isset($_GET["id"])) {
+                            //                                                $id = $_GET["id"];
+                            //                                                $sql = "SELECT * FROM diem WHERE id_hocsinh = '$id' AND ten_mon_hoc = 'doanket'";
+                            //                                                $result = mysqli_query($conn, $sql);
+                            //                                                $resultCheck = mysqli_num_rows($result);
+                            //                                                if ($resultCheck > 0) {
+                            //                                                    while ($row = mysqli_fetch_assoc($result)) {
+                            //                                                        ?>
+                            <!--                                                        <td>-->
+                            <!--                                                            --><?php //echo $row["diem_so"] === 'tot' ? 'tốt' : 'đạt'; ?>
+                            <!--                                                        </td>-->
+                            <!--                                                        --><?php
+                            //                                                    }
+                            //                                                }
+                            //                                            }
+                            //                                            ?>
+                            <!--                                        </tr>-->
+                            <!--                                        </tbody>-->
+                            <!--                                    </table>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
 
                             <div>
                                 <div class="title mb-1">
@@ -575,7 +575,7 @@ adminLogin();
                                 ?>
                             </div>
                             <div class="mt-4 mb-3">
-                                <div id="downloadBtn">Download Images as Zip</div>
+                                <div id="downloadBtn">Download All Images as Zip</div>
                             </div>
 
                             <div class="title border-bottom mt-4 mb-3">
@@ -625,6 +625,10 @@ adminLogin();
     let ten_hoc_sinh = document.getElementById('ten_hoc_sinh').value;
     let ma_hoc_sinh = document.getElementById('ma_hoc_sinh').value;
 
+    let array_name_cc = ['Học bạ tiểu học', 'Giấy khai sinh bản chính', 'Giấy xác nhận ưu tiên', 'Ảnh chân dung(3x4)', 'Ảnh chụp 2 mặt CMND_CCCD', 'Phiếu kê khai thông tin học sinh', 'Đơn đăng ký dự tuyển'];
+
+
+
     let duong_dan_anh_cc_1 = document.getElementById('duong_dan_anh_cc_1').value;
     let duong_dan_anh_cc_2 = document.getElementById('duong_dan_anh_cc_2').value;
     let duong_dan_anh_cc_3 = document.getElementById('duong_dan_anh_cc_3').value;
@@ -634,31 +638,82 @@ adminLogin();
     // let duong_dan_anh_cc_7 = document.getElementById('duong_dan_anh_cc_7').value;
 
 
+
+
     let duong_dan_anh_cc_7_element = document.getElementById('duong_dan_anh_cc_7');
     let duong_dan_anh_cc_7;
+
+    // Example file URLs - product
+    let fileUrls = [
+        duong_dan_anh_cc_1,
+        duong_dan_anh_cc_2,
+        duong_dan_anh_cc_3,
+        duong_dan_anh_cc_4,
+        duong_dan_anh_cc_5,
+        duong_dan_anh_cc_6,
+        duong_dan_anh_cc_7,
+        // Add more file URLs as needed
+    ];
 
     if (duong_dan_anh_cc_7_element) {
         // Phần tử tồn tại, truy cập thuộc tính value
         duong_dan_anh_cc_7 = duong_dan_anh_cc_7_element.value;
+        fileUrls = [
+            duong_dan_anh_cc_1,
+            duong_dan_anh_cc_2,
+            duong_dan_anh_cc_3,
+            duong_dan_anh_cc_4,
+            duong_dan_anh_cc_5,
+            duong_dan_anh_cc_6,
+            duong_dan_anh_cc_7,
+            // Add more file URLs as needed
+        ];
     } else {
         // Phần tử không tồn tại, xử lý nó theo cách thích hợp
-        console.log('1')
+
+
+        let valueToRemove = 'Giấy xác nhận ưu tiên';
+
+        array_name_cc = array_name_cc.filter(item => item !== valueToRemove);
+        console.log('array_name_cc', array_name_cc);
+
+
+        let index = 6; // chỉ số của phần tử cần xóa
+
+        if (index > -1) {
+            fileUrls.splice(index, 1); // Xóa 1 phần tử tại vị trí index
+        }
+
+        console.log(fileUrls); // Kết quả: [1, 2, 4, 5]
     }
 
 
 
-    let array_name_cc = ['Học bạ tiểu học', 'Giấy khai sinh bản chính', 'Giấy xác nhận ưu tiên', 'Ảnh chân dung(3x4)', 'Ảnh chụp 2 mặt CMND_CCCD', 'Phiếu kê khai thông tin học sinh', 'Đơn đăng ký dự tuyển'];
+    // let array_name_cc = ['Học bạ tiểu học', 'Giấy khai sinh bản chính', 'Giấy xác nhận ưu tiên', 'Ảnh chân dung(3x4)', 'Ảnh chụp 2 mặt CMND_CCCD', 'Phiếu kê khai thông tin học sinh', 'Đơn đăng ký dự tuyển'];
     document.addEventListener("DOMContentLoaded", function() {
         // Function to add files to zip
         async function addFilesToZip(fileUrls, zip) {
+            const specialIndex = (fileUrls.length === 6) ? 2 : 3;
+
             for (let i = 0; i < fileUrls.length; i++) {
                 const fileUrl = fileUrls[i];
-                const response = await fetch(fileUrl);
-                const blob = await response.blob();
-                const fileType = getFileType(fileUrl);
-                const fileName = array_name_cc[i]+'.'+fileType;
-                console.log('fileName',fileName)
-                zip.file(fileName, blob);
+                console.log(fileUrl); // Kết quả: [1, 2, 4, 5]
+
+                if (fileUrl) {
+                    try {
+                        const response = await fetch(fileUrl);
+                        const blob = await response.blob();
+                        const fileType = getFileType(fileUrl);
+
+                        const fileName = (i === specialIndex)
+                            ? `${ten_hoc_sinh}_${ma_hoc_sinh}.${fileType}`
+                            : `${array_name_cc[i]}.${fileType}`;
+
+                        zip.file(fileName, blob);
+                    } catch (error) {
+                        console.error(`Failed to fetch or process file from ${fileUrl}:`, error);
+                    }
+                }
             }
         }
 
@@ -689,19 +744,20 @@ adminLogin();
 
         // Example file URLs - dev
 
-        const fileUrls = [
-            'https://cdnphoto.dantri.com.vn/HKEco-3Y-i3ztA1qNBq9LG4fIWs=/zoom/774_516/2024/03/04/gia-vang-manh-quan-2-1709511685085.jpg',
-            'https://cdnphoto.dantri.com.vn/Vi9K9JeQhKJ8NYpdJX_2RU2NeEk=/thumb_w/1020/2024/05/06/1-1714959579652.jpg',
-            'https://cdnphoto.dantri.com.vn/um_byuInXeEZ4W4ed_MIo4oYG3w=/thumb_w/1020/2024/05/06/4-nguoi-mua-duoc-huong-loi-1-edited-1714974993714.jpeg',
-            'https://cdnphoto.dantri.com.vn/JJ7NZpmWOF01H_foGSXw5rmWqOM=/thumb_w/1020/2024/04/19/lavrovsputnik-crop-1713525596192.jpeg',
-            'https://cdnphoto.dantri.com.vn/IKUZrjwOSebWAMGttvl4FhMTVZE=/thumb_w/1020/2024/05/02/latmat7-7-1714626596670.jpg',
-            'https://cdnphoto.dantri.com.vn/gpQ79jLN-8it6hnMOwCwnahJ3bY=/thumb_w/1020/2024/05/06/gia-tinh-van-3-1714968411371.jpg',
-            'https://cdnphoto.dantri.com.vn/gpQ79jLN-8it6hnMOwCwnahJ3bY=/thumb_w/1020/2024/05/06/gia-tinh-van-3-1714968411371.jpg'
-            // Add more file URLs as needed
-        ];
+        // const fileUrls = [
+        //     'https://cdnphoto.dantri.com.vn/HKEco-3Y-i3ztA1qNBq9LG4fIWs=/zoom/774_516/2024/03/04/gia-vang-manh-quan-2-1709511685085.jpg',
+        //     'https://cdnphoto.dantri.com.vn/Vi9K9JeQhKJ8NYpdJX_2RU2NeEk=/thumb_w/1020/2024/05/06/1-1714959579652.jpg',
+        //     'https://cdnphoto.dantri.com.vn/um_byuInXeEZ4W4ed_MIo4oYG3w=/thumb_w/1020/2024/05/06/4-nguoi-mua-duoc-huong-loi-1-edited-1714974993714.jpeg',
+        //     'https://cdnphoto.dantri.com.vn/JJ7NZpmWOF01H_foGSXw5rmWqOM=/thumb_w/1020/2024/04/19/lavrovsputnik-crop-1713525596192.jpeg',
+        //     'https://cdnphoto.dantri.com.vn/IKUZrjwOSebWAMGttvl4FhMTVZE=/thumb_w/1020/2024/05/02/latmat7-7-1714626596670.jpg',
+        //     'https://cdnphoto.dantri.com.vn/gpQ79jLN-8it6hnMOwCwnahJ3bY=/thumb_w/1020/2024/05/06/gia-tinh-van-3-1714968411371.jpg',
+        //     'https://cdnphoto.dantri.com.vn/gpQ79jLN-8it6hnMOwCwnahJ3bY=/thumb_w/1020/2024/05/06/gia-tinh-van-3-1714968411371.jpg'
+        //     // Add more file URLs as needed
+        // ];
 
         // Event listener for the download button
         document.getElementById("downloadBtn").addEventListener("click", function() {
+
             const zip = new JSZip();
             addFilesToZip(fileUrls, zip).then(() => {
                 downloadZip(zip);
