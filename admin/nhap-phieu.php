@@ -150,7 +150,7 @@ if (!empty($_GET['status'])) {
                                 }
                             } else { ?>
                                 <tr>
-                                    <td colspan="12">No member(s) found...</td>
+                                    <td colspan="12">Không tìm thấy hồ sơ...</td>
                                 </tr>
                                 <?php
 
