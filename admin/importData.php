@@ -17,7 +17,7 @@ if (isset($_POST['importSubmit'])) {
         unset($worksheet_arr[0]);
 
         // Kiểm tra kết nối cơ sở dữ liệu
-        $conn = new mysqli('localhost', 'oksqpeoc_tonggiang', '}7L1u*Vm2T~S', 'oksqpeoc_tonggiang');
+        $conn = new mysqli('localhost', 'root', '', 'dangky');
         mysqli_set_charset($conn, 'UTF8');
         if ($conn->connect_error) {
             die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
