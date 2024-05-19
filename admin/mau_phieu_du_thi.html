@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title class="no-print">Danh sách phòng 1</title>
+    <style>
+        body {
+            background: rgb(204,204,204);
+            font-family: "Times New Roman";
+        }
+        .page {
+            background: white;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        }
+        .page[size="A4"] {
+            width: 210mm;
+            height: 297mm;
+        }
+        .half-page {
+            height: 148.5mm; /* Chia đôi chiều cao của trang A4 */
+        }
+        .content-box .avatar img {
+            width: 150px;
+            height: 200px;
+            object-fit: contain;
+        }
+        .avatar {
+            width: 150px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+            top: 156px;
+        }
+        .body-ticket {
+            max-width: 530px;
+            margin: 0 auto;
+        }
+        .info-ticket {
+            width: 650px;
+            margin-left: 80px;
+            position: relative;
+            top: -28px;
+        }
+        .ticket-head .title-left {
+            text-align: center;
+            position: relative;
+        }
+        .ticket-head .title-left:before {
+            content: '';
+            background: url('./image/logo_thcs_thanh_xuan.png');
+            background-repeat: repeat;
+            background-size: 100%;
+            display: block;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: -70px;
+            top: 10px;
+        }
+        .ticket-head .title-right {
+            text-align: center;
+        }
+        .tile-ticket {
+            text-align: center;
+            line-height: 23px;
+        }
+        p.ten-truong {
+            margin-top: 5px;
+            font-size: 17px;
+            position: relative;
+        }
+        p.ten-truong:after {
+            content: '';
+            height: 1px;
+            width: 141px;
+            background: #000000;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        p.uy-ban {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        p.quoc-hieu {
+            margin-bottom: 0;
+            font-size: 17px;
+        }
+        p.tieu-ngu {
+            margin-top: 5px;
+            font-size: 16px;
+            position: relative;
+        }
+        p.tieu-ngu :after {
+            content: '';
+            height: 1px;
+            width: 190px;
+            background: #000000;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .thoi-gian {
+            margin: 0;
+        }
+        .content-box {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ticket-head {
+            display: flex;
+            justify-content: space-between;
+        }
+        .body-ticket .content-ticket .two-column {
+            display: flex;
+            justify-content: space-between;
+        }
+        .address {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .half-page {
+            width: 100%;
+            height: calc(297mm / 2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 20px;
+            border-bottom: 1px dashed #cccccc;
+            position: relative;
+        }
+        .half-page:last-child {
+            border-bottom: none;
+        }
+        .tieu-de-chu-ky, .chu-ky-chu-tich {
+            text-align: center;
+            width: 200px;
+            margin-left: auto;
+            margin-top: 0px;
+        }
+        p.chu-ky-chu-tich {
+            position: relative;
+            top: 60px;
+        }
+        .title-to {
+            margin-bottom: 5px;
+        }
+        @media print {
+            body, .page {
+                background: white;
+                margin: 0;
+                box-shadow: none;
+            }
+            .no-print {
+                display: none; /* Ẩn các phần tử có class no-print khi in */
+            }
+            .print-content {
+                page-break-after: always; /* Tự động xuống trang mới sau mỗi phần */
+            }
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+            body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            /* Ẩn các phần tử mặc định của trình duyệt khi in */
+            header, footer {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="no-print">
+    <!-- Tiêu đề hoặc các nội dung không cần in -->
+</header>
+
+<div id="pdf-ticket" class="pdf-content">
+    <div size="A4" class="page print-content">
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_29345.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_13128.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div size="A4" class="print-content page">
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_35357.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_58152.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div size="A4" class="print-content page">
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_19016.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-box half-page">
+            <div class="avatar">
+                <img src="https://tuyensinh.thcsthanhxuan.vn/images/anh_chung_chi/IMG_15044.jpg" alt="anh chan dung">
+            </div>
+            <div class="info-ticket">
+                <div class="ticket-head">
+                    <div class="title-left">
+                        <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
+                        <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
+                    </div>
+                    <div class="title-right">
+                        <p class="quoc-hieu"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p class="tieu-ngu"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </div>
+                </div>
+                <div class="tile-ticket">
+                    <p><strong>PHIẾU DỰ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC VÀO LỚP 6 <br>TRƯỜNG THCS THANH XUÂN NĂM HỌC 2024-2025</strong></p>
+                </div>
+                <div class="body-ticket">
+                    <div class="content-ticket">
+                        <div class="row">
+                            <div class="two-column">
+                                <div class="column-item">
+                                    <p>Họ và tên học sinh: <strong>Phạm Hải Anh</strong></p>
+                                    <p>Ngày tháng năm sinh: <strong>24/09/2011</strong></p>
+                                    <p>Số báo danh: <strong>TX110.0121</strong></p>
+                                </div>
+                                <div class="column-item">
+                                    <p>Giới tính: <strong>Nam</strong></p>
+                                    <p></p>
+                                    <p>Phòng kiểm tra: <strong>06</strong></p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <p class="thoi-gian">Thời gian có mặt tại phòng kiểm tra: 07h30 ngày 14 tháng 6 năm 2024 (thứ ba)</p>
+                            </div>
+                            <div class="one-column">
+                                <div class="address">
+                                    <p>Địa điểm dự kiểm tra: <strong>Trường THCS Thanh Xuân</strong></p>
+                                    <p>(Địa chỉ: số 143 Nguyễn Tuân, P. Thanh Xuân Trung, Q. Thanh Xuân, TP. Hà Nội)</p>
+                                </div>
+                            </div>
+                            <div class="one-column">
+                                <div class="text-right">
+                                    <p class="title-to"><strong>HỘI ĐỒNG TUYỂN SINH</strong></p>
+                                    <p class="tieu-de-chu-ky"><strong>Chủ tịch</strong></p>
+                                    <p class="chu-ky-chu-tich"><strong>Nguyễn Thanh Huyền</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-right">
+    <footer class="no-print">
+        <p>Đây là chân trang và sẽ không in</p>
+    </footer>
+
+    <button onclick="printPage()" class="no-print">In trang này</button>
+</div>
+
+<script type="text/javascript">
+    function printPage() {
+        window.print();
+    }
+</script>
+</body>
+</html>

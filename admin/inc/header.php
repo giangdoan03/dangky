@@ -18,7 +18,10 @@
                         <a class="nav-link text-white" href="profile-list.php">Quản lý hồ sơ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="phieu-du-thi.php?page=1">Phiếu dự thi</a>
+                        <a class="nav-link text-white" href="nhap-phieu.php">Nhập phiếu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="xuat-phieu.php">Xuất phiếu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Users</a>
