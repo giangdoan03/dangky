@@ -87,29 +87,30 @@ if (!empty($_GET['status'])) {
             <?php } ?>
             <div class="card border-0 shadow-sm mb-4" id="importFrm">
                 <div class="list-student card-body">
-                    <div class="row">
+                    <div class="row-one">
                         <div class="form-import">
                             <form action="importData.php" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-auto">
+                                <div class="row" style="align-items: center">
+                                    <div class="col-auto" style="margin-bottom: 20px">
+                                        <label for="file" style="color: red;">Chọn file excel:</label>
                                         <label for="fileInput" class="visually-hidden">File</label>
                                         <input type="file" class="form-control" name="file" id="fileInput">
                                     </div>
                                     <div class="col-auto">
-                                        <input type="submit" class="btn btn-primary mb-3" name="importSubmit" value="Import">
+                                        <input type="submit" style="margin-top: 18px;" class="btn btn-primary mb-3" name="importSubmit" value="Import">
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="import_file_zip">
+                        <div class="import_file_zip" style="margin-bottom: 20px">
                             <form action="upload.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-auto">
-                                        <label for="file">Choose a ZIP file:</label>
+                                        <label for="file" style="color: red">(File .zip khi giải nén phải có kiểu: ten_file.zip/ten_anh.jpg):</label>
                                         <input type="file" class="form-control" name="file" id="file" accept=".zip">
                                     </div>
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                        <button style="margin-top: 23px" type="submit" class="btn btn-primary">Upload</button>
                                     </div>
                                 </div>
                             </form>

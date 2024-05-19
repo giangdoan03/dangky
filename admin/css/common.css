@@ -104,6 +104,11 @@ td, th {
     text-align: right;
     margin-bottom: 10px;
 }
+.row-one {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 a.item.active {
     font-weight: 900;
 }
