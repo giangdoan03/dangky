@@ -18,6 +18,7 @@ if (isset($_POST['importSubmit'])) {
 
         // Kiểm tra kết nối cơ sở dữ liệu
         $conn = new mysqli('localhost', 'oksqpeoc_tonggiang', '}7L1u*Vm2T~S', 'oksqpeoc_tonggiang');
+        mysqli_set_charset($conn, 'UTF8');
         if ($conn->connect_error) {
             die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
         }
