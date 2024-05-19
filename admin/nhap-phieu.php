@@ -22,7 +22,7 @@ adminLogin();
 $records_per_page = 96;
 
 // Số bản ghi trong cơ sở dữ liệu
-$sql_total_records = "SELECT COUNT(*) AS total_records FROM hoc_sinh";
+$sql_total_records = "SELECT COUNT(*) AS total_records FROM phieu_du_thi";
 
 $result_total_records = $conn->query($sql_total_records);
 $row_total_records = $result_total_records->fetch_assoc();
@@ -38,7 +38,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_from = ($current_page - 1) * $records_per_page;
 
 // Câu truy vấn SQL
-$sql_data = "SELECT * FROM hoc_sinh ORDER BY id DESC LIMIT $start_from, $records_per_page";
+$sql_data = "SELECT * FROM phieu_du_thi ORDER BY id DESC LIMIT $start_from, $records_per_page";
 
 // Thực thi câu truy vấn và lấy dữ liệu
 $result_data = $conn->query($sql_data);
