@@ -126,7 +126,7 @@ if (!empty($_GET['status'])) {
                             // get member record from the database
                             $result = $conn->query("SELECT * FROM phieu_du_thi");
                             if ($result->num_rows > 0) {
-                                $path = IMAGE_AVATAR_CHAN_DUNG;
+                                $path = IMAGE_AVATAR_PATH;
                                 $i = 0;
                                 while ($row = $result->fetch_assoc()) {
                                     $i++;

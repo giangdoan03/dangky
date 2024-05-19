@@ -306,7 +306,7 @@ $result_data = $conn->query($sql_data);
             <div id="pdf-ticket" class="pdf-content">
 
                 <?php
-                $path = IMAGE_AVATAR_CHAN_DUNG;
+                $path = IMAGE_AVATAR_PATH;
                 for ($i = 0; $i < count($students); $i += 2) {
                     $student1 = $students[$i];
                     $student2 = isset($students[$i + 1]) ? $students[$i + 1] : null;

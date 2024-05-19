@@ -1,5 +1,5 @@
 <?php
-require('inc/essentials.php');
+require('.inc/essentials.php');
 include('./inc/db_config.php');
 require '../vendor/autoload.php'; // Đảm bảo autoload của Composer đã được nạp
 
