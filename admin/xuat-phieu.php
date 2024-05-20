@@ -32,9 +32,9 @@ adminLogin();
             box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
         }
 
-        .content-ticket p {
-            font-size: 18px;
-        }
+        /*.content-ticket p {*/
+        /*    font-size: 18px;*/
+        /*}*/
 
         .page[size="A4"] {
             width: 210mm;
