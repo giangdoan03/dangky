@@ -299,13 +299,13 @@ $result_data = $conn->query($sql_data);
             <div id="pdf-ticket" class="pdf-content">
 
                 <?php
-                $path = IMAGE_AVATAR_PATH;
+                $path = IMAGE_AVATAR_NEW_NAME;
                 for ($i = 0; $i < count($students); $i += 2) {
                     $student1 = $students[$i];
                     $student2 = isset($students[$i + 1]) ? $students[$i + 1] : null;
 
                     $html1 = <<<HTML
-               <div size="A4" class="page">
+               <div size="A4" class="page print-content">
             <div class="content-box half-page">
                 <div class="avatar">
                     <img src="{$path}{$student1['ten_anh']}" alt="anh chan dung">
