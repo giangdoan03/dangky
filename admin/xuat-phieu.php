@@ -161,7 +161,7 @@ adminLogin();
 
         .half-page {
             width: 100%;
-            height: calc(297mm / 2);
+            /*height: calc(297mm / 2);*/
             display: flex;
             justify-content: center;
             /* align-items: center; */
