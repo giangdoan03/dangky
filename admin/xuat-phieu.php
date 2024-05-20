@@ -208,8 +208,8 @@ adminLogin();
             }
 
             @page {
-                size: A4;
-                margin: 20mm;
+                size: 7in 9.25in;
+                margin: 27mm 16mm 27mm 16mm;
             }
 
             body {
