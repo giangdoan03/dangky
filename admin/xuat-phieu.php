@@ -212,13 +212,13 @@ adminLogin();
                 /*margin: 20mm;*/
             }
 
-            body {
-                width: 210mm;
-                height: 297mm;
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+            /*body {*/
+            /*    width: 210mm;*/
+            /*    height: 297mm;*/
+            /*    margin: 0;*/
+            /*    padding: 0;*/
+            /*    box-sizing: border-box;*/
+            /*}*/
 
             /* Ẩn các phần tử mặc định của trình duyệt khi in */
             header, footer, .sticky-top, #dashboard-menu, .head-top {
