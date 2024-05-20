@@ -32,9 +32,9 @@ adminLogin();
             box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
         }
 
-        /*.content-ticket p {*/
-        /*    font-size: 18px;*/
-        /*}*/
+        .content-ticket p {
+            font-size: 16px;
+        }
 
         .page[size="A4"] {
             width: 210mm;
@@ -174,6 +174,10 @@ adminLogin();
 
         .half-page:last-child {
             border-bottom: none;
+            padding-top: 80px;
+        }
+        .half-page:last-child .avatar {
+            top: 218px;
         }
 
         .tieu-de-chu-ky, .chu-ky-chu-tich {
