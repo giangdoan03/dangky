@@ -123,8 +123,8 @@ if (isset($_POST['save_student'])) {
     $gt = ($gioitinh && $gioitinh === 'nu') ? 'Nữ' : 'Nam';
 
     // Format date of birth
-    $timestamp = strtotime($ngaysinh);
-    $ngaysinh = date('d/m/Y', $timestamp);
+//    $timestamp = strtotime($ngaysinh);
+//    $ngaysinh = date('d/m/Y', $timestamp);
 
     date_default_timezone_set('Asia/Ho_Chi_Minh'); // Thiết lập múi giờ cho Việt Nam
     $thoi_gian = new DateTime();
