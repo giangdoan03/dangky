@@ -32,6 +32,10 @@ adminLogin();
             box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
         }
 
+        .content-ticket p {
+            font-size: 16px;
+        }
+
         .page[size="A4"] {
             width: 210mm;
             height: 297mm;
@@ -52,20 +56,20 @@ adminLogin();
             display: flex;
             align-items: center;
             position: absolute;
-            left: 20px;
-            top: 156px;
+            left: 35px;
+            top: 140px;
         }
 
         .body-ticket {
-            max-width: 530px;
+            max-width: 542px;
             margin: 0 auto;
+            margin-right: 0;
+            padding-right: 30px;
         }
 
         .info-ticket {
-            width: 650px;
-            margin-left: 80px;
+            width: 700px;
             position: relative;
-            top: -15px;
         }
 
         .ticket-head .title-left {
@@ -73,18 +77,6 @@ adminLogin();
             position: relative;
         }
 
-        .ticket-head .title-left:before {
-            content: '';
-            background: url('./images/logo_thcs_thanh_xuan.png');
-            background-repeat: repeat;
-            background-size: 100%;
-            display: block;
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            left: -70px;
-            top: 10px;
-        }
 
         .ticket-head .title-right {
             text-align: center;
@@ -169,18 +161,23 @@ adminLogin();
 
         .half-page {
             width: 100%;
-            height: calc(297mm / 2);
+            /*height: calc(297mm / 2);*/
             display: flex;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
             box-sizing: border-box;
             padding: 20px;
-            border-bottom: 1px dashed #cccccc;
+            /* border-bottom: 1px dashed #cccccc; */
             position: relative;
+            padding-top: 0;
         }
 
         .half-page:last-child {
             border-bottom: none;
+            padding-top: 80px;
+        }
+        .half-page:last-child .avatar {
+            top: 218px;
         }
 
         .tieu-de-chu-ky, .chu-ky-chu-tich {
@@ -192,7 +189,7 @@ adminLogin();
 
         p.chu-ky-chu-tich {
             position: relative;
-            top: 60px;
+            top: 30px;
         }
 
         .title-to {
@@ -216,7 +213,7 @@ adminLogin();
 
             @page {
                 size: A4;
-                margin: 20mm;
+                /*margin: 20mm;*/
             }
 
             body {
@@ -306,7 +303,7 @@ $result_data = $conn->query($sql_data);
             <div id="pdf-ticket" class="pdf-content">
 
                 <?php
-                $path = IMAGE_AVATAR_PATH;
+                $path = IMAGE_AVATAR_NEW_NAME;
                 for ($i = 0; $i < count($students); $i += 2) {
                     $student1 = $students[$i];
                     $student2 = isset($students[$i + 1]) ? $students[$i + 1] : null;
@@ -319,6 +316,7 @@ $result_data = $conn->query($sql_data);
                 </div>
                 <div class="info-ticket">
                     <div class="ticket-head">
+                    <div class="logo"><img style="width: 50px" src="./images/logo_thcs_thanh_xuan.png" alt=""></div>
                         <div class="title-left">
                             <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
                             <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
@@ -379,6 +377,7 @@ $result_data = $conn->query($sql_data);
                     </div>
                     <div class="info-ticket">
                         <div class="ticket-head">
+                            <div class="logo"><img style="width: 50px" src="./images/logo_thcs_thanh_xuan.png" alt=""></div>
                             <div class="title-left">
                                 <p class="uy-ban">UBND QUẬN THANH XUÂN</p>
                                 <p class="ten-truong"><strong>TRƯỜNG THCS THANH XUÂN</strong></p>
