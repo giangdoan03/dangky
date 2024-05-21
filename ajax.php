@@ -298,7 +298,7 @@ if (isset($_POST['save_student'])) {
                     $result[14], $result[15], $result[16], $result[17], $result[18], $result[19]
                 ]
             ];
-            sendDataGoogleSheet($values);
+//            sendDataGoogleSheet($values);
         } else {
             $res = [
                 'status' => 300,
