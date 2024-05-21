@@ -39,7 +39,7 @@
 
         gtag('config', 'G-MJFNDXWJSJ');
     </script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 </head>
 <body class="bg-light">
 <?php //require('inc/header.php'); ?>
@@ -871,7 +871,13 @@
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Include jQuery -->
+<!-- Include Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Include Bootstrap Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<!-- Include Bootstrap Datepicker Vietnamese localization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.vi.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -1134,41 +1140,10 @@
 </script>
 
 <script>
-    $(function() {
-        (function( factory ) {
-            if ( typeof define === "function" && define.amd ) {
-                // AMD. Register as an anonymous module.
-                define([ "../widgets/datepicker" ], factory );
-            } else {
-                // Browser globals
-                factory( jQuery.datepicker );
-            }
-        }(function( datepicker ) {
-            datepicker.regional['vi'] = {
-                closeText: 'Đóng',
-                prevText: '&#x3C;Trước',
-                nextText: 'Tiếp&#x3E;',
-                currentText: 'Hôm nay',
-                monthNames: ['Tháng Một','Tháng Hai','Tháng Ba','Tháng Tư','Tháng Năm','Tháng Sáu',
-                    'Tháng Bảy','Tháng Tám','Tháng Chín','Tháng Mười','Tháng Mười Một','Tháng Mười Hai'],
-                monthNamesShort: ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6',
-                    'Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
-                dayNames: ['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'],
-                dayNamesShort: ['CN','T2','T3','T4','T5','T6','T7'],
-                dayNamesMin: ['CN','T2','T3','T4','T5','T6','T7'],
-                weekHeader: 'Tu',
-                dateFormat: 'dd/mm/yy',
-                firstDay: 0,
-                isRTL: false,
-                showMonthAfterYear: false,
-                yearSuffix: ''};
-            datepicker.setDefaults(datepicker.regional['vi']);
-
-            return datepicker.regional['vi'];
-
-        }));
-        $("#datepicker").datepicker({
-            dateFormat: "dd/mm/yy"
+    $(document).ready(function(){
+        $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            language: 'vi'
         });
     });
     $(document).on('submit', '#saveStudent', function (e) {
