@@ -11,7 +11,7 @@ use Google\Client;
 use Google\Service\Sheets;
 
 
-include('db_config.php');
+include('./admin/inc/db_config.php');
 include('./admin/inc/essentials.php');
 
 $provinceId = isset($_POST['province_id']) ? $_POST['province_id'] : 0;
