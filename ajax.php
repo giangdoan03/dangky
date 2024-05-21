@@ -124,7 +124,8 @@ if (isset($_POST['save_student'])) {
 
     // Format date of birth
 //    $timestamp = strtotime($ngaysinh);
-//    $ngaysinh = date('d/m/Y', $timestamp);
+
+    $ngaysinh = $ngaysinh->format('d/m/Y');
 
     date_default_timezone_set('Asia/Ho_Chi_Minh'); // Thiết lập múi giờ cho Việt Nam
     $thoi_gian = new DateTime();
