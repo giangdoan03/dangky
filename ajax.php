@@ -100,6 +100,20 @@ switch ($command) {
 //if ($ma_hs_vld == 'ma_hs_vld') {
 //
 //}
+
+function convertDate($date) {
+    // Kiểm tra định dạng yyyy-mm-dd
+    if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+        $dateObject = new DateTime($date);
+        return $dateObject->format('d/m/Y');
+    }
+    // Nếu không phải định dạng yyyy-mm-dd, giữ nguyên ngày
+    else {
+        return $date;
+    }
+}
+
+
 if (isset($_POST['save_student'])) {
 
     if ($hoten_hocsinh == NULL || $ngaysinh == NULL || $ma_hocsinh == NULL || $noisinh == NULL || $gioitinh == NULL || $dantoc == NULL || $tenlop == NULL || $ten_truong == NULL || $dien_uu_tien == NULL || $diem_uu_tien == NULL || $tong_diem_xet_tuyen == NULL ||
@@ -124,8 +138,9 @@ if (isset($_POST['save_student'])) {
 
     // Format date of birth
 //    $timestamp = strtotime($ngaysinh);
+//    $ngaysinh = date('d/m/Y', $timestamp);
 
-    $ngaysinh = $ngaysinh->format('d/m/Y');
+    $ngaysinh = convertDate($ngaysinh);
 
     date_default_timezone_set('Asia/Ho_Chi_Minh'); // Thiết lập múi giờ cho Việt Nam
     $thoi_gian = new DateTime();
