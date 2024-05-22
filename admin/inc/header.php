@@ -21,7 +21,10 @@
                         <a class="nav-link text-white" href="nhap-phieu.php">Nhập phiếu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="xuat-phieu.php">Xuất phiếu</a>
+                        <a class="nav-link text-white" href="xuat-phieu.php">Xuất phiếu theo phòng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="xuat-phieu-don.php">Xuất phiếu theo MHS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Users</a>
