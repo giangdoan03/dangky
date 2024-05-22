@@ -27,6 +27,9 @@
                         <a class="nav-link text-white" href="xuat-phieu-don.php">Xuất phiếu theo MHS</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="xu-ly-anh.php">Xử lý ảnh</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="#">Users</a>
                     </li>
                     <li class="nav-item">
