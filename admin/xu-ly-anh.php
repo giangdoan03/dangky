@@ -33,7 +33,7 @@
             <!-- General settings section -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="list-student card-body">
-
+                    <small style="color: red">Chọn file có định dạng .zip*</small>
                     <input type="file" class="form-control" id="uploadZip" accept=".zip">
                     <div id="output"></div>
                     <button class="btn btn-outline-primary mt-3" onclick="processImages()">Process Images</button>
