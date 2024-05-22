@@ -174,10 +174,10 @@ adminLogin();
 
         .half-page:last-child {
             border-bottom: none;
-            padding-top: 80px;
+            padding-top: 30px;
         }
         .half-page:last-child .avatar {
-            top: 218px;
+            top: 168px;
         }
 
         .tieu-de-chu-ky, .chu-ky-chu-tich {
@@ -189,7 +189,7 @@ adminLogin();
 
         p.chu-ky-chu-tich {
             position: relative;
-            top: 30px;
+            top: 78px;
         }
 
         .title-to {
@@ -365,7 +365,7 @@ $result_data = $conn->query($sql_data);
                     </div>
                 </div>
             </div>
-            HTML;
+HTML;
 
                     echo $html1;
 
@@ -427,7 +427,7 @@ $result_data = $conn->query($sql_data);
                     </div>
                 </div>
                 </div>
-                HTML;
+HTML;
 
                         echo $html2;
                     }

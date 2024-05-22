@@ -17,6 +17,51 @@ adminLogin();
 </head>
 <body class="bg-light">
 <?php require('inc/header.php'); ?>
+
+
+<?php
+// Lấy ID người dùng từ tham số URL
+
+if (isset($_GET['id'])) {
+    $userId = $_GET['id'];
+    // Truy vấn để xóa người dùng
+    $sql = "DELETE FROM phieu_du_thi WHERE id = $userId";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Xóa hồ sơ thành công";
+        $qstring = '?trangthai=succ';
+    } else {
+        $qstring = '?trangthai=invalid_file';
+        echo "Lỗi: " . $conn->error;
+    }
+    // Redirect to the listing page
+    header("Location: nhap-phieu.php".$qstring);
+}
+
+// Get status message
+if (!empty($_GET['trangthai'])) {
+    switch ($_GET['trangthai']) {
+        case 'succ':
+            $statusType = 'alert-success';
+            $statusMsg = 'Xóa thành công.';
+            break;
+        case 'err':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Đã có lỗi xảy ra, vui lòng thử lại.';
+            break;
+        case 'invalid_file':
+            $statusType = 'alert-danger';
+            $statusMsg = 'Vui lòng thử lại.';
+            break;
+        default:
+            $statusType = '';
+            $statusMsg = '';
+    }
+}
+
+?>
+
+
 <?php
 // Số bản ghi trên mỗi trang
 $records_per_page = 96;
@@ -82,7 +127,7 @@ if (!empty($_GET['status'])) {
             <!-- Display status message -->
             <?php if (!empty($statusMsg)) { ?>
                 <div class="col-xs-12 p-3">
-                    <div class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
+                    <div id="successMessage"class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
                 </div>
             <?php } ?>
             <div class="card border-0 shadow-sm mb-4" id="importFrm">
@@ -129,10 +174,10 @@ if (!empty($_GET['status'])) {
                                 <td>Số báo danh</td>
                                 <td>Số phòng</td>
                                 <td>Thời gian</td>
-                                <td>Địa điểm</td>
-                                <td>Địa chỉ</td>
+                                <td style="width: 200px">Địa điểm</td>
+                                <td style="width: 200px">Địa chỉ</td>
                                 <td>Ảnh(3x4)</td>
-                                <td>Trạng thái</td>
+                                <td>Thao tác</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -157,7 +202,10 @@ if (!empty($_GET['status'])) {
                                         <td><?php echo $row['dia_diem']; ?></td>
                                         <td><?php echo $row['dia_chi']; ?></td>
                                         <td><img style="width: 50px" src="<?php echo $path.$row['ten_anh']; ?>" alt=""></td>
-                                        <td><?php echo $row['trang_thai']; ?></td>
+                                        <td>
+                                            <p><a href='javascript:void(0);' onclick='confirmDelete(<?php echo $row['id'] ?>);'>Xóa phiếu</a></p>
+                                            <p>Sửa phiếu</p>
+                                        </td>
                                     </tr>
                                     <?php
 
@@ -182,7 +230,42 @@ if (!empty($_GET['status'])) {
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <?php require('inc/scripts.php'); ?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    // Hàm xác nhận xóa trước khi xóa
+    function confirmDelete(userId) {
+        if (confirm("Bạn có chắc chắn muốn xóa bản ghi này không?")) {
+            window.location.href = 'nhap-phieu.php?id=' + userId; // Chuyển hướng để xóa
+        }
+    }
+    // Kiểm tra xem trang có chứa tham số "?status=succ" không
+    if (window.location.search.includes('?status=succ')) {
+        // Nếu có, thì sau 1 giây, thực hiện chuyển hướng URL mới không có tham số "?status=succ"
+        setTimeout(function() {
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.pushState({ path: newurl }, '', newurl);
+        }, 1000); // 1000ms = 1 giây
+    }
 
+    // Kiểm tra xem trang có chứa tham số "?status=succ" không
+    if (window.location.search.includes('?trangthai=succ')) {
+        // Nếu có, thì sau 1 giây, thực hiện chuyển hướng URL mới không có tham số "?status=succ"
+        setTimeout(function() {
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.pushState({ path: newurl }, '', newurl);
+        }, 1000); // 1000ms = 1 giây
+    }
+    // Kiểm tra xem có thông báo thành công không
+    var successMessage = document.getElementById("successMessage");
+
+    if (successMessage) {
+        // Nếu có, sau 1 giây, ẩn hoặc xóa lớp của thông báo đó
+        setTimeout(function() {
+            successMessage.classList.remove("alert-success"); // Xóa lớp
+            successMessage.style.display = "none"; // Hoặc ẩn thông báo
+        }, 1000); // 1000ms = 2 giây
+    }
+</script>
 <script>
 
 </script>
