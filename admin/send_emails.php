@@ -1,11 +1,10 @@
 <?php
-require '../vendor/autoload.php';
 
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-
 
 
 function replacePlaceholders($template, $placeholders) {
@@ -104,28 +103,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         echo "File is successfully uploaded.\n";
         $recipients = getRecipientsFromExcel($dest_path);
 
-        $batches = array_chunk($recipients, 100);
+        $batches = array_chunk($recipients, 50); // Giảm số lượng mỗi batch để tránh quá tải
         $template = "
-        <p>Kính gửi quý cha mẹ học sinh em <strong style='color:red'>{{name}}</strong> ngày sinh <span style='color:red'>{{dob}}</span>.</p>
+        <p>Kính gửi quý cha mẹ học sinh em <strong>{{name}}</strong> ngày sinh <span>{{dob}}</span>.</p>
         <p>Hội đồng tuyển sinh lớp 6 trường THCS Thanh Xuân năm học 2024-2025</p>
         <p>Thông báo:</p>
-        <p>Số báo danh: <strong style='color:red'>{{sbd}}</strong></p>
-        <p>Phòng kiểm tra: <strong style='color:red'>{{room}}</strong></p>
-        <p>Địa điểm kiểm tra: <strong style='color:red'>Trường THCS Thanh Xuân</strong></p>
-        <p><strong style='color:red'>{{address}}</strong></p>
-        <p>Thời gian có mặt tại địa điểm kiểm tra: <strong style='color:red'>{{time}}</strong></p>
+        <p>Số báo danh: <strong>{{sbd}}</strong></p>
+        <p>Phòng kiểm tra: <strong>{{room}}</strong></p>
+         <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>{{time}}</strong></p>
+        <p>Địa điểm kiểm tra: <strong>{{address}}</strong></p>
         <p>Trân trọng!</p>
         ";
-        $subject = "TEST GỬI MAIL TỰ ĐỘNG";
+        $subject = "Thông báo SBD- Thời Gian - Địa điểm dự kiểm tra";
 
         foreach ($batches as $batch) {
             sendBulkEmail($batch, $template, $subject);
-            sleep(2);
+            sleep(2); // Tạm dừng giữa các batch để tránh quá tải
         }
     } else {
         echo "There was an error moving the uploaded file.\n";
     }
 }
+
 
 
 ?>
