@@ -64,6 +64,11 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel - Settings</title>
     <?php require('inc/links.php'); ?>
+    <style>
+        .input-group-text {
+            width: 150px;
+        }
+    </style>
 </head>
 <body class="bg-light">
 <?php require('inc/header.php'); ?>
@@ -72,7 +77,7 @@ if ($result->num_rows > 0) {
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h2>Edit Student</h2>
-            <form id="edit-form" style="margin-top: 30px">
+            <form id="edit-form" style="margin-top: 30px; width: 1000px">
                 <input type="hidden" name="id" value="<?php echo $ticket['id']; ?>">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Tên học sinh</span>
