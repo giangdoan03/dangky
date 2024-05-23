@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h2>Edit Student</h2>
-            <form method="post" action="edit-ticket.php">
+            <form method="post" action="edit-ticket.php?id=<?php echo $id; ?>">
                 <input type="hidden" name="id" value="<?php echo $ticket['id']; ?>">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Tên học sinh</span>
@@ -91,31 +91,6 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 
-<?php
-// Lấy dữ liệu từ form
-$id_ticket = isset($_POST['id']) ? $_POST['id'] : '';
-$hoten_hocsinh = isset($_POST['hoten_hocsinh']) ? $_POST['hoten_hocsinh'] : '';
-$ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
-$gioi_tinh = isset($_POST['gioi_tinh']) ? $_POST['gioi_tinh'] : '';
-$ngay_sinh = isset($_POST['ngay_sinh']) ? $_POST['ngay_sinh'] : '';
-$so_bao_danh =isset( $_POST['so_bao_danh']) ? $_POST['so_bao_danh'] : '';
-$so_phong = isset($_POST['so_phong']) ? $_POST['so_phong'] : '';
-$thoi_gian = isset($_POST['thoi_gian']) ? $_POST['thoi_gian'] : '';
-$dia_diem = isset($_POST['dia_diem']) ? $_POST['dia_diem'] : '';
-$dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : '';
-$ten_anh = isset( $_POST['ten_anh']) ?  $_POST['ten_anh'] : '';
-
-
-// Cập nhật thông tin học sinh trong cơ sở dữ liệu
-$sql = "UPDATE phieu_du_thi SET hoten_hocsinh='$hoten_hocsinh', ma_hoc_sinh='$ma_hoc_sinh', gioi_tinh='$gioi_tinh', ngay_sinh='$ngay_sinh', so_bao_danh='$so_bao_danh' , so_phong='$so_phong', thoi_gian='$thoi_gian', dia_diem='$dia_diem', dia_chi='$dia_chi', ten_anh='$ten_anh' WHERE id='$id_ticket'";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
-} else {
-    echo "Error updating record: " . $conn->error;
-}
-
-?>
 <?php require('inc/scripts.php'); ?>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
