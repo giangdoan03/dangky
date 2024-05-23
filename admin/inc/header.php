@@ -40,3 +40,18 @@
         </div>
     </nav>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Lấy URL hiện tại của trang
+        var currentUrl = window.location.href;
+
+        // Thêm lớp 'active' cho liên kết tương ứng
+        $('#adminDropdown .nav-link').each(function() {
+            if (this.href === currentUrl) {
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
