@@ -203,7 +203,7 @@ if (!empty($_GET['status'])) {
                                         <td><?php echo $row['dia_chi']; ?></td>
                                         <td><img style="width: 50px" src="<?php echo $path.$row['ten_anh']; ?>" alt=""></td>
                                         <td>
-                                            <p><a href='javascript:void(0);' onclick='confirmDelete(<?php echo $row['id']; ?>);'>Xóa phiếu</a></p>
+                                            <p><a style="color: red" href='javascript:void(0);' onclick='confirmDelete(<?php echo $row['id']; ?>);'>Xóa phiếu</a></p>
                                             <p><a href='edit-ticket.php?id=<?php echo $row['id'];?>'>Sửa phiếu</a></p>
                                         </td>
                                     </tr>
