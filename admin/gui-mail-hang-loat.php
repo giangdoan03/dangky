@@ -20,7 +20,7 @@
             <h1>Send Bulk Email</h1>
             <form action="send_emails.php" method="post" enctype="multipart/form-data">
                 <label for="file">Select CSV file:</label>
-                <input type="file" class="form-control" name="file" id="file" accept=".csv" required><br>
+                <input type="file" class="form-control" name="file" id="file" accept=".xlsx" required><br>
                 <button type="submit" class="btn btn-outline-secondary">Send Emails</button>
             </form>
         </div>
