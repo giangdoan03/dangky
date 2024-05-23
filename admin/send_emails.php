@@ -21,10 +21,11 @@ function sendBulkEmail($recipientsBatch) {
         $mail->SMTPAuth = true;
         $mail->Username = $username;
         $mail->Password = $password;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = 'tls';
         $mail->Port = $port;
 
         $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
+        $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
 
         // Common email settings
         $mail->setFrom($username, 'Tuyển sinh THCS Thanh Xuân');
