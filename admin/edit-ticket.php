@@ -2,6 +2,57 @@
 require('./inc/essentials.php');
 include('./inc/db_config.php');
 adminLogin();
+
+// Xử lý yêu cầu AJAX
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Lấy dữ liệu từ form
+    $id_ticket = isset($_POST['id']) ? $_POST['id'] : '';
+    $hoten_hocsinh = isset($_POST['hoten_hocsinh']) ? $_POST['hoten_hocsinh'] : '';
+    $ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
+    $gioi_tinh = isset($_POST['gioi_tinh']) ? $_POST['gioi_tinh'] : '';
+    $ngay_sinh = isset($_POST['ngay_sinh']) ? $_POST['ngay_sinh'] : '';
+    $so_bao_danh = isset($_POST['so_bao_danh']) ? $_POST['so_bao_danh'] : '';
+    $so_phong = isset($_POST['so_phong']) ? $_POST['so_phong'] : '';
+    $thoi_gian = isset($_POST['thoi_gian']) ? $_POST['thoi_gian'] : '';
+    $dia_diem = isset($_POST['dia_diem']) ? $_POST['dia_diem'] : '';
+    $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : '';
+    $ten_anh = isset($_POST['ten_anh']) ? $_POST['ten_anh'] : '';
+
+    // Cập nhật thông tin học sinh trong cơ sở dữ liệu
+    $sql = "UPDATE phieu_du_thi SET 
+            hoten_hocsinh='$hoten_hocsinh', 
+            ma_hoc_sinh='$ma_hoc_sinh', 
+            gioi_tinh='$gioi_tinh', 
+            ngay_sinh='$ngay_sinh', 
+            so_bao_danh='$so_bao_danh', 
+            so_phong='$so_phong', 
+            thoi_gian='$thoi_gian', 
+            dia_diem='$dia_diem', 
+            dia_chi='$dia_chi', 
+            ten_anh='$ten_anh' 
+            WHERE id='$id_ticket'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+    exit;
+}
+
+// Hiển thị form
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+// Lấy thông tin học sinh từ cơ sở dữ liệu
+$sql = "SELECT * FROM phieu_du_thi WHERE id = '$id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $ticket = $result->fetch_assoc();
+} else {
+    echo "No student found!";
+    exit;
+}
 ?>
 
 <!doctype html>
@@ -17,30 +68,11 @@ adminLogin();
 <body class="bg-light">
 <?php require('inc/header.php'); ?>
 
-<?php
-// Lấy ID người dùng từ tham số URL
-
-// Lấy id của học sinh từ URL
-$id = isset($_GET['id']) ? $_GET['id'] : '';
-
-// Lấy thông tin học sinh từ cơ sở dữ liệu
-$sql = "SELECT * FROM phieu_du_thi WHERE id = '$id'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    $ticket = $result->fetch_assoc();
-} else {
-    echo "No student found!";
-    exit;
-}
-
-?>
-
 <div class="container-fluid" id="main-content">
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h2>Edit Student</h2>
-            <form method="post" action="edit-ticket.php?id=<?php echo $id; ?>">
+            <form id="edit-form" style="margin-top: 30px">
                 <input type="hidden" name="id" value="<?php echo $ticket['id']; ?>">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Tên học sinh</span>
@@ -48,13 +80,12 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Mã học sinh</span>
-                    <input type="text" class="form-control" placeholder="Nhập tên học sinh" name="ma_hoc_sinh" value="<?php echo $ticket['ma_hoc_sinh']; ?>" required>
+                    <input type="text" class="form-control" placeholder="Nhập mã học sinh" name="ma_hoc_sinh" value="<?php echo $ticket['ma_hoc_sinh']; ?>" required>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Giới tính</span>
                     <input type="text" class="form-control" placeholder="Giới tính" name="gioi_tinh" value="<?php echo $ticket['gioi_tinh']; ?>" required>
                 </div>
-
                 <div class="input-group mb-3">
                     <span class="input-group-text">Ngày sinh</span>
                     <input type="text" class="form-control" placeholder="Ngày sinh" name="ngay_sinh" value="<?php echo $ticket['ngay_sinh']; ?>" required>
@@ -84,8 +115,8 @@ if ($result->num_rows > 0) {
                     <span class="input-group-text">Tên ảnh</span>
                     <input type="text" class="form-control" placeholder="Tên ảnh" name="ten_anh" value="<?php echo $ticket['ten_anh']; ?>" required>
                 </div>
-
-                <button type="submit" class="btn btn-outline-secondary">Update</button>
+                <a href="nhap-phieu.php">Danh sách phiếu</a>
+                <button type="submit" style="margin-left: 30px" class="btn btn-outline-secondary">Update</button>
             </form>
         </div>
     </div>
@@ -94,7 +125,25 @@ if ($result->num_rows > 0) {
 <?php require('inc/scripts.php'); ?>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-
+    $(document).ready(function() {
+        $('#edit-form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    alert('success', response);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1000); // 2 seconds
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + xhr.responseText);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

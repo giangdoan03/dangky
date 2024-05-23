@@ -21,6 +21,8 @@ $ten_anh = isset( $_POST['ten_anh']) ?  $_POST['ten_anh'] : '';
 // Cập nhật thông tin học sinh trong cơ sở dữ liệu
 $sql = "UPDATE phieu_du_thi SET hoten_hocsinh='$hoten_hocsinh', ma_hoc_sinh='$ma_hoc_sinh', gioi_tinh='$gioi_tinh', ngay_sinh='$ngay_sinh', so_bao_danh='$so_bao_danh' , so_phong='$so_phong', thoi_gian='$thoi_gian', dia_diem='$dia_diem', dia_chi='$dia_chi', ten_anh='$ten_anh' WHERE id='$id_ticket'";
 
+//var_dump($sql); die();
+
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
 } else {
