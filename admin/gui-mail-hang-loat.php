@@ -88,9 +88,12 @@
                     .then(data => {
                         if (data.status === 'success') {
                             document.getElementById('status').innerText += 'Batch ' + (index + 1) + ' sent successfully!\n';
-                            data.successfulRecipients.forEach(recipient => {
-                                document.getElementById('status').innerText += 'Email sent to: ' + recipient.email + '\n'; // Hiển thị tên email đã gửi thành công
-                            });
+                            // Kiểm tra xem successfulRecipients có tồn tại và là một mảng không
+                            if (data.successfulRecipients && Array.isArray(data.successfulRecipients)) {
+                                data.successfulRecipients.forEach(recipient => {
+                                    document.getElementById('status').innerText += 'Email sent to: ' + recipient.email + '\n'; // Hiển thị tên email đã gửi thành công
+                                });
+                            }
                             totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
                         } else {
                             document.getElementById('status').innerText += data.message + '\n';
