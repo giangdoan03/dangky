@@ -1,8 +1,10 @@
 <?php
 require '../vendor/autoload.php';
 
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 
 
@@ -64,23 +66,27 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
     }
 }
 
-function getRecipientsFromCsv($filePath) {
+function getRecipientsFromExcel($filePath) {
+    $spreadsheet = IOFactory::load($filePath);
+    $sheet = $spreadsheet->getActiveSheet();
+    $rows = $sheet->toArray();
+
     $recipients = [];
-    if (($handle = fopen($filePath, "r")) !== FALSE) {
-        $header = fgetcsv($handle, 1000, ",");
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            $recipients[] = [
-                'email' => $data[0],
-                'name' => $data[1],
-                'dob' => $data[2],
-                'sbd' => $data[3],
-                'room' => $data[4],
-                'time' => $data[5],
-                'address' => $data[6]
-            ];
-        }
-        fclose($handle);
+    $header = array_shift($rows);
+
+    foreach ($rows as $row) {
+        $recipient = array_combine($header, $row);
+        $recipients[] = [
+            'email' => $recipient['email'],
+            'name' => $recipient['name'],
+            'dob' => $recipient['dob'],
+            'sbd' => $recipient['sbd'],
+            'room' => $recipient['room'],
+            'time' => $recipient['time'],
+            'address' => $recipient['address']
+        ];
     }
+
     return $recipients;
 }
 
@@ -96,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
 
     if (move_uploaded_file($fileTmpPath, $dest_path)) {
         echo "File is successfully uploaded.\n";
-        $recipients = getRecipientsFromCsv($dest_path);
+        $recipients = getRecipientsFromExcel($dest_path);
 
         $batches = array_chunk($recipients, 100);
         $template = "
@@ -120,5 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         echo "There was an error moving the uploaded file.\n";
     }
 }
+
 
 ?>
