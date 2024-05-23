@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload and Send Emails</title>
+    <style>
+        .loading {
+            display: none; /* Ẩn icon loading ban đầu */
+        }
+    </style>
 </head>
 <body>
 <h1>Upload and Send Emails</h1>
 <form id="uploadForm" enctype="multipart/form-data">
     <input type="file" name="file" id="file" required>
-    <button type="submit">Upload and Send Emails</button>
+    <button type="submit" id="uploadButton">Upload and Send Emails</button>
+    <img src="loading.gif" alt="Loading..." class="loading" id="loadingIcon"> <!-- Biểu tượng loading -->
 </form>
 <div id="status"></div>
 
@@ -25,6 +31,9 @@
         var formData = new FormData();
         formData.append('file', fileInput.files[0]);
 
+        document.getElementById('uploadButton').disabled = true; // Tắt nút upload để tránh gửi nhiều lần
+        document.getElementById('loadingIcon').style.display = 'inline-block'; // Hiển thị icon loading
+
         fetch('upload_data_email.php', {
             method: 'POST',
             body: formData
@@ -36,9 +45,13 @@
                 } else {
                     document.getElementById('status').innerText = data.message;
                 }
+                document.getElementById('uploadButton').disabled = false; // Bật lại nút upload sau khi hoàn thành
+                document.getElementById('loadingIcon').style.display = 'none'; // Ẩn icon loading
             })
             .catch(error => {
                 console.error('Error:', error);
+                document.getElementById('uploadButton').disabled = false; // Bật lại nút upload nếu có lỗi
+                document.getElementById('loadingIcon').style.display = 'none'; // Ẩn icon loading
             });
     });
 
@@ -57,8 +70,15 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById('status').innerText += data.message + '\n';
-                        totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
+                        if (data.status === 'success') {
+                            document.getElementById('status').innerText += 'Batch ' + (index + 1) + ' sent successfully!\n';
+                            data.successfulRecipients.forEach(recipient => {
+                                document.getElementById('status').innerText += 'Email sent to: ' + recipient.email + '\n'; // Hiển thị tên email đã gửi thành công
+                            });
+                            totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
+                        } else {
+                            document.getElementById('status').innerText += data.message + '\n';
+                        }
                         index++;
                         sendNextBatch();
                     })
