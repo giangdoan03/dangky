@@ -134,7 +134,7 @@ if (!empty($_GET['status'])) {
                 <div class="list-student card-body">
                     <div class="row-one">
                         <div class="form-import">
-                            <form action="importData.php" method="post" enctype="multipart/form-data">
+                            <form action="import-data.php" method="post" enctype="multipart/form-data">
                                 <div class="row" style="align-items: center">
                                     <div class="col-auto" style="margin-bottom: 20px">
                                         <label for="file" style="color: red;">Chọn file excel:</label>
