@@ -61,15 +61,17 @@
                 } else {
                     document.getElementById('status').innerText = data.message;
                 }
-                uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
-                loadingIcon.style.display = 'none'; // Ẩn spinner loading
             })
             .catch(error => {
                 console.error('Error:', error);
                 uploadButton.disabled = false; // Bật lại nút upload nếu có lỗi
-                loadingIcon.style.display = 'none'; // Ẩn spinner loading
+            })
+            .finally(() => {
+                loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành xử lý hoặc gặp lỗi
+                uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành xử lý hoặc gặp lỗi
             });
     });
+
 
     function processBatches(batches) {
         let index = 0;
