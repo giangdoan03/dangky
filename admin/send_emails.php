@@ -25,7 +25,7 @@ function sendBulkEmail($recipientsBatch) {
         $mail->Port = $port;
 
         // Common email settings
-        $mail->setFrom($username, 'Your Name');
+        $mail->setFrom($username, 'Tuyển sinh THCS Thanh Xuân');
         $mail->isHTML(true);
 
         foreach ($recipientsBatch as $recipient) {
