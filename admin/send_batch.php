@@ -1,4 +1,5 @@
 <?php
+
 require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -19,6 +20,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
     $port = 587;
 
     $mail = new PHPMailer(true);
+    $successCount = 0; // Biến đếm số lượng email gửi thành công
 
     try {
         $mail->isSMTP();
@@ -32,7 +34,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
         $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
         $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
 
-        $mail->setFrom($username, 'Your Name');
+        $mail->setFrom($username, 'TEST GỬI MAIL TỰ ĐỘNG');
         $mail->isHTML(true);
 
         foreach ($recipientsBatch as $recipient) {
@@ -50,16 +52,18 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
                 ]);
 
                 $mail->Body = $body;
-                $mail->send();
-                $mail->clearAddresses();
+                if ($mail->send()) {
+                    $successCount++; // Tăng biến đếm nếu email gửi thành công
+                    $mail->clearAddresses();
+                }
             } else {
                 echo "Invalid email address: {$recipient['email']}\n";
             }
         }
 
-        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!'];
+        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount];
     } catch (Exception $e) {
-        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}"];
+        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount];
     }
 }
 
@@ -71,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>Hội đồng tuyển sinh lớp 6 trường THCS Thanh Xuân năm học 2024-2025</p>
     <p>Thông báo:</p>
     <p>Số báo danh: <strong>{{sbd}}</strong></p>
-    <p>Phòng kiểm tra: <strong'>{{room}}</strong></p>
+    <p>Phòng kiểm tra: <strong>{{room}}</strong></p>
     <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>{{time}}</strong></p>
     <p>Địa điểm kiểm tra: <strong>{{address}}</strong></p>
     <p>Trân trọng!</p>

@@ -44,6 +44,7 @@
 
     function processBatches(batches) {
         let index = 0;
+        let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -57,6 +58,7 @@
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById('status').innerText += data.message + '\n';
+                        totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
                         index++;
                         sendNextBatch();
                     })
@@ -64,7 +66,7 @@
                         console.error('Error:', error);
                     });
             } else {
-                document.getElementById('status').innerText += 'All batches processed.';
+                document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount; // Hiển thị tổng số lượng email gửi thành công
             }
         }
 
