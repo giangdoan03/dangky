@@ -35,7 +35,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
         $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
         $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
 
-        $mail->setFrom($username, 'Tuyển sinh THCS Thanh Xuân');
+        $mail->setFrom($username, 'TEST GỬI MAIL TỰ ĐỘNG');
         $mail->isHTML(true);
 
         foreach ($recipientsBatch as $recipient) {
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         <p>Thời gian có mặt tại địa điểm kiểm tra: <strong style='color:red'>{{time}}</strong></p>
         <p>Trân trọng!</p>
         ";
-        $subject = "Thông báo SBD- Thời Gian - Địa điểm dự kiểm tra";
+        $subject = "TEST GỬI MAIL TỰ ĐỘNG";
 
         foreach ($batches as $batch) {
             sendBulkEmail($batch, $template, $subject);
