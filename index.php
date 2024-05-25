@@ -30,11 +30,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJFNDXWJSJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-MJFNDXWJSJ');
@@ -58,8 +54,7 @@
         <div id="box-title-register-success">
             <div class="alert alert-success" role="alert">
                 <p>Đăng ký hồ sơ trực tuyến thành công</p>
-                <p>Nhà trường đã gửi xác nhận đăng ký hồ sơ tuyển sinh qua email. Phụ huynh truy cập email để kiểm tra
-                    thông tin đã đăng ký</p>
+                <p>Nhà trường đã gửi xác nhận đăng ký hồ sơ tuyển sinh qua email. Phụ huynh truy cập email để kiểm tra thông tin đã đăng ký</p>
             </div>
         </div>
         <div id="register-content" class="register-content">
@@ -373,29 +368,23 @@
                                 <tr>
                                     <th scope="row">Điểm quy đổi</th>
                                     <td>
-                                        <input type="text" class="form-control" id="diem_quy_doi_1" name="diemquydoi-1"
-                                               value="2" readonly>
+                                        <input type="text" class="form-control" id="diem_quy_doi_1" name="diemquydoi-1" value="2" readonly>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="diem_quy_doi_2" name="diemquydoi-2"
-                                               value="2" readonly>
+                                        <input type="text" class="form-control" id="diem_quy_doi_2" name="diemquydoi-2" value="2" readonly>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="diem_quy_doi_3" name="diemquydoi-3"
-                                               value="2" readonly>
+                                        <input type="text" class="form-control" id="diem_quy_doi_3" name="diemquydoi-3" value="2" readonly>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="diem_quy_doi_4" name="diemquydoi-4"
-                                               value="2" readonly>
+                                        <input type="text" class="form-control" id="diem_quy_doi_4" name="diemquydoi-4" value="2" readonly>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" id="diem_quy_doi_5" name="diemquydoi-5"
-                                               value="2" readonly>
+                                        <input type="text" class="form-control" id="diem_quy_doi_5" name="diemquydoi-5" value="2" readonly>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <input type="hidden" class="form-control" id="tong_diem_quy_doi"
-                                           name="tongdiemquydoi" value="2" readonly>
+                                    <input type="hidden" class="form-control" id="tong_diem_quy_doi" name="tongdiemquydoi" value="2" readonly>
                                 </tr>
                                 </tbody>
                             </table>
@@ -689,20 +678,17 @@
                                 <div class="title mb-1">
                                     Điểm ưu tiên:
                                 </div>
-                                <input type="text" id="diem_uu_tien" name="diem_uu_tien" value="0" class="form-control"
-                                       readonly>
+                                <input type="text" id="diem_uu_tien" name="diem_uu_tien" value="0" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="title mb-1">
-                            3. Tổng điểm xét tuyển (tổng điểm quy đổi 5 năm học + điểm ưu tiên):<span
-                                    class="text-red">*</span>
+                            3. Tổng điểm xét tuyển (tổng điểm quy đổi 5 năm học + điểm ưu tiên):<span class="text-red">*</span>
                         </div>
                         <div class="row mb-4">
                             <div class="col-12 col-md-5 col-sm-12">
-                                <input type="text" id="tong_diem_xet_tuyen" name="tong_diem_xet_tuyen" value="7"
-                                       class="form-control" placeholder="" readonly>
+                                <input type="text" id="tong_diem_xet_tuyen" name="tong_diem_xet_tuyen" value="7" class="form-control" placeholder="" readonly>
                             </div>
                         </div>
                     </div>
@@ -720,8 +706,7 @@
                                        class="form-control" id="anh_hb_tieu_hoc" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-1"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';">
+                                <img id="output-1" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';">
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-sm-12">
@@ -729,13 +714,11 @@
                                 Giấy khai sinh bản chính <small>(Ảnh hoặc pdf)</small>:<span class="text-red">*</span>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)"
-                                       name="anh_giay_khai_sinh"
+                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)" name="anh_giay_khai_sinh"
                                        class="form-control" id="anh_giay_khai_sinh" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-2"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-2" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-sm-12">
@@ -743,13 +726,11 @@
                                 Giấy xác nhận ưu tiên (nếu có) <small>(Ảnh hoặc pdf)</small>:
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)"
-                                       name="anh_giay_xac_nhan_uu_tien"
+                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)" name="anh_giay_xac_nhan_uu_tien"
                                        class="form-control" id="anh_giay_xac_nhan_uu_tien">
                             </div>
                             <div class="img-preview">
-                                <img id="output-3"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-3" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                     </div>
@@ -759,13 +740,11 @@
                                 Ảnh 3x4 học sinh chụp trong 6 tháng gần đây:<span class="text-red">*</span>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" accept=".jpg, .png" onchange="validateFile(this)"
-                                       name="anh_chan_dung"
+                                <input type="file" accept=".jpg, .png" onchange="validateFile(this)" name="anh_chan_dung"
                                        class="form-control" id="anh_chan_dung" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-4"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-4" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-sm-12">
@@ -773,19 +752,16 @@
                                 Ảnh chụp 2 mặt CMND/CCCD của cha/mẹ/người giám hộ:<span class="text-red">*</span>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)"
-                                       name="anh_cccd" class="form-control"
+                                <input type="file" accept=".pdf, .jpg, .png" onchange="validateFile(this)" name="anh_cccd" class="form-control"
                                        id="anh_cccd" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-5"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-5" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-sm-12">
                             <div class="title mb-1">
-                                Phiếu kê khai thông tin học sinh: <a href="/Mau_phieu_ke_khai_thong_tin_hoc_sinh.pdf"
-                                                                     download>Tải file mẫu</a><span
+                                Phiếu kê khai thông tin học sinh: <a href="/Mau_phieu_ke_khai_thong_tin_hoc_sinh.pdf" download>Tải file mẫu</a><span
                                         class="text-red">*</span>
                             </div>
                             <div class="input-group mb-3">
@@ -793,24 +769,21 @@
                                        class="form-control" id="anh_ban_ck_cu_tru" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-6"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-6" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4 col-sm-12">
                             <div class="title mb-1">
-                                Đơn đăng ký dự tuyển: <a href="/Don_dang_ky_du_tuyen.pdf" download>Tải file mẫu</a><span
-                                        class="text-red">*</span>
+                                Đơn đăng ký dự tuyển: <a href="/Don_dang_ky_du_tuyen.pdf" download>Tải file mẫu</a><span class="text-red">*</span>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="file" accept=".pdf" onchange="validateFile(this)" name="don_dk_du_tuyen"
                                        class="form-control" id="don_dk_du_tuyen" required>
                             </div>
                             <div class="img-preview">
-                                <img id="output-7"
-                                     onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
+                                <img id="output-7" onerror="this.onerror=null;this.src='./images/common/default_filetype.png';"/>
                             </div>
                         </div>
                     </div>
@@ -871,7 +844,6 @@
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Include jQuery -->
 <!-- Include Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Include Bootstrap Datepicker JS -->
@@ -880,6 +852,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.vi.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            language: 'vi',
+            autoclose: true
+        });
 
         $('#province').change(function () {
             loadDistrict($(this).find(':selected').val())
@@ -900,14 +877,29 @@
 
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
+    function validateTenDigitInteger(value) {
+        return /^\d{10}$/.test(value);
+    }
+
+    document.getElementById('ma_hocsinh').addEventListener('keyup', function() {
+        const inputValue = this.value;
+        const isValid = validateTenDigitInteger(inputValue);
+
+        const checkbox = document.getElementById('cam_ket');
+        const button = document.getElementById('button_dangKy');
+
+        checkbox.checked = isValid;
+        button.disabled = !isValid;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
         var checkbox = document.getElementById("cam_ket");
         var input = document.getElementById("button_dangKy");
 
         // Biến điều kiện
         var condition = true;
 
-        checkbox.addEventListener("change", function () {
+        checkbox.addEventListener("change", function() {
             // Kiểm tra trạng thái của checkbox và điều kiện
             if (checkbox.checked && !check_unique) {
                 input.disabled = false;
@@ -943,7 +935,6 @@
 
         });
     }
-
     function get_subject(value) {
         console.log('value', value)
         let idx1 = 'tieng_viet_' + value;
@@ -976,9 +967,9 @@
             he_so_quy_doi = 1.25;
         } else if (tong_diem_3_mon === 20) {
             he_so_quy_doi = 2;
-        } else if (tong_diem_3_mon === 19) {
+        }else if (tong_diem_3_mon === 19) {
             he_so_quy_doi = 1.75;
-        } else if (tong_diem_3_mon === 18) {
+        }else if (tong_diem_3_mon === 18) {
             he_so_quy_doi = 1.5;
         }
 
@@ -1014,14 +1005,14 @@
         const inputFile = document.getElementById(inputFileId);
         const imagePreview = document.getElementById(imagePreviewId);
 
-        inputFile.addEventListener('change', function () {
+        inputFile.addEventListener('change', function() {
             const file = this.files[0];
             if (file) {
-                if (file.type === 'application/pdf') {
+                if(file.type === 'application/pdf') {
                     imagePreview.src = './images/common/default_filetype.png'
                 } else {
                     const reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         imagePreview.src = e.target.result;
                     }
                     reader.readAsDataURL(file);
@@ -1064,7 +1055,7 @@
 
     function get_diem_uu_tien(value) {
         let diem = Number(value);
-        if (diem) {
+        if(diem) {
             if (diem === 1) {
                 document.getElementById('diem_uu_tien').value = 1.5;
             } else if (diem === 2) {
@@ -1074,14 +1065,14 @@
             } else {
                 document.getElementById('diem_uu_tien').value = 0;
             }
-            $("#anh_giay_xac_nhan_uu_tien").prop('required', true);
+            $("#anh_giay_xac_nhan_uu_tien").prop('required',true);
 
             // let tong_diem = document.getElementById('tong_diem_quy_doi').value;
             get_total_score();
         }
-        if (value === '0') {
+        if(value === '0') {
             document.getElementById('diem_uu_tien').value = 0;
-            $("#anh_giay_xac_nhan_uu_tien").prop('required', false);
+            $("#anh_giay_xac_nhan_uu_tien").prop('required',false);
             get_total_score();
         }
     }
@@ -1090,6 +1081,7 @@
     var timeout = null;
     var check_unique = false;
     $('#ma_hocsinh').keyup(function () {
+        console.log('check_unique', check_unique)
         clearTimeout(timeout);
         timeout = setTimeout(() => {
             jQuery.ajax({
@@ -1107,7 +1099,12 @@
                         } else if (responseObject.status === 200) {
                             $("#check-student-code").css({'display': 'none'});
                             check_unique = false;
-                            $('#button_dangKy').prop("disabled", false);
+                            // $('#button_dangKy').prop("disabled", false);
+                        }else if (responseObject.status === 201) {
+                            $("#check-student-code").css({'display': 'block'});
+                            check_unique = true;
+                            // $('#button_dangKy').prop("disabled", false);
+                            $("#check-student-code").html(responseObject.message);
                         }
                     } else {
                         $("#check-student-code").html('Mã học sinh là bắt buộc')
@@ -1140,12 +1137,6 @@
 </script>
 
 <script>
-    $(document).ready(function(){
-        $('#datepicker').datepicker({
-            format: 'dd/mm/yyyy',
-            language: 'vi'
-        });
-    });
     $(document).on('submit', '#saveStudent', function (e) {
         e.preventDefault();
         var ma_hocsinh = document.getElementById('ma_hocsinh');
@@ -1200,7 +1191,7 @@
 
                 // Xử lý từng phản hồi JSON
                 try {
-                    responseArray.forEach(function (response) {
+                    responseArray.forEach(function(response) {
                         var responseObject = JSON.parse(response);
                         // Kiểm tra trạng thái của phản hồi và thực hiện các hành động tương ứng
                         if (responseObject.status === 200) {

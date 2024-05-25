@@ -79,22 +79,41 @@ switch ($command) {
         $query = "SELECT * FROM hoc_sinh WHERE ma_hocsinh='" . $ma_hs_vld . "'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
-        if ($count > 0) {
-            $res = [
-                'status' => 300,
-                'message' => 'Mã học sinh đã tồn tại'
-            ];
-            echo json_encode($res);
-            return;
+
+        if (validateTenDigitInteger($ma_hs_vld)) {
+            if ($count > 0) {
+                $res = [
+                    'status' => 300,
+                    'message' => 'Mã học sinh đã tồn tại'
+                ];
+                echo json_encode($res);
+                return;
+            } else {
+                $res = [
+                    'status' => 200,
+                    'message' => 'ok'
+                ];
+                echo json_encode($res);
+            }
         } else {
             $res = [
-                'status' => 200,
-                'message' => 'ok'
+                'status' => 201,
+                'message' => 'Mã học sinh không hợp lệ'
             ];
             echo json_encode($res);
         }
+
         break;
 
+}
+
+function validateTenDigitInteger($variable) {
+    // Check if the variable is a string of exactly 10 digits
+    if (preg_match('/^\d{10}$/', $variable)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //if ($ma_hs_vld == 'ma_hs_vld') {
