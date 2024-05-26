@@ -15,8 +15,8 @@ function replacePlaceholders($template, $placeholders) {
 
 function sendBulkEmail($recipientsBatch, $template, $subject) {
     $host = 'smtp.gmail.com';
-    $username = 'doangiang665@gmail.com';
-    $password = 'xalylvkteybtywgj';
+    $username = 'tuyensinh@thcsthanhxuan.vn';
+    $password = 'asuugexscxujsbds';
     $port = 587;
 
     $mail = new PHPMailer(true);
