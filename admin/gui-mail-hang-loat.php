@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload and Send Emails</title>
+    <?php require('inc/links.php'); ?>
     <style>
         /* Biểu tượng loading spinner */
-        .spinner {
+        .action .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-left-color: #3498db;
             border-radius: 50%;
-            width: 20px; /* Kích thước chiều rộng của spinner */
-            height: 20px; /* Kích thước chiều cao của spinner */
+            width: 25px; /* Kích thước chiều rộng của spinner */
+            height: 25px; /* Kích thước chiều cao của spinner */
             animation: spin 1s linear infinite;
             display: none; /* Ẩn ban đầu */
+            position: absolute;
+            right: -11px;
+            top: 23px;
+        }
+
+        .action {
+            width: 230px;
+            position: relative;
         }
 
         @keyframes spin {
@@ -23,14 +32,24 @@
         }
     </style>
 </head>
-<body>
-<h1>Upload and Send Emails</h1>
-<form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="file" id="file" required>
-    <button type="submit" id="uploadButton">Upload and Send Emails</button>
-    <div class="spinner" id="loadingIcon"></div> <!-- Spinner loading -->
-</form>
-<div id="status"></div>
+<body class="bg-light">
+<?php require('inc/header.php'); ?>
+
+<div class="container-fluid" id="main-content">
+    <div class="row">
+        <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+            <h1>Upload and Send Emails</h1>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" class="form-control" name="file" id="file" required>
+                <div class="action">
+                    <button type="submit" class="btn btn-outline-primary mt-3" id="uploadButton">Upload and Send Emails</button>
+                    <div class="spinner" id="loadingIcon"></div> <!-- Spinner loading -->
+                </div>
+            </form>
+            <div id="status"></div>
+        </div>
+    </div>
+</div>
 
 <script>
     document.getElementById('uploadForm').addEventListener('submit', function(event) {
@@ -57,23 +76,21 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    processBatches(data.batches);
+                    processBatches(data.batches, uploadButton, loadingIcon);
                 } else {
                     document.getElementById('status').innerText = data.message;
+                    uploadButton.disabled = false; // Bật lại nút upload nếu có lỗi
+                    loadingIcon.style.display = 'none'; // Ẩn spinner loading nếu có lỗi
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 uploadButton.disabled = false; // Bật lại nút upload nếu có lỗi
-            })
-            .finally(() => {
-                loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành xử lý hoặc gặp lỗi
-                uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành xử lý hoặc gặp lỗi
+                loadingIcon.style.display = 'none'; // Ẩn spinner loading nếu có lỗi
             });
     });
 
-
-    function processBatches(batches) {
+    function processBatches(batches, uploadButton, loadingIcon) {
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
 
@@ -108,6 +125,8 @@
                     });
             } else {
                 document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount; // Hiển thị tổng số lượng email gửi thành công
+                uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
+                loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành
             }
         }
 
