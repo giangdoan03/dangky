@@ -48,6 +48,7 @@
             </form>
             <div id="status"></div>
             <div id="successCount"></div> <!-- Hiển thị số lượng email gửi thành công -->
+            <div id="successEmails"></div>
         </div>
     </div>
 </div>
@@ -94,6 +95,7 @@
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
         let successCountDiv = document.getElementById('successCount'); // Sửa thành successCountDiv
+        let successEmails = document.getElementById('successCount'); // Sửa thành successCountDiv
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -113,6 +115,7 @@
                                     let p = document.createElement('p');
                                     p.innerText = 'Email sent to: ' + recipient;
                                     successCountDiv.appendChild(p); // Sửa thành successCountDiv
+                                    successEmails.appendChild(p); // Sửa thành successEmails
                                 });
                             }
                             totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
