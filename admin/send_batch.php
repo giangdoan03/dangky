@@ -12,17 +12,14 @@ function replacePlaceholders($template, $placeholders) {
     return $template;
 }
 
-function sendBulkEmail($recipientsBatch, $template, $subject) {
+function sendEmail($recipient, $template, $subject) {
     $host = 'smtp.gmail.com';
     $username = 'tuyensinh@thcsthanhxuan.vn';
     $password = 'asuugexscxujsbds';
     $port = 587;
 
     $mail = new PHPMailer(true);
-//    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-    $successCount = 0; // Biến đếm số lượng email gửi thành công
-    $successfulRecipients = []; // Mảng lưu trữ các email đã gửi thành công
-    $invalidEmails = []; // Mảng lưu trữ các email không hợp lệ
+    $success = false; // Biến xác định email có được gửi thành công hay không
 
     try {
         $mail->isSMTP();
@@ -33,40 +30,41 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = $port;
 
-        $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
-        $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
+        $mail->CharSet = 'UTF-8';
+        $mail->Encoding = 'base64';
 
         $mail->setFrom($username, 'TEST GỬI MAIL TỰ ĐỘNG');
         $mail->isHTML(true);
 
-        foreach ($recipientsBatch as $recipient) {
-            if (filter_var($recipient['email'], FILTER_VALIDATE_EMAIL)) {
-                $mail->addAddress($recipient['email']);
-                $mail->Subject = $subject;
+        if (filter_var($recipient['email'], FILTER_VALIDATE_EMAIL)) {
+            $mail->addAddress($recipient['email']);
+            $mail->Subject = $subject;
 
-                $body = replacePlaceholders($template, [
-                    'name' => $recipient['name'],
-                    'dob' => $recipient['dob'],
-                    'sbd' => $recipient['sbd'],
-                    'room' => $recipient['room'],
-                    'time' => $recipient['time'],
-                    'address' => $recipient['address']
-                ]);
+            $body = replacePlaceholders($template, [
+                'name' => $recipient['name'],
+                'dob' => $recipient['dob'],
+                'sbd' => $recipient['sbd'],
+                'room' => $recipient['room'],
+                'time' => $recipient['time'],
+                'address' => $recipient['address']
+            ]);
 
-                $mail->Body = $body;
-                if ($mail->send()) {
-                    $successCount++; // Tăng biến đếm nếu email gửi thành công
-                    $successfulRecipients[] = $recipient['email']; // Thêm email vào mảng thành công
-                    $mail->clearAddresses();
-                }
-            } else {
-                $invalidEmails[] = $recipient['email']; // Thêm email không hợp lệ vào mảng
+            $mail->Body = $body;
+            if ($mail->send()) {
+                $success = true; // Đánh dấu email đã được gửi thành công
             }
+            $mail->clearAddresses();
+        } else {
+            return ['status' => 'error', 'message' => 'Invalid email address: ' . $recipient['email']];
         }
 
-        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients, 'invalidEmails' => $invalidEmails];
+        if ($success) {
+            return ['status' => 'success', 'message' => 'Email sent successfully to ' . $recipient['email'], 'email' => $recipient['email']];
+        } else {
+            return ['status' => 'error', 'message' => 'Email could not be sent to ' . $recipient['email']];
+        }
     } catch (Exception $e) {
-        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients, 'invalidEmails' => $invalidEmails];
+        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}"];
     }
 }
 
@@ -85,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ";
     $subject = "Thông báo SBD- Thời Gian - Địa điểm dự kiểm tra";
 
-    $response = sendBulkEmail($data, $template, $subject);
+    $response = sendEmail($data, $template, $subject);
     echo json_encode($response);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request.']);
