@@ -90,11 +90,10 @@
                 loadingIcon.style.display = 'none'; // Ẩn spinner loading nếu có lỗi
             });
     });
-
     function processBatches(batches, uploadButton, loadingIcon) {
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
-        let successEmailsDiv = document.getElementById('successEmails');
+        let successCountDiv = document.getElementById('successCount'); // Thay đổi thành successCount
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -113,7 +112,7 @@
                                 data.successfulRecipients.forEach(recipient => {
                                     let p = document.createElement('p');
                                     p.innerText = 'Email sent to: ' + recipient;
-                                    successEmailsDiv.appendChild(p); // Thêm email vào danh sách
+                                    successEmailsDiv.appendChild(p); // Thay đổi thành successEmailsDiv
                                 });
                             }
                             totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
@@ -128,7 +127,7 @@
                     });
             } else {
                 document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount + '\n'; // Hiển thị tổng số lượng email gửi thành công
-                document.getElementById('successCount').innerText = 'Total successful emails sent: ' + totalSuccessCount; // Hiển thị số lượng email gửi thành công
+                successCountDiv.innerText = 'Total successful emails sent: ' + totalSuccessCount; // Thay đổi thành successCountDiv
                 uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
                 loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành
             }
@@ -136,6 +135,7 @@
 
         sendNextBatch();
     }
+
 
 </script>
 </body>
