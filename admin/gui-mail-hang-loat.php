@@ -93,7 +93,7 @@
     function processBatches(batches, uploadButton, loadingIcon) {
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
-        let successCountDiv = document.getElementById('successCount'); // Thay đổi thành successCount
+        let successCountDiv = document.getElementById('successCount'); // Sửa thành successCountDiv
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -112,7 +112,7 @@
                                 data.successfulRecipients.forEach(recipient => {
                                     let p = document.createElement('p');
                                     p.innerText = 'Email sent to: ' + recipient;
-                                    successEmailsDiv.appendChild(p); // Thay đổi thành successEmailsDiv
+                                    successCountDiv.appendChild(p); // Sửa thành successCountDiv
                                 });
                             }
                             totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công
@@ -127,7 +127,7 @@
                     });
             } else {
                 document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount + '\n'; // Hiển thị tổng số lượng email gửi thành công
-                successCountDiv.innerText = 'Total successful emails sent: ' + totalSuccessCount; // Thay đổi thành successCountDiv
+                successCountDiv.innerText = 'Total successful emails sent: ' + totalSuccessCount; // Sửa thành successCountDiv
                 uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
                 loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành
             }
@@ -135,6 +135,7 @@
 
         sendNextBatch();
     }
+
 
 
 </script>
