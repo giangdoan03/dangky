@@ -94,6 +94,7 @@
     function processBatches(batches, uploadButton, loadingIcon) {
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
+        let successEmailsDiv = document.getElementById('successEmails');
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -107,11 +108,12 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
-                            document.getElementById('status').innerText += 'Batch ' + (index + 1) + ' sent successfully!\n';
-                            // Kiểm tra xem successfulRecipients có tồn tại và là một mảng không
+                            // Hiển thị email đã gửi thành công ngay lập tức
                             if (data.successfulRecipients && Array.isArray(data.successfulRecipients)) {
                                 data.successfulRecipients.forEach(recipient => {
-                                    document.getElementById('status').innerText += 'Email sent to: ' + recipient.email + '\n'; // Hiển thị tên email đã gửi thành công
+                                    let p = document.createElement('p');
+                                    p.innerText = 'Email sent to: ' + recipient;
+                                    successEmailsDiv.appendChild(p); // Thêm email vào danh sách
                                 });
                             }
                             totalSuccessCount += data.successCount; // Cập nhật tổng số lượng email gửi thành công

@@ -22,6 +22,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
 //    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $successCount = 0; // Biến đếm số lượng email gửi thành công
     $successfulRecipients = []; // Mảng lưu trữ các email đã gửi thành công
+    $invalidEmails = []; // Mảng lưu trữ các email không hợp lệ
 
     try {
         $mail->isSMTP();
@@ -59,13 +60,13 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
                     $mail->clearAddresses();
                 }
             } else {
-                echo "Invalid email address: {$recipient['email']}\n";
+                $invalidEmails[] = $recipient['email']; // Thêm email không hợp lệ vào mảng
             }
         }
 
-        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients];
+        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients, 'invalidEmails' => $invalidEmails];
     } catch (Exception $e) {
-        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients];
+        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients, 'invalidEmails' => $invalidEmails];
     }
 }
 
