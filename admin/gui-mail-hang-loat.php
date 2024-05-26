@@ -95,7 +95,7 @@
         let index = 0;
         let totalSuccessCount = 0; // Biến tổng số lượng email gửi thành công
         let successCountDiv = document.getElementById('successCount'); // Sửa thành successCountDiv
-        let successEmails = document.getElementById('successCount'); // Sửa thành successCountDiv
+        let successEmails = document.getElementById('successEmails'); // Sửa thành successEmails
 
         function sendNextBatch() {
             if (index < batches.length) {
@@ -114,7 +114,6 @@
                                 data.successfulRecipients.forEach(recipient => {
                                     let p = document.createElement('p');
                                     p.innerText = 'Email sent to: ' + recipient;
-                                    successCountDiv.appendChild(p); // Sửa thành successCountDiv
                                     successEmails.appendChild(p); // Sửa thành successEmails
                                 });
                             }
