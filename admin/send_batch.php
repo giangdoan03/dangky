@@ -20,7 +20,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
     $port = 587;
 
     $mail = new PHPMailer(true);
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+//    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $successCount = 0; // Biến đếm số lượng email gửi thành công
 
     try {
@@ -33,7 +33,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
         $mail->Port = $port;
 
         // Set SMTP connection timeout
-        $mail->Timeout    = 300;  // 300 seconds = 5 minutes
+//        $mail->Timeout    = 300;  // 300 seconds = 5 minutes
 
         $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
         $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
