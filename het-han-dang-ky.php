@@ -27,6 +27,8 @@
         }
         .register-content {
             font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -52,7 +54,7 @@
                     <a href="https://tuyensinh.thcsthanhxuan.vn">https://tuyensinh.thcsthanhxuan.vn</a>, Website <a
                             href="https://thcsthanhxuan.edu.vn">https://thcsthanhxuan.edu.vn</a> và trên Fanpage của nhà trường.
                     <br>
-                Danh sách số báo danh, phòng kiểm tra, địa điểm kiểm tra đánh giá năng lực nhà trường sẽ gửi qua E-mail và đăng tải trên Website
+                Danh sách số báo danh, phòng kiểm tra, địa điểm kiểm tra đánh giá năng lực nhà trường sẽ gửi qua Mail và đăng tải trên Website
                     <a href="https://tuyensinh.thcsthanhxuan.vn">https://tuyensinh.thcsthanhxuan.vn</a>, Website <a
                             href="https://thcsthanhxuan.edu.vn">https://thcsthanhxuan.edu.vn</a>, trên Fanpage của nhà trường trước ngày <strong>01/06/2024</strong>.
                     <br>
