@@ -130,6 +130,7 @@
                 successCountDiv.innerText = 'Total successful emails sent: ' + totalSuccessCount; // Sửa thành successCountDiv
                 uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
                 loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành
+                document.getElementById('file').value = ''; // Xóa giá trị của input file
             }
         }
 
