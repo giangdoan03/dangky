@@ -5,7 +5,6 @@ require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
 function replacePlaceholders($template, $placeholders) {
     foreach ($placeholders as $key => $value) {
         $template = str_replace("{{" . $key . "}}", $value, $template);
@@ -22,6 +21,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
     $mail = new PHPMailer(true);
 //    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $successCount = 0; // Biến đếm số lượng email gửi thành công
+    $successfulRecipients = []; // Mảng lưu trữ các email đã gửi thành công
 
     try {
         $mail->isSMTP();
@@ -31,9 +31,6 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
         $mail->Password = $password;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = $port;
-
-        // Set SMTP connection timeout
-//        $mail->Timeout    = 300;  // 300 seconds = 5 minutes
 
         $mail->CharSet = 'UTF-8'; // Đặt mã hóa UTF-8
         $mail->Encoding = 'base64'; // Hoặc đặt kiểu ký tự base64
@@ -58,6 +55,7 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
                 $mail->Body = $body;
                 if ($mail->send()) {
                     $successCount++; // Tăng biến đếm nếu email gửi thành công
+                    $successfulRecipients[] = $recipient['email']; // Thêm email vào mảng thành công
                     $mail->clearAddresses();
                 }
             } else {
@@ -65,9 +63,9 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
             }
         }
 
-        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount];
+        return ['status' => 'success', 'message' => 'Batch of emails has been sent successfully!', 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients];
     } catch (Exception $e) {
-        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount];
+        return ['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}", 'successCount' => $successCount, 'successfulRecipients' => $successfulRecipients];
     }
 }
 

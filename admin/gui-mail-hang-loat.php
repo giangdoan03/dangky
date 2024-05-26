@@ -125,7 +125,7 @@
                         console.error('Error:', error);
                     });
             } else {
-                document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount; // Hiển thị tổng số lượng email gửi thành công
+                document.getElementById('status').innerText += 'All batches processed. Total success count: ' + totalSuccessCount + '\n'; // Hiển thị tổng số lượng email gửi thành công
                 document.getElementById('successCount').innerText = 'Total successful emails sent: ' + totalSuccessCount; // Hiển thị số lượng email gửi thành công
                 uploadButton.disabled = false; // Bật lại nút upload sau khi hoàn thành
                 loadingIcon.style.display = 'none'; // Ẩn spinner loading sau khi hoàn thành
