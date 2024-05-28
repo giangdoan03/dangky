@@ -1,3 +1,10 @@
+<?php
+require('inc/essentials.php');
+include('./inc/db_config.php');
+//include('./generate_pdf.php');
+adminLogin();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

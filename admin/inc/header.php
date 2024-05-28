@@ -33,6 +33,9 @@
                         <a class="nav-link text-white" href="gui-mail-hang-loat.php">Gửi email thông báo</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="nhap-du-lieu-tra-cuu.php">Nhập dữ liệu tra cứu</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="#">Users</a>
                     </li>
                     <li class="nav-item">
