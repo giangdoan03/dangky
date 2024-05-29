@@ -34,7 +34,7 @@ adminLogin();
 
         .content-ticket p {
             font-size: 16px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .page[size="A4"] {
@@ -62,10 +62,9 @@ adminLogin();
         }
 
         .body-ticket {
-            max-width: 542px;
+            max-width: 570px;
             margin: 0 auto;
             margin-right: 0;
-            padding-right: 30px;
         }
 
         .info-ticket {
