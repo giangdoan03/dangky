@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Hiển thị thông tin học sinh
-        $student_info = "<h2>Thông tin học sinh</h2>";
+        $student_info = "";
         while ($row = $result->fetch_assoc()) {
             $student_info .= "Họ và tên: <strong>" . $row["ho_ten_dem"] . " " . $row["ten"] . "</strong><br>";
             $student_info .= "Ngày sinh: <strong>" . $row["ngay_sinh"] . "</strong><br>";
