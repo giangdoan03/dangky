@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h2>Thông tin học sinh</h2>";
         while ($row = $result->fetch_assoc()) {
             echo "Mã học sinh: " . $row["student_id"] . "<br>";
-            echo "Tên: " . $row["name"] . "<br>";
+            echo "Họ và tên: " . $row["name"] . "<br>";
             echo "Tuổi: " . $row["age"] . "<br>";
             echo "Lớp: " . $row["class"] . "<br>";
             echo "<hr>"; // Thêm một đường kẻ ngang để phân tách các kết quả (nếu có nhiều hơn một kết quả)

@@ -6,7 +6,7 @@ include('./admin/inc/db_config.php');
 function base_url() {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
     $domainName = $_SERVER['HTTP_HOST'];
-    return $protocol . $domainName . '/';
+    return $protocol . $domainName . '/dangky/';
 }
 
 $student_info = '';
@@ -28,20 +28,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Hiển thị thông tin học sinh
-        $student_info .= "<h2>Thông tin học sinh</h2>";
         while ($row = $result->fetch_assoc()) {
-            $student_info .= "Tên: " . $row["ho_ten_dem"] . " " . $row["ten"] . "<br>";
-            $student_info .= "Ngày sinh: " . $row["ngay_sinh"] . "<br>";
-            $student_info .= "Giới tính: " . $row["gioi_tinh"] . "<br>";
-            $student_info .= "Dân tộc: " . $row["dan_toc"] . "<br>";
-            $student_info .= "Số báo danh: " . $row["so_bao_danh"] . "<br>";
-            $student_info .= "Phòng kiểm tra: " . $row["phong_kiem_tra"] . "<br>";
-            $student_info .= "Địa điểm kiểm tra: " . $row["dia_diem_kiem_tra"] . "<br>";
-            $student_info .= "Địa điểm có mặt: " . $row["thoi_gian_co_mat"] . "<br>";
+            $student_info .= "Họ và tên: <strong>" . $row["ho_ten_dem"] . " " . $row["ten"] . "</strong><br>";
+            $student_info .= "Ngày sinh: <strong>" . $row["ngay_sinh"] . "</strong><br>";
+            $student_info .= "Giới tính: <strong>" . $row["gioi_tinh"] . "</strong><br>";
+            $student_info .= "Dân tộc: <strong>" . $row["dan_toc"] . "</strong><br>";
+            $student_info .= "Số báo danh: <strong>" . $row["so_bao_danh"] . "</strong><br>";
+            $student_info .= "Phòng kiểm tra: <strong>" . $row["phong_kiem_tra"] . "</strong><br>";
+            $student_info .= "Thời gian có mặt: <strong>" . $row["thoi_gian_co_mat"] . "</strong><br>";
+            $student_info .= "Địa điểm kiểm tra: <strong>" . $row["dia_diem_kiem_tra"] . "</strong><br>";
+            $student_info .= "<strong class='luu_y'>Lưu ý: Thẻ dự kiểm tra thí sinh sẽ nhận tại phòng kiểm tra</strong>";
             $student_info .= "<hr>"; // Thêm một đường kẻ ngang để phân tách các kết quả (nếu có nhiều hơn một kết quả)
+
+            // Kiểm tra và hiển thị các điểm, nếu không có giá trị thì hiển thị "N/A"
+            $diem_tieng_viet = !empty($row["diem_tieng_viet"]) ? $row["diem_tieng_viet"] : 'N/A';
+            $diem_tieng_anh = !empty($row["diem_tieng_anh"]) ? $row["diem_tieng_anh"] : 'N/A';
+            $diem_toan = !empty($row["diem_toan"]) ? $row["diem_toan"] : 'N/A';
+            $diem_uu_tien = !empty($row["diem_uu_tien"]) ? $row["diem_uu_tien"] : 'N/A';
+            $diem_so_tuyen = !empty($row["diem_so_tuyen"]) ? $row["diem_so_tuyen"] : 'N/A';
+            $tong_diem_xet_tuyen = !empty($row["tong_diem_xet_tuyen"]) ? $row["tong_diem_xet_tuyen"] : 'N/A';
+
+            $student_info .= "<table style='width: 100%' border='1' cellpadding='10'>";
+            // Hàng tiêu đề
+            $student_info .= "<tr>";
+            $student_info .= "<th>Điểm Tiếng Việt</th>";
+            $student_info .= "<th>Điểm Tiếng Anh</th>";
+            $student_info .= "<th>Điểm Toán</th>";
+            $student_info .= "<th>Điểm ưu tiên</th>";
+            $student_info .= "<th>Điểm sơ tuyển</th>";
+            $student_info .= "<th>Tổng điểm xét tuyển</th>";
+            $student_info .= "</tr>";
+            // Hàng giá trị
+            $student_info .= "<tr>";
+            $student_info .= "<td>$diem_tieng_viet</td>";
+            $student_info .= "<td>$diem_tieng_anh</td>";
+            $student_info .= "<td>$diem_toan</td>";
+            $student_info .= "<td>$diem_uu_tien</td>";
+            $student_info .= "<td>$diem_so_tuyen</td>";
+            $student_info .= "<td>$tong_diem_xet_tuyen</td>";
+            $student_info .= "</tr>";
+            $student_info .= "</table>";
         }
     } else {
-        $student_info .= "<p>Không tìm thấy học sinh với mã: $ma_hoc_sinh</p>";
+        $student_info .= "<p>Không tìm thấy học sinh với mã: <strong>$ma_hoc_sinh</strong></p>";
     }
 
     $stmt->close();
@@ -69,6 +98,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             position: relative;
         }
 
+        .result {
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-top: 30px;
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 10px;
+        }
+        tr th,  tr td {
+            text-align: center;
+        }
+        .luu_y {
+            display: inline-block;
+            padding: 20px 0;
+        }
         @media screen and (max-width: 575px) {
             .availability-form {
                 margin-top: 25px;
@@ -117,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="wraper" style="text-align: center">
-            <h3>Tra cứu thông tin thí sinh, SBD, phòng thi</h3>
+            <h3>TRA CỨU THÔNG TIN THÍ SINH DỰ KIỂM TRA</h3>
             <form action="tra-cuu-diem.php" method="post">
                 <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
@@ -128,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         // Hiển thị thông tin học sinh nếu có
         if (!empty($student_info)) {
-            echo '<div class="result" style="text-align: left; margin-top: 30px;">';
+            echo '<div class="result">';
             echo $student_info;
             echo '</div>';
         }
