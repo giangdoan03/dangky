@@ -151,9 +151,9 @@ adminLogin();
             justify-content: space-between;
         }
 
-        .address {
-            text-align: center;
-        }
+        /*.address {*/
+        /*    text-align: center;*/
+        /*}*/
 
         .text-right {
             text-align: right;
