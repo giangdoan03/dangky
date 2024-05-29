@@ -34,6 +34,7 @@ adminLogin();
 
         .content-ticket p {
             font-size: 16px;
+            margin-bottom: 5px;
         }
 
         .page[size="A4"] {
