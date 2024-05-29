@@ -6,7 +6,7 @@ include('./admin/inc/db_config.php');
 function base_url() {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
     $domainName = $_SERVER['HTTP_HOST'];
-    return $protocol . $domainName . '/dangky/';
+    return $protocol . $domainName . '/';
 }
 
 $student_info = '';
@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Hiển thị thông tin học sinh
+        $student_info = "<h2>Thông tin học sinh</h2>";
         while ($row = $result->fetch_assoc()) {
             $student_info .= "Họ và tên: <strong>" . $row["ho_ten_dem"] . " " . $row["ten"] . "</strong><br>";
             $student_info .= "Ngày sinh: <strong>" . $row["ngay_sinh"] . "</strong><br>";

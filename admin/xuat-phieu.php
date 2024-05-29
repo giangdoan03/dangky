@@ -88,7 +88,7 @@ adminLogin();
         }
 
         p.ten-truong {
-            margin-top: 5px;
+            /*margin-top: 5px;*/
             font-size: 17px;
             position: relative;
         }
@@ -115,7 +115,7 @@ adminLogin();
         }
 
         p.tieu-ngu {
-            margin-top: 5px;
+            /*margin-top: 5px;*/
             font-size: 16px;
             position: relative;
         }
