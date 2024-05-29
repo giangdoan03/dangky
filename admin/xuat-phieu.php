@@ -350,7 +350,7 @@ $result_data = $conn->query($sql_data);
                                 <div class="one-column">
                                     <div class="address">
                                         <p>Địa điểm dự kiểm tra: <strong>{$student1['dia_diem']}</strong></p>
-                                        <p>(Địa chỉ: {$student1['dia_chi']})</p>
+                                        <p>({$student1['dia_chi']})</p>  
                                     </div>
                                 </div>
                                 <div class="one-column">
