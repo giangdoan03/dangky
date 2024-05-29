@@ -411,7 +411,7 @@ HTML;
                                 <div class="one-column">
                                     <div class="address">
                                         <p>Địa điểm dự kiểm tra: <strong>{$student2['dia_diem']}</strong></p>
-                                        <p>(Địa chỉ: {$student2['dia_chi']})</p>
+                                        <p>({$student2['dia_chi']})</p>
                                     </div>
                                 </div>
                                     <div class="one-column">
