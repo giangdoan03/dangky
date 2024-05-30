@@ -110,8 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         <p>Thông báo:</p>
         <p>Số báo danh: <strong>{{sbd}}</strong></p>
         <p>Phòng kiểm tra: <strong>{{room}}</strong></p>
-         <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>{{time}}</strong></p>
         <p>Địa điểm kiểm tra: <strong>{{address}}</strong></p>
+        <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>
+        <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
+        <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>{{time}}</strong></p>
         <p style='margin: 5px 0'>Lưu ý: Thẻ dự kiểm tra thí sinh sẽ nhận tại phòng kiểm tra</p>
         <p>Trân trọng!</p>
         ";
