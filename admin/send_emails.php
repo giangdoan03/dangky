@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         <p style='margin: 5px 0'>Lưu ý: Thẻ dự kiểm tra thí sinh sẽ nhận tại phòng kiểm tra</p>
         <p>Trân trọng!</p>
         ";
-        $subject = "Thông báo SBD- Thời Gian - Địa điểm dự kiểm tra";
+        $subject = "Thông báo SBD - Thời Gian - Địa điểm dự kiểm tra";
 
         foreach ($batches as $batch) {
             sendBulkEmail($batch, $template, $subject);
