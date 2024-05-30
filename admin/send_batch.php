@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>
         <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
         <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>{{time}}</strong></p>
-        <p style='margin: 5px 0'>Lưu ý: Thẻ dự kiểm tra thí sinh sẽ nhận tại phòng kiểm tra</p>
+        <p style='margin: 5px 0'><strong>Lưu ý: Thí sinh sẽ nhận phiếu dự kiểm tra tại phòng kiểm tra</strong></p>
         <p>Trân trọng!</p>
     ";
     $subject = "Thông báo SBD - Thời Gian - Địa điểm dự kiểm tra";
