@@ -33,16 +33,16 @@ if (isset($_POST['importSubmit'])) {
                 $id = $data['id'];
 
                 // Chuẩn bị câu lệnh UPDATE
-                $stmt = $conn->prepare("UPDATE tra_cuu SET stt = ?, ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ? WHERE id = ?");
+                $stmt = $conn->prepare("UPDATE tra_cuu SET ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ? WHERE id = ?");
 
                 // Bind các tham số
-                $stmt->bind_param("sssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $id);
+                $stmt->bind_param("ssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $id);
             } else {
                 // Chuẩn bị câu lệnh INSERT
-                $stmt = $conn->prepare("INSERT INTO tra_cuu (stt, ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO tra_cuu (ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                 // Bind các tham số
-                $stmt->bind_param("sssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16]);
+                $stmt->bind_param("ssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15]);
             }
 
             // Thực thi câu lệnh SQL
