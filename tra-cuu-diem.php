@@ -66,11 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <hr>
+                <h2 class="diem_thi">Điểm kiểm tra các môn như sau:</h2>
                 <table style="width: 100%">
                     <tr>
-                        <th>Điểm Tiếng Việt</th>
-                        <th>Điểm Tiếng Anh</th>
-                        <th>Điểm Toán</th>
+                        <th>Tiếng Việt</th>
+                        <th>Tiếng Anh</th>
+                        <th>Toán</th>
                         <th>Điểm ưu tiên</th>
                         <th>Điểm sơ tuyển</th>
                         <th>Tổng điểm xét tuyển</th>
@@ -85,12 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                 </table>
                 <?php if ($row["diem_pk_tieng_viet"]  && $row["diem_pk_tieng_anh"] && $row["diem_pk_toan"]) { ?>
-                    <h2 class="phuc_khao">Điểm sau khi phúc khảo</h2>
+                    <h2 class="phuc_khao">Điểm sau khi phúc khảo:</h2>
                     <table style="width: 100%">
                         <tr>
-                            <th>Điểm phúc khảo Tiếng Việt</th>
-                            <th>Điểm phúc khảo Tiếng Anh</th>
-                            <th>Điểm phúc khảo Toán</th>
+                            <th>Tiếng Việt</th>
+                            <th>Tiếng Anh</th>
+                            <th>Toán</th>
                             <th>Điểm ưu tiên</th>
                             <th>Điểm sơ tuyển</th>
                             <th>Tổng điểm xét tuyển</th>
@@ -182,6 +183,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 30px 0;
             border-top: 1px solid #cccccc;
             padding-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .diem_thi {
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            margin: 30px 0;
+            text-transform: uppercase;
         }
 
         @media screen and (max-width: 575px) {
