@@ -49,6 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Thời gian có mặt tại địa điểm kiểm tra: <strong><?php echo $row["thoi_gian_co_mat"]; ?></strong></p>
                     <p><strong class="luu_y">Lưu ý:  Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra</strong></p>
                 </div>
+                <div class="so_do_noi_quy">
+                    <div class="noi_quy">
+                        <p>
+                            <strong> Nội quy danh cho thí sinh dự kiểm tra </strong><a href="/noi_quy_thi_sinh.pdf" download>Tải về</a>
+                        </p>
+                    </div>
+                    <div class="so_do">
+                        <p>
+                            <strong>Sơ đồ phòng dự kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải về</a>
+                        </p>
+                    </div>
+                </div>
                 <hr>
                 <table style="width: 100%">
                     <tr>
@@ -126,10 +138,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0 auto;
             text-align: center;
         }
+        .so_do_noi_quy {
+            display: flex;
+            justify-content: space-around;
+        }
         @media screen and (max-width: 575px) {
             .availability-form {
                 margin-top: 25px;
                 padding: 0 35px;
+            }
+            .so_do_noi_quy {
+                display: block;
+            }
+            .form_tra_cuu {
+                display: block !important;
+            }
+            .form_tra_cuu .btn-outline-secondary {
+                margin-top: 20px;
+            }
+            .header .menu {
+                display: none;
+            }
+            .form_tra_cuu input {
+                width: 100% !important;
             }
         }
     </style>
@@ -171,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="wraper" style="text-align: center">
             <h3>TRA CỨU THÔNG TIN THÍ SINH DỰ KIỂM TRA</h3>
             <form action="tra-cuu-diem.php" method="post">
-                <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
+                <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
                     <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
                 </div>
