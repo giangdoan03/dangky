@@ -66,6 +66,24 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
         alert('error', 'Login failed - Invalid Credentials');
 
     }
+
+
+// See the password_hash() example to see where this came from.
+//    $enteredPassword = "thanhxuan2024!@";
+//    $hashedPassword = password_hash($enteredPassword, PASSWORD_DEFAULT);
+//
+//    echo $hashedPassword;
+//
+//    echo '<br>';
+//
+//    $hash = '$2y$10$.BUGZOpCuHpH/8Q16LrQ6uU0/yUwi.yOw74qGMjOzgkFI6q8H2Pzi';
+//
+//    if (password_verify('thanhxuan2024!@', $hash)) {
+//        echo 'Password is valid!';
+//    } else {
+//        echo 'Invalid password.';
+//    }
+
 }?>
 <?php require('inc/scripts.php'); ?>
 <?php ob_end_flush(); ?>

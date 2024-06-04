@@ -21,6 +21,8 @@ if (isset($_POST['importSubmit'])) {
 
         // Lặp qua từng hàng và thêm hoặc cập nhật dữ liệu trong cơ sở dữ liệu
         foreach ($worksheet_arr as $row) {
+//            echo '<pre/>';
+//            var_dump($row);
             // Kiểm tra xem ma_hoc_sinh có hợp lệ không
             if (empty($row[1])) {
 //                echo "Lỗi: ma_hoc_sinh không được bỏ trống trong hàng: " . json_encode($row);
@@ -33,11 +35,11 @@ if (isset($_POST['importSubmit'])) {
                 die("Lỗi khi chuẩn bị câu lệnh SELECT: " . $conn->error);
             }
 
-            $stmt->bind_param("s", $row[1]);
+            $stmt->bind_param("s", $row[0]);
             $stmt->execute();
             $result = $stmt->get_result();
 
-            echo $result->num_rows;
+//            echo $result->num_rows;die();
 
             if ($result->num_rows > 0) {
                 // Lấy id của bản ghi tương ứng với ma_hoc_sinh
@@ -48,25 +50,25 @@ if (isset($_POST['importSubmit'])) {
                 $stmt->close();
 
                 // Chuẩn bị câu lệnh UPDATE
-                $stmt = $conn->prepare("UPDATE tra_cuu SET ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ? WHERE id = ?");
+                $stmt = $conn->prepare("UPDATE tra_cuu SET ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ?, diem_pk_tieng_viet = ?, diem_pk_tieng_anh = ?, diem_pk_toan = ?, tong_diem_xt_sau_pk = ? WHERE id = ?");
                 if ($stmt === false) {
                     die("Lỗi khi chuẩn bị câu lệnh UPDATE: " . $conn->error);
                 }
 
                 // Bind các tham số
-                $stmt->bind_param("ssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $id);
+                $stmt->bind_param("ssssssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19], $id);
             } else {
                 // Đóng câu lệnh SELECT trước khi tạo câu lệnh INSERT mới
                 $stmt->close();
 
                 // Chuẩn bị câu lệnh INSERT
-                $stmt = $conn->prepare("INSERT INTO tra_cuu (ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO tra_cuu (ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen, diem_pk_tieng_viet, diem_pk_tieng_anh, diem_pk_toan, tong_diem_xt_sau_pk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 if ($stmt === false) {
                     die("Lỗi khi chuẩn bị câu lệnh INSERT: " . $conn->error);
                 }
 
                 // Bind các tham số
-                $stmt->bind_param("ssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15]);
+                $stmt->bind_param("ssssssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19]);
 
             }
 
@@ -99,14 +101,16 @@ if (isset($_POST['importSubmit'])) {
 }
 
 // Hàm kiểm tra file có phải là file Excel hay không
-function isExcelFile($filename) {
+function isExcelFile($filename)
+{
     $mime_types = array('text/xls', 'text/xlsx', 'application/excel', 'application/vnd.msexcel', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime_type = finfo_file($finfo, $filename);
     finfo_close($finfo);
     return in_array($mime_type, $mime_types);
 }
+
 // Redirect to the listing page
-header("Location: nhap-du-lieu-tra-cuu.php".$qstring);
+header("Location: nhap-du-lieu-tra-cuu.php" . $qstring);
 ?>
 

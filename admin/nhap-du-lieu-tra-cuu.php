@@ -64,7 +64,7 @@ if (!empty($_GET['trangthai'])) {
 
 <?php
 // Số bản ghi trên mỗi trang
-$records_per_page = 96;
+$records_per_page = 24;
 
 // Số bản ghi trong cơ sở dữ liệu
 $sql_total_records = "SELECT COUNT(*) AS total_records FROM tra_cuu";
@@ -83,7 +83,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_from = ($current_page - 1) * $records_per_page;
 
 // Câu truy vấn SQL
-$sql_data = "SELECT * FROM tra_cuu ORDER BY id DESC LIMIT $start_from, $records_per_page";
+$sql_data = "SELECT * FROM tra_cuu LIMIT $start_from, $records_per_page";
 
 // Thực thi câu truy vấn và lấy dữ liệu
 $result_data = $conn->query($sql_data);
@@ -132,6 +132,15 @@ if (!empty($_GET['status'])) {
             <?php } ?>
             <div class="card border-0 shadow-sm mb-4" id="importFrm">
                 <div class="list-student card-body">
+                    <div class="list-pagination-top">
+                        <?php
+
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            $active_class = ($current_page == $i) ? "active" : "";
+                            echo "<a class='item $active_class' href='?page=$i'>$i</a>";
+                        }
+                        ?>
+                    </div>
                     <div class="row-one">
                         <div class="form-import">
                             <form action="import-data-search.php" method="post" enctype="multipart/form-data">
@@ -170,16 +179,22 @@ if (!empty($_GET['status'])) {
                                 <td>Điểm ưu tiên</td>
                                 <td>Điểm sơ tuyển</td>
                                 <td>Tổng điểm xét tuyền</td>
+
+
+                                <td>Điểm phúc khảo Tiếng viẹt</td>
+                                <td>Điểm phúc khảo Tiếng Anh</td>
+                                <td>Điểm phúc khảo Toán</td>
+                                <td>Tổng điểm xét tuyển sau phúc khảo</td>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
                             // get member record from the database
                             $result = $conn->query("SELECT * FROM tra_cuu");
-                            if ($result->num_rows > 0) {
+                            if ($result_data->num_rows > 0) {
                                 $path = IMAGE_AVATAR_NEW_NAME;
                                 $i = 0;
-                                while ($row = $result->fetch_assoc()) {
+                                while ($row = $result_data->fetch_assoc()) {
                                     $i++;
                                     ?>
                                     <tr>
@@ -199,7 +214,13 @@ if (!empty($_GET['status'])) {
                                         <td><?php echo $row['diem_toan']; ?></td>
                                         <td><?php echo $row['diem_uu_tien']; ?></td>
                                         <td><?php echo $row['diem_so_tuyen']; ?></td>
-                                        <td><?php echo $row['tong_diem_xet_tuyen']; ?></td>
+                                        <td><strong><?php echo $row['tong_diem_xet_tuyen']; ?></strong></td>
+
+                                        <td><?php echo $row['diem_pk_tieng_viet']; ?></td>
+                                        <td><?php echo $row['diem_pk_tieng_anh']; ?></td>
+                                        <td><?php echo $row['diem_pk_toan']; ?></td>
+                                        <td><strong><?php echo $row['tong_diem_xt_sau_pk']; ?></strong></td>
+
                                     </tr>
                                     <?php
 
