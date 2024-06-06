@@ -133,6 +133,37 @@
     font-size: 18px;
     color: #000000;
 }
+.bl_header {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+}
+#section_855073435 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.section {
+    min-height: auto;
+    padding: 30px 0;
+    position: relative;
+    width: 100%;
+}
+.col-inner h2, .col-inner h3{
+    font-size: 20px;
+}
+footer#footer {
+    background: #ffffff;
+}
+.absolute-footer {
+    background-color: #5b5b5b;
+}
+.copyright-footer {
+    padding: 10px 0;
+    text-align: center;
+    color: #ffffff;
+}
+#col-525487658 .col-inner a {
+    text-decoration: none;
+    color: green;
+}
 @keyframes spin {
     to {
         transform: rotate(360deg);

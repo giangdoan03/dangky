@@ -55,26 +55,30 @@ function base_url()
 ?>
 
 <div class="page-register">
-    <div class="container">
-        <div class="header">
-            <div class="banner">
-                <div class="logo">
-                    <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
+    <div class="bl_header">
+        <div class="container">
+            <div class="header">
+                <div class="banner">
+                    <div class="logo">
+                        <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
+                    </div>
+                    <div class="text">
+                        <h1>TRƯỜNG THCS THANH XUÂN</h1>
+                        <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
+                    </div>
                 </div>
-                <div class="text">
-                    <h1>TRƯỜNG THCS THANH XUÂN</h1>
-                    <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
-                </div>
-            </div>
-            <div class="menu">
-                <div class="menu-item">
-                    <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                </div>
-                <div class="menu-item">
-                    <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
+                <div class="menu">
+                    <div class="menu-item">
+                        <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div id="box-title-register-success">
             <div class="alert alert-success" role="alert">
                 <p>Đăng ký hồ sơ trực tuyến thành công</p>
@@ -888,6 +892,71 @@ function base_url()
             </div>
         </div>
     </div>
+    <footer id="footer" class="footer-wrapper">
+        <div class="is-divider divider clearfix has-block" style="max-width: 100%;background-color: rgb(0, 0, 0);display: block;height: 3px;margin: 1em 0;"></div>
+        <div class="container">
+            <section class="section" id="section_855073435">
+                <div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
+                </div>
+                <div class="section-content relative">
+                    <div class="row" id="row-1982555116">
+                        <div id="col-525487658" class="col medium-6 small-12 large-6">
+                            <div class="col-inner">
+                                <h2><strong>Trường THCS Thanh Xuân</strong></h2>
+                                <p>Địa chỉ: 203 Nguyễn Huy Tưởng, Thanh Xuân Trung, Thanh Xuân, Hà Nội</p>
+                                <div id="stack-3135118932" class="stack stack-col justify-start items-start">
+                                    <a href="tel:0921.668.555" target="_self" class="button primary is-link lowercase">
+                                        <i class="icon-phone" aria-hidden="true"></i> <span>Hotline: 0921.668.555</span>
+                                    </a>
+                                    <br>
+                                    <a href="tel:00000" target="_self" class="button primary is-link lowercase">
+                                        <i class="icon-envelop" aria-hidden="true"></i>
+                                        <span>Email: thanhxuan@gmail.com</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="col-249835136" class="col medium-3 small-12 large-3">
+                            <div class="col-inner">
+                                <h3><strong>Địa chỉ</strong></h3>
+                                <div class="ux-menu stack stack-col justify-start">
+                                    <div class="ux-menu-link flex menu-item ux-menu-link--active">
+                                        <a class="ux-menu-link__link flex" href="https://thcsthanhxuan.edu.vn/homegd14"><span class="ux-menu-link__text">Trang chủ			</span></a>
+                                    </div>
+                                    <div class="ux-menu-link flex menu-item">
+                                        <a class="ux-menu-link__link flex" href="https://thcsthanhxuan.edu.vn/homegd14"><span class="ux-menu-link__text">Giới thiệu			</span></a>
+                                    </div>
+                                    <div class="ux-menu-link flex menu-item">
+                                        <a class="ux-menu-link__link flex" href="https://thcsthanhxuan.edu.vn/homegd14"><span class="ux-menu-link__text">Liên hệ			</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="col-1203351300" class="col medium-3 small-12 large-3">
+                            <div class="col-inner">
+                                <h3><strong>Kết nối với chúng tôi</strong></h3>
+                                <div class="social-icons follow-icons">
+                                    <a href="http://url" class="icon primary button circle facebook tooltip tooltipstered" ><i class="icon-facebook"></i></a>
+                                    <a href="http://url" class="icon primary button circle instagram tooltip" ><i class="icon-instagram"></i></a>
+                                    <a href="http://url" class="icon primary button circle twitter tooltip"><i class="icon-twitter"></i></a>
+                                    <a href="mailto:your@email" class="icon primary button circle email tooltip"><i class="icon-envelop"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline circle active" id="top-link" aria-label="Go to top"><i class="icon-angle-up"></i></a>
+        </div>
+        <div class="absolute-footer dark medium-text-center text-center">
+            <div class="container clearfix">
+                <div class="footer-primary pull-left">
+                    <div class="copyright-footer">
+                        Copyright 2024 © Bản quyền thuộc về Trường THCS Thanh Xuân
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
 
