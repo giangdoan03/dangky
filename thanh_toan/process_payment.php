@@ -50,4 +50,5 @@ function sendRequestToMoMo($url, $data)
     curl_close($ch);
     return $result;
 }
+
 ?>
