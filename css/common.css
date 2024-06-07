@@ -195,4 +195,11 @@ footer#footer {
     .table-container table table td {
         width: 100px !important;
     }
+    #row-1982555116 {
+        display: block;
+    }
+    #col-525487658 {
+        width: 100%;
+        max-width: max-content;
+    }
 }
