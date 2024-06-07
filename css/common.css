@@ -150,7 +150,8 @@
     font-size: 20px;
 }
 footer#footer {
-    background: #ffffff;
+    background: #028900;
+    color: #ffffff;
 }
 .absolute-footer {
     background-color: #5b5b5b;
@@ -162,7 +163,16 @@ footer#footer {
 }
 #col-525487658 .col-inner a {
     text-decoration: none;
-    color: green;
+    color: #ffffff;
+}
+.section-content .large-6 {
+    flex-basis: 50%;
+    max-width: 50%;
+}
+.section-content .menu-item a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
 }
 @keyframes spin {
     to {
