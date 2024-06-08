@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="wraper" style="text-align: center">
             <h3>TRA CỨU KẾT QUẢ</h3>
-            <form id="lookup-form" action="tra-cuu-diem.php" method="post">
+            <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form_tra_cuu"
                      style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh"
