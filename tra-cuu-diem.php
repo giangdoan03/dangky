@@ -59,15 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
                             <p>Thời gian có mặt tại địa điểm kiểm tra: <strong><?php echo $row["thoi_gian_co_mat"]; ?></strong>
                             </p>
-                            <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra</strong></p>
-                        </div>
-                        <div class="so_do_noi_quy">
-                            <div class="noi_quy">
-                                <p>
-                                    <strong> Nội quy danh cho thí sinh dự kiểm tra </strong><a href="/noi_quy_thi_sinh.pdf"
-                                                                                               download>Tải về</a>
-                                </p>
-                            </div>
+                            <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra của
+                                    mình.</strong></p>
                             <div class="so_do">
                                 <p>
                                     <strong> Sơ đồ phòng kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải
