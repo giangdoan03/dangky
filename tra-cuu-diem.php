@@ -12,7 +12,7 @@ function base_url()
 
 $student_info = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $recaptcha_secret = '6LdUCOEpAAAAAEOKqPa3_3KTMmz3XLIRKMe0Z0sQ';
+    $recaptcha_secret = '6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg';
     $recaptcha_response = $_POST['g-recaptcha-response'];
 
     // Gửi yêu cầu đến Google để xác minh reCAPTCHA
@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdUCOEpAAAAAPeGFUfgrgO6IKApoFGJUO7cQdfl"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("lookup-form").submit();
@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         grecaptcha.ready(function() {
             document.getElementById('lookup-form').addEventListener('submit', function(event) {
                 event.preventDefault();
-                grecaptcha.execute('6LdUCOEpAAAAAPeGFUfgrgO6IKApoFGJUO7cQdfl', {action: 'submit'}).then(function(token) {
+                grecaptcha.execute('6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6', {action: 'submit'}).then(function(token) {
                     document.getElementById('g-recaptcha-response').value = token;
                     document.getElementById("lookup-form").submit();
                 });
