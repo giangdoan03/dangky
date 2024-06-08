@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh"
                            id="student_id" name="ma_hoc_sinh" required>
-                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <div class="g-recaptcha" data-sitekey="6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6"></div>
                     <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
                 </div>
             </form>
