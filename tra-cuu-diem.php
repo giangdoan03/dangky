@@ -11,64 +11,85 @@ function base_url()
 }
 
 $student_info = '';
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $recaptcha_secret = '6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg';
+    $recaptcha_secret = '6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg'; // Thay YOUR_RECAPTCHA_SECRET_KEY bằng khóa bí mật của bạn
     $recaptcha_response = $_POST['g-recaptcha-response'];
 
     // Gửi yêu cầu đến Google để xác minh reCAPTCHA
-    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
-    $response_keys = json_decode($response, true);
+    $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
+    $recaptcha = json_decode($recaptcha);
 
-    if ($response_keys["success"]) {
-        if ($response_keys["score"] >= 0.5) {
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+    if ($recaptcha->success) {
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-            $ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
+        $ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
 
-            // Prepare SQL statement
-            $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $ma_hoc_sinh);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        // Prepare SQL statement
+        $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $ma_hoc_sinh);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    ob_start(); // Start output buffering
-                    ?>
-                    <div class="student-info">
-                        <div class="two-column">
-                            <div class="column-left">
-                                <p>Họ và tên: <strong><?php echo $row["ho_ten_dem"] . " " . $row["ten"]; ?></strong></p>
-                                <p>Giới tính: <strong><?php echo $row["gioi_tinh"]; ?></strong></p>
-                                <p>Số báo danh: <strong><?php echo $row["so_bao_danh"]; ?></strong></p>
-                            </div>
-                            <div class="column-right">
-                                <p>Ngày sinh: <strong><?php echo $row["ngay_sinh"]; ?></strong></p>
-                                <p>Dân tộc: <strong><?php echo $row["dan_toc"]; ?></strong></p>
-                                <p>Phòng kiểm tra: <strong><?php echo $row["phong_kiem_tra"]; ?></strong></p>
-                            </div>
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                ob_start(); // Start output buffering
+                ?>
+                <div class="student-info">
+                    <div class="two-column">
+                        <div class="column-left">
+                            <p>Họ và tên: <strong><?php echo $row["ho_ten_dem"] . " " . $row["ten"]; ?></strong></p>
+                            <p>Giới tính: <strong><?php echo $row["gioi_tinh"]; ?></strong></p>
+                            <p>Số báo danh: <strong><?php echo $row["so_bao_danh"]; ?></strong></p>
                         </div>
-                        <p style="text-align: center">Địa điểm kiểm tra:
-                            <strong><?php echo $row["dia_diem_kiem_tra"]; ?></strong></p>
-                        <div class="wrap-info-b">
-                            <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>
-                            <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
-                            <p>Thời gian có mặt tại địa điểm kiểm tra: <strong><?php echo $row["thoi_gian_co_mat"]; ?></strong>
+                        <div class="column-right">
+                            <p>Ngày sinh: <strong><?php echo $row["ngay_sinh"]; ?></strong></p>
+                            <p>Dân tộc: <strong><?php echo $row["dan_toc"]; ?></strong></p>
+                            <p>Phòng kiểm tra: <strong><?php echo $row["phong_kiem_tra"]; ?></strong></p>
+                        </div>
+                    </div>
+                    <p style="text-align: center">Địa điểm kiểm tra:
+                        <strong><?php echo $row["dia_diem_kiem_tra"]; ?></strong></p>
+                    <div class="wrap-info-b">
+                        <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>
+                        <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
+                        <p>Thời gian có mặt tại địa điểm kiểm tra: <strong><?php echo $row["thoi_gian_co_mat"]; ?></strong>
+                        </p>
+                        <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra của
+                                mình.</strong></p>
+                        <div class="so_do">
+                            <p>
+                                <strong> Sơ đồ phòng kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải
+                                    về</a>
                             </p>
-                            <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra của
-                                    mình.</strong></p>
-                            <div class="so_do">
-                                <p>
-                                    <strong> Sơ đồ phòng kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải
-                                        về</a>
-                                </p>
-                            </div>
                         </div>
-                        <h2>Điểm kiểm tra</h2>
+                    </div>
+                    <h2>Điểm kiểm tra</h2>
+                    <table style="width: 100%">
+                        <tr>
+                            <th>Tiếng Việt</th>
+                            <th>Tiếng Anh</th>
+                            <th>Toán</th>
+                            <th>Điểm ưu tiên</th>
+                            <th>Điểm sơ tuyển</th>
+                            <th>Tổng điểm xét tuyển</th>
+                        </tr>
+                        <tr>
+                            <td><?php echo !empty($row["diem_tieng_viet"]) ? $row["diem_tieng_viet"] : 'N/A'; ?></td>
+                            <td><?php echo !empty($row["diem_tieng_anh"]) ? $row["diem_tieng_anh"] : 'N/A'; ?></td>
+                            <td><?php echo !empty($row["diem_toan"]) ? $row["diem_toan"] : 'N/A'; ?></td>
+                            <td><?php echo !empty($row["diem_uu_tien"]) ? $row["diem_uu_tien"] : 'N/A'; ?></td>
+                            <td><?php echo !empty($row["diem_so_tuyen"]) ? $row["diem_so_tuyen"] : 'N/A'; ?></td>
+                            <td><?php echo !empty($row["tong_diem_xet_tuyen"]) ? $row["tong_diem_xet_tuyen"] : 'N/A'; ?></td>
+                        </tr>
+                    </table>
+                    <?php if ($row["diem_pk_tieng_viet"] && $row["diem_pk_tieng_anh"] && $row["diem_pk_toan"]) { ?>
+                        <h2 class="phuc_khao">Điểm sau khi phúc khảo:</h2>
                         <table style="width: 100%">
                             <tr>
                                 <th>Tiếng Việt</th>
@@ -79,52 +100,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>Tổng điểm xét tuyển</th>
                             </tr>
                             <tr>
-                                <td><?php echo !empty($row["diem_tieng_viet"]) ? $row["diem_tieng_viet"] : 'N/A'; ?></td>
-                                <td><?php echo !empty($row["diem_tieng_anh"]) ? $row["diem_tieng_anh"] : 'N/A'; ?></td>
-                                <td><?php echo !empty($row["diem_toan"]) ? $row["diem_toan"] : 'N/A'; ?></td>
+                                <td><?php echo !empty($row["diem_pk_tieng_viet"]) ? $row["diem_pk_tieng_viet"] : 'N/A'; ?></td>
+                                <td><?php echo !empty($row["diem_pk_tieng_anh"]) ? $row["diem_pk_tieng_anh"] : 'N/A'; ?></td>
+                                <td><?php echo !empty($row["diem_pk_toan"]) ? $row["diem_pk_toan"] : 'N/A'; ?></td>
                                 <td><?php echo !empty($row["diem_uu_tien"]) ? $row["diem_uu_tien"] : 'N/A'; ?></td>
                                 <td><?php echo !empty($row["diem_so_tuyen"]) ? $row["diem_so_tuyen"] : 'N/A'; ?></td>
-                                <td><?php echo !empty($row["tong_diem_xet_tuyen"]) ? $row["tong_diem_xet_tuyen"] : 'N/A'; ?></td>
+                                <td><?php echo !empty($row["tong_diem_xt_sau_pk"]) ? $row["tong_diem_xt_sau_pk"] : 'N/A'; ?></td>
                             </tr>
                         </table>
-                        <?php if ($row["diem_pk_tieng_viet"] && $row["diem_pk_tieng_anh"] && $row["diem_pk_toan"]) { ?>
-                            <h2 class="phuc_khao">Điểm sau khi phúc khảo:</h2>
-                            <table style="width: 100%">
-                                <tr>
-                                    <th>Tiếng Việt</th>
-                                    <th>Tiếng Anh</th>
-                                    <th>Toán</th>
-                                    <th>Điểm ưu tiên</th>
-                                    <th>Điểm sơ tuyển</th>
-                                    <th>Tổng điểm xét tuyển</th>
-                                </tr>
-                                <tr>
-                                    <td><?php echo !empty($row["diem_pk_tieng_viet"]) ? $row["diem_pk_tieng_viet"] : 'N/A'; ?></td>
-                                    <td><?php echo !empty($row["diem_pk_tieng_anh"]) ? $row["diem_pk_tieng_anh"] : 'N/A'; ?></td>
-                                    <td><?php echo !empty($row["diem_pk_toan"]) ? $row["diem_pk_toan"] : 'N/A'; ?></td>
-                                    <td><?php echo !empty($row["diem_uu_tien"]) ? $row["diem_uu_tien"] : 'N/A'; ?></td>
-                                    <td><?php echo !empty($row["diem_so_tuyen"]) ? $row["diem_so_tuyen"] : 'N/A'; ?></td>
-                                    <td><?php echo !empty($row["tong_diem_xt_sau_pk"]) ? $row["tong_diem_xt_sau_pk"] : 'N/A'; ?></td>
-                                </tr>
-                            </table>
-                        <?php } ?>
-                    </div>
-                    <?php
-                    $student_info .= ob_get_clean(); // Store buffered output into $student_info
-                }
-            } else {
-                $student_info .= "<p>Không tìm thấy học sinh với mã: <strong>$ma_hoc_sinh</strong></p>";
+                    <?php } ?>
+                </div>
+                <?php
+                $student_info .= ob_get_clean(); // Store buffered output into $student_info
             }
-
-            $stmt->close();
-            $conn->close();
         } else {
-            $student_info .= "<p>Xác minh reCAPTCHA không thành công. Điểm không đủ cao. Vui lòng thử lại.</p>";
+            $student_info .= "<p>Không tìm thấy học sinh với mã: <strong>$ma_hoc_sinh</strong></p>";
         }
+
+        $stmt->close();
+        $conn->close();
     } else {
+        // Nếu reCAPTCHA không hợp lệ
+        // Hiển thị thông báo lỗi
         $student_info .= "<p>Xác minh reCAPTCHA không thành công. Vui lòng thử lại.</p>";
     }
 }
+
+
 ?>
 
 <!doctype html>
@@ -158,22 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("lookup-form").submit();
-        }
-
-        grecaptcha.ready(function() {
-            document.getElementById('lookup-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                grecaptcha.execute('6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6', {action: 'submit'}).then(function(token) {
-                    document.getElementById('g-recaptcha-response').value = token;
-                    document.getElementById("lookup-form").submit();
-                });
-            });
-        });
-    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="bg-light">
 
