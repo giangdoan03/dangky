@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render='6LdUCOEpAAAAAPeGFUfgrgO6IKApoFGJUO7cQdfl'"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdUCOEpAAAAAPeGFUfgrgO6IKApoFGJUO7cQdfl"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("lookup-form").submit();
