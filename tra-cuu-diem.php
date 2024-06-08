@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
     $responseKeys = json_decode($response, true);
 
-    if ($responseKeys->success) {
+    if ($responseKeys["success"]) {
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
