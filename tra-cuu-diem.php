@@ -14,14 +14,13 @@ $student_info = '';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $recaptcha_secret = '6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg'; // Thay YOUR_RECAPTCHA_SECRET_KEY bằng khóa bí mật của bạn
-    $recaptcha_response = $_POST['g-recaptcha-response'];
+    // Kiểm tra reCAPTCHA đã được xác thực chưa
+    $captcha = $_POST['g-recaptcha-response'];
+    $secretKey = "6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg"; // Thay YOUR_SECRET_KEY bằng secret key của bạn
+    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
+    $responseKeys = json_decode($response, true);
 
-    // Gửi yêu cầu đến Google để xác minh reCAPTCHA
-    $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
-    $recaptcha = json_decode($recaptcha);
-
-    if ($recaptcha->success) {
+    if ($responseKeys->success) {
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -120,9 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
     } else {
-        // Nếu reCAPTCHA không hợp lệ
-        // Hiển thị thông báo lỗi
-        $student_info .= "<p>Xác minh reCAPTCHA không thành công. Vui lòng thử lại.</p>";
+        echo "reCAPTCHA verification failed!";
     }
 }
 
