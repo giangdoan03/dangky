@@ -18,9 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $captcha = $_POST['g-recaptcha-response'];
     $secretKey = "6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg"; // Thay YOUR_SECRET_KEY bằng secret key của bạn
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
-    $responseKeys = json_decode($response, true);
+    var_dump($response);die();
 
+    $responseKeys = json_decode($response, true);
     if ($responseKeys["success"]) {
+        echo '123'; die();
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -184,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="wraper" style="text-align: center">
             <h3>TRA CỨU KẾT QUẢ</h3>
-            <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="form_tra_cuu"
                      style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh"

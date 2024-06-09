@@ -36,7 +36,7 @@
                         <a class="nav-link text-white" href="nhap-du-lieu-tra-cuu.php">Nhập dữ liệu tra cứu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Users</a>
+                        <a class="nav-link text-white" href="user.php">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="settings.php">Settings</a>
