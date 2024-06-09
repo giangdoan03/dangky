@@ -208,6 +208,9 @@ footer#footer {
 .bl_error {
     margin-top: 30px;
 }
+.p_dia_chi {
+    text-align: center;
+}
 @keyframes spin {
     to {
         transform: rotate(360deg);
@@ -261,5 +264,11 @@ footer#footer {
     }
     .form_tra_cuu .btn-outline-secondary {
         margin-top: 20px;
+    }
+    .two-column {
+        display: block;
+    }
+    .p_dia_chi {
+        text-align: center;
     }
 }

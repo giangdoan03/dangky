@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>Phòng kiểm tra: <strong><?php echo $row["phong_kiem_tra"]; ?></strong></p>
                         </div>
                     </div>
-                    <p style="text-align: center">Địa điểm kiểm tra:
+                    <p class="p_dia_chi">Địa điểm kiểm tra:
                         <strong><?php echo $row["dia_diem_kiem_tra"]; ?></strong></p>
                     <div class="wrap-info-b">
 <!--                        <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>-->
