@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--                            </p>-->
 <!--                        </div>-->
                     </div>
-                    <h2>Điểm kiểm tra</h2>
+<!--                    <h2>Điểm kiểm tra</h2>-->
                     <table style="width: 100%">
                         <tr>
                             <th>Tiếng Việt</th>
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </table>
                     <?php if ($row["diem_pk_tieng_viet"] && $row["diem_pk_tieng_anh"] && $row["diem_pk_toan"]) { ?>
                         <h2 class="phuc_khao">Điểm sau khi phúc khảo:</h2>
-                        <table style="width: 100%">
+                        <table style="width: 100%" class="table_phuc_khao">
                             <tr>
                                 <th>Tiếng Việt</th>
                                 <th>Tiếng Anh</th>
