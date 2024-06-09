@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Kết nối thất bại: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("INSERT INTO admin_cred (sr_no, admin_name, admin_pass) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO admin_cred (admin_name, admin_pass) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $stmt->close();
