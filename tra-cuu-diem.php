@@ -137,7 +137,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
     } else {
-        echo "reCAPTCHA verification failed!";
+        $mess_error_captcha = 'reCAPTCHA verification failed!';
+//        echo "reCAPTCHA verification failed!";
     }
 }
 
@@ -180,46 +181,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="bg-light">
 
 <div class="page-register">
-    <div class="container">
-        <div class="header">
-            <div class="banner">
-                <div class="logo">
-                    <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
+    <div class="bl_header">
+        <div class="container">
+            <div class="header">
+                <div class="banner">
+                    <div class="logo">
+                        <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
+                    </div>
+                    <div class="text">
+                        <h1>TRƯỜNG THCS THANH XUÂN</h1>
+                        <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
+                    </div>
                 </div>
-                <div class="text">
-                    <h1>TRƯỜNG THCS THANH XUÂN</h1>
-                    <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
-                </div>
-            </div>
-            <div class="menu">
-                <div class="menu-item">
-                    <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                </div>
-                <div class="menu-item">
-                    <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
+                <div class="menu">
+                    <div class="menu-item">
+                        <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="wraper" style="text-align: center">
-            <h3>TRA CỨU KẾT QUẢ</h3>
-            <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
-                    <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
-                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                    <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
-                </div>
-            </form>
-        </div>
-        <?php
-        // Display student information if available
-        if (!empty($student_info)) {
-            echo '<div class="result">';
-            echo $student_info;
-            echo '</div>';
-        }
-        ?>
     </div>
-
+    <div class="page_content">
+        <div class="container">
+            <div class="wrapper" style="text-align: center">
+                <h3>TRA CỨU KẾT QUẢ</h3>
+                <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
+                        <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                        <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
+                    </div>
+                    <div class="bl_error">
+                        <?php echo $mess_error_captcha; ?>
+                    </div>
+                </form>
+            </div>
+            <?php
+            // Display student information if available
+            if (!empty($student_info)) {
+                echo '<div class="result">';
+                echo $student_info;
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </div>
     <script>
         grecaptcha.ready(function() {
             grecaptcha.execute('6LfNZPQpAAAAANu4PQ0RwHuWxkRnb5-1DhDtWHbx', {action: 'submit'}).then(function(token) {
@@ -228,6 +237,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     </script>
 </div>
-
+<?php require('inc/footer.php'); ?>
 </body>
 </html>
