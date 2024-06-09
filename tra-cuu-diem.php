@@ -14,20 +14,36 @@ $student_info = '';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Kiểm tra reCAPTCHA đã được xác thực chưa
-    $captcha = $_POST['g-recaptcha-response'];
-    $secretKey = "6LcBJ_QpAAAAAFBSk58Zk0B5VEjUy4T9DiD5b0mg"; // Thay YOUR_SECRET_KEY bằng secret key của bạn
-    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha);
-    var_dump($response);die();
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $recaptcha_secret = '6LfNZPQpAAAAAH0fUPwlsBamTXzIdP7nPLb4Wy4I';
+    $recaptcha_response = $_POST['recaptcha_response'];
+
+    // Sử dụng cURL để xác minh reCAPTCHA
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $recaptcha_url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+        'secret' => $recaptcha_secret,
+        'response' => $recaptcha_response
+    ]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+
+    // Kiểm tra lỗi cURL
+    if (curl_errno($ch)) {
+        $error_msg = 'cURL error: ' . curl_error($ch);
+        file_put_contents('recaptcha_debug_log.txt', $error_msg, FILE_APPEND);
+        die($error_msg);
+    }
+
+    curl_close($ch);
+
+    // Debugging: Hiển thị phản hồi từ Google
+    // var_dump($response); die();
 
     $responseKeys = json_decode($response, true);
-    if ($responseKeys["success"]) {
-        echo '123'; die();
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
 
+    if ($responseKeys["success"] && $responseKeys["score"] >= 0.5) {
         $ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
 
         // Prepare SQL statement
@@ -159,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfNZPQpAAAAANu4PQ0RwHuWxkRnb5-1DhDtWHbx"></script>
 </head>
 <body class="bg-light">
 
@@ -191,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
                     <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh"
                            id="student_id" name="ma_hoc_sinh" required>
-                    <div class="g-recaptcha" data-sitekey="6LcBJ_QpAAAAAKjr2pXGyHIhaGVA6aR5cWOIUVt6"></div>
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
                 </div>
             </form>
@@ -205,6 +221,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </div>
+
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfNZPQpAAAAANu4PQ0RwHuWxkRnb5-1DhDtWHbx', {action: 'submit'}).then(function(token) {
+                document.getElementById('recaptchaResponse').value = token;
+            });
+        });
+    </script>
 </div>
 
 </body>
