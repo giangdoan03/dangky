@@ -8,17 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $recaptcha_secret = '6LfNZPQpAAAAAH0fUPwlsBamTXzIdP7nPLb4Wy4I';
     $recaptcha_response = $_POST['recaptcha_response'];
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $recaptcha_url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-        'secret' => $recaptcha_secret,
-        'response' => $recaptcha_response
-    ]));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    curl_close($ch);
-
+    // Xác minh reCAPTCHA
+    $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
     $responseKeys = json_decode($response, true);
 
     // Debugging: Ghi lại phản hồi từ Google để kiểm tra
@@ -36,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Kết nối thất bại: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("INSERT INTO admin_cred (admin_name, admin_pass) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO users (admin_name, admin_pass) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $stmt->close();
@@ -47,4 +38,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "reCAPTCHA không hợp lệ, vui lòng thử lại.";
     }
 }
+
 ?>
