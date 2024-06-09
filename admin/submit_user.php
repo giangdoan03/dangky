@@ -37,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $_POST['password'];
 
         // Kết nối MySQL và lưu thông tin vào cơ sở dữ liệu
-        $conn = new mysqli('localhost', 'username', 'password', 'database');
+//        $conn = new mysqli('localhost', 'username', 'password', 'database');
 
         if ($conn->connect_error) {
             die("Kết nối thất bại: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO admin_cred (admin_name, admin_pass) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $stmt->close();
