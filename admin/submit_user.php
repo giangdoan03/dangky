@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require('./inc/essentials.php');
 include('./inc/db_config.php');
 require '../vendor/autoload.php'; // Đảm bảo autoload của Composer đã được nạp
