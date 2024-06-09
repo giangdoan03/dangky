@@ -73,18 +73,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p style="text-align: center">Địa điểm kiểm tra:
                         <strong><?php echo $row["dia_diem_kiem_tra"]; ?></strong></p>
                     <div class="wrap-info-b">
-                        <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>
-                        <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>
-                        <p>Thời gian có mặt tại địa điểm kiểm tra: <strong><?php echo $row["thoi_gian_co_mat"]; ?></strong>
-                        </p>
-                        <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra của
-                                mình.</strong></p>
-                        <div class="so_do">
-                            <p>
-                                <strong> Sơ đồ phòng kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải
-                                    về</a>
-                            </p>
-                        </div>
+<!--                        <p>Ngày kiểm tra: <strong>04/06/2024</strong></p>-->
+<!--                        <p>Sáng kiểm tra môn Tiếng Việt, Tiếng Anh. Chiều kiểm tra môn Toán</p>-->
+<!--                        <p>Thời gian có mặt tại địa điểm kiểm tra: <strong>--><?php //echo $row["thoi_gian_co_mat"]; ?><!--</strong>-->
+<!--                        </p>-->
+<!--                        <p><strong class="luu_y">Lưu ý: Thí sinh nhận phiếu dự kiểm tra tại phòng kiểm tra của-->
+<!--                                mình.</strong></p>-->
+<!--                        <div class="so_do">-->
+<!--                            <p>-->
+<!--                                <strong> Sơ đồ phòng kiểm tra </strong><a href="/so_do_phong_thi.pdf" download>Tải-->
+<!--                                    về</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
                     </div>
                     <h2>Điểm kiểm tra</h2>
                     <table style="width: 100%">
@@ -203,10 +203,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="wraper" style="text-align: center">
             <h3>TRA CỨU KẾT QUẢ</h3>
             <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                <div class="form_tra_cuu"
-                     style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
-                    <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh"
-                           id="student_id" name="ma_hoc_sinh" required>
+                <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
+                    <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
                     <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
                 </div>
