@@ -25,13 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Kiểm tra lỗi cURL
     if (curl_errno($ch)) {
-        echo 'cURL error: ' . curl_error($ch);
+        $error_msg = 'cURL error: ' . curl_error($ch);
+        file_put_contents('recaptcha_debug_log.txt', $error_msg, FILE_APPEND);
+        die($error_msg);
     }
 
     curl_close($ch);
 
     // Debugging: Hiển thị phản hồi từ Google
-//    var_dump($response); die();
+    // var_dump($response); die();
 
     $responseKeys = json_decode($response, true);
 
@@ -40,6 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        // Mã hóa mật khẩu
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         // Kết nối MySQL và lưu thông tin vào cơ sở dữ liệu
 //        $conn = new mysqli('localhost', 'username', 'password', 'database');
 
@@ -47,9 +52,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Kết nối thất bại: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("INSERT INTO admin_cred (admin_name, admin_pass) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
+        // Debugging: Kiểm tra tham số
+        if (!$stmt = $conn->prepare("INSERT INTO admin_cred (admin_name, admin_pass) VALUES (?, ?)")) {
+            die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+        }
+
+        if (!$stmt->bind_param("ss", $username, $hashed_password)) {
+            die("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+        if (!$stmt->execute()) {
+            die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
         $stmt->close();
         $conn->close();
 
