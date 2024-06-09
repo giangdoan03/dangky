@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     curl_close($ch);
 
     // Debugging: Hiển thị phản hồi từ Google
-    var_dump($response); die();
+//    var_dump($response); die();
 
     $responseKeys = json_decode($response, true);
 
