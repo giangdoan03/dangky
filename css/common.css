@@ -236,4 +236,30 @@ footer#footer {
         width: 100%;
         max-width: max-content;
     }
+    .header {
+        display: block;
+    }
+    .banner h1 {
+        font-size: 15px;
+    }
+    .banner .logo {
+        width: 70px;
+    }
+    .banner {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+    .header .menu {
+        display: flex;
+        padding-bottom: 10px;
+    }
+    .form_tra_cuu {
+        display: block !important;
+    }
+    #student_id {
+        width: 100% !important;
+    }
+    .form_tra_cuu .btn-outline-secondary {
+        margin-top: 20px;
+    }
 }
