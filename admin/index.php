@@ -81,6 +81,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $region = 'Localhost';
                 $city = 'Localhost';
             } else {
+                echo $ip_address;
                 // Lấy thông tin địa lý từ IP
                 $api_url = "http://ip-api.com/json/$ip_address";
                 $location_info = json_decode(file_get_contents($api_url), true);
