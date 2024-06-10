@@ -1,27 +1,101 @@
 <?php
-    require('inc/essentials.php');
-    adminLogin();
+// Kết nối đến cơ sở dữ liệu và bao gồm tệp liên quan
+include('./inc/db_config.php');
+require('./inc/essentials.php');
+
+// Hàm để xác thực đăng nhập của quản trị viên
+adminLogin();
+
+// Số bản ghi trên mỗi trang
+$records_per_page = 50;
+
+// Xác định trang hiện tại
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Tính offset (vị trí bắt đầu của bản ghi cho trang hiện tại)
+$offset = ($current_page - 1) * $records_per_page;
+
+// Lấy tổng số bản ghi
+$sql_total_records = "SELECT COUNT(*) AS total_records FROM admin_logins WHERE admin_id = ?";
+$stmt = $conn->prepare($sql_total_records);
+$stmt->bind_param("i", $_SESSION['adminId']);
+$stmt->execute();
+$result_total_records = $stmt->get_result();
+$row_total_records = $result_total_records->fetch_assoc();
+$total_records = $row_total_records['total_records'];
+
+// Tính tổng số trang
+$total_pages = ceil($total_records / $records_per_page);
+
+// Lấy dữ liệu cho trang hiện tại
+$sql = "SELECT login_time, ip_address, country, region, city FROM admin_logins WHERE admin_id = ? ORDER BY login_time DESC LIMIT ?, ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("iii", $_SESSION['adminId'], $offset, $records_per_page);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Đặt múi giờ thành múi giờ Việt Nam
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Dashboard</title>
-    <?php require('inc/links.php');?>
+    <!-- Bao gồm các tệp liên quan -->
+    <?php require('inc/links.php'); ?>
 </head>
 <body class="bg-light">
-<?php require('inc/header.php');?>
-    <div class="container-fluid" id="main-content">
-        <div class="row">
-            <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet exercitationem inventore iste molestiae natus provident totam? Asperiores assumenda autem commodi consequatur delectus dolor doloremque dolores est exercitationem fuga in incidunt, ipsum libero necessitatibus nulla obcaecati odio officia sequi temporibus totam ullam vero vitae, voluptas? Beatae cum excepturi iste minima, minus mollitia natus quisquam quo reprehenderit voluptates. Eligendi fugiat minima officiis sed voluptates? Adipisci architecto laborum non, odio omnis praesentium? Ab cupiditate dolorum, eum excepturi facilis, fugit ipsam minima, nostrum officiis omnis ratione vel! Architecto commodi dignissimos dolores eligendi esse et excepturi expedita harum ipsam laborum maxime molestiae nobis perferendis possimus quae quaerat reiciendis saepe totam, veniam voluptatibus? Aliquid consequuntur culpa ducimus eum eveniet exercitationem, harum ipsa, obcaecati recusandae rerum sint, velit voluptas voluptatibus! Dolore ipsum labore sunt voluptatum! Eum eveniet magni nam nemo provident tenetur veniam! A aliquid amet aperiam beatae commodi doloremque, ex exercitationem facere facilis fugiat, impedit inventore minima mollitia, nam nostrum pariatur praesentium rem soluta sunt voluptatum! A accusamus animi aspernatur at atque autem beatae commodi consequatur debitis delectus doloremque eaque eveniet excepturi exercitationem impedit in ipsam iste iusto laborum maiores minima minus modi neque nesciunt nihil nulla odio quaerat qui quidem quo rem repellendus repudiandae soluta ut velit voluptates, voluptatum! Ab adipisci aliquam autem commodi cupiditate dicta dolorum ea eligendi et in, laboriosam magnam nemo nesciunt obcaecati, odit omnis optio placeat quasi repellendus, repudiandae rerum sunt tempora unde. Amet commodi consequatur, cupiditate dolor ea eius, esse explicabo ipsum itaque minima natus nemo perferendis repudiandae vero voluptate. Amet dignissimos id illum laudantium maiores odio quasi quidem. Assumenda odio, porro qui quibusdam suscipit tempore temporibus vel vitae? Accusamus consequuntur culpa deleniti doloremque facere illo impedit iusto, laboriosam minima modi nobis officia perspiciatis praesentium quibusdam quos sapiente temporibus totam ullam ut velit veritatis vero, voluptatibus. Deserunt dicta enim ex nam sed. A ab accusamus adipisci at beatae consequatur dolore ea eligendi illum impedit ipsam odit omnis pariatur perferendis quis repellendus, saepe sapiente, soluta ullam veritatis. Ab at debitis dignissimos dolor est ex facilis mollitia necessitatibus obcaecati, optio, quam, qui sequi unde. A architecto debitis dolor, dolores est eum explicabo facere fugit hic id illum incidunt ipsam laboriosam molestiae, mollitia nesciunt nostrum nulla pariatur perferendis porro quidem quisquam quod repellat reprehenderit, temporibus tenetur veniam veritatis vero voluptates voluptatum! Animi assumenda aut, beatae consectetur deleniti earum et explicabo numquam omnis placeat reiciendis sapiente ullam. Accusamus aperiam asperiores assumenda aut consectetur consequuntur dicta dolorem, doloribus eaque eius ex excepturi facilis fuga fugiat iste laborum magnam maiores mollitia nam necessitatibus neque odio placeat, quis reprehenderit sapiente unde voluptatum! Facere, id iusto! Ad impedit minus quis voluptate! Dolorem earum magni maiores minus perspiciatis placeat vel. Animi atque eius explicabo fugit magnam nemo nobis quasi. Asperiores beatae dolore inventore iure numquam. Consequatur debitis harum hic minus nam natus nobis quod sequi voluptatibus voluptatum. Facilis, hic, quidem? Aliquid asperiores delectus dolor exercitationem, illum iure libero minus necessitatibus nemo omnis perspiciatis quidem, quisquam repellat rerum saepe voluptate voluptatibus. Aliquid at, enim eum ex exercitationem fugiat impedit inventore ipsa iure, laudantium mollitia nemo neque nobis nulla optio, quaerat quas tempora totam voluptatem voluptatum! Aliquam aliquid atque consequuntur dolore error excepturi, id perspiciatis quos repudiandae voluptatum! Accusantium aliquam autem error magni quae quos, ullam velit. Adipisci delectus eius fugiat illum magni necessitatibus nisi, obcaecati omnis porro provident quam, repellat repudiandae sequi! Amet, animi ducimus eveniet fugiat ipsa libero magnam magni nam nihil non, quaerat quia quo rem repellendus reprehenderit rerum sapiente soluta, unde? Adipisci aut distinctio dolore, dolores eius enim eos explicabo facere fugiat ipsum labore, libero nobis nostrum officia provident quae quisquam repudiandae rerum! Amet assumenda, commodi culpa delectus deleniti, dolore dolores dolorum enim fugiat fugit iusto libero maxime natus odio possimus praesentium quae quibusdam saepe sit soluta temporibus, tenetur ut veniam vitae voluptates. Accusamus amet aperiam atque aut, ea earum error explicabo fugit illo illum impedit laudantium, maiores nihil nobis possimus praesentium, quae quaerat quas sit ut vero voluptas voluptates. Ad, ipsam, sequi. Consequatur eligendi illum ratione vitae. Accusantium beatae et laborum, magnam nemo quaerat reiciendis! Accusamus aperiam ea enim fuga inventore laudantium porro provident quibusdam rerum sit, sunt voluptates. Amet ea eos id illo necessitatibus nulla officiis provident tenetur voluptatem. Architecto dolorem veniam vero? Animi atque beatae commodi consectetur cum cumque dignissimos eaque error est ex explicabo id impedit ipsa ipsam iste iure iusto minima nam nemo neque odit officiis provident quos reiciendis, repellendus saepe tenetur ullam unde vitae voluptas. Blanditiis earum esse minus pariatur sunt voluptatibus voluptatum. Assumenda atque blanditiis consequatur culpa cum deserunt dolorem doloremque doloribus ea eius et facilis id, iure labore magnam nesciunt, nisi non officia possimus quae quaerat quas recusandae rerum sunt ut vitae voluptatum. Aut delectus fuga fugiat harum magnam, magni modi perspiciatis quis reiciendis sapiente sequi sunt unde, vel. At aut deleniti ea est ex incidunt ipsam iure neque nobis, odio odit, officia quo quos repellendus reprehenderit sapiente sed? Beatae eaque eum exercitationem fuga illum molestias nemo non provident quidem quo repellat sed sequi similique velit, voluptates. Ab ad alias aliquid animi atque autem blanditiis cum cumque doloribus dolorum eligendi error fuga fugit ipsa labore laboriosam laborum libero minima modi, neque, nihil non nulla numquam odio odit officia omnis possimus qui tempora tenetur ullam veritatis vero voluptates. Architecto atque dolorum ex illum iure quaerat sit! Ab adipisci eum expedita, facere minus, nulla odio officia pariatur porro, quo totam vero? Assumenda autem beatae, dolore error explicabo ipsam laboriosam nisi ratione rem, repellat repudiandae sed sequi sint suscipit unde vitae voluptate voluptates. A alias ex, exercitationem fuga ipsa iusto modi nam nihil officiis quaerat quam qui quod ratione recusandae repellendus reprehenderit sequi tenetur ut, vel voluptatum. Ab alias architecto asperiores assumenda atque, culpa cum debitis eligendi eos esse exercitationem illo illum, ipsam magnam magni maxime minima minus molestiae nam nisi numquam obcaecati officia quaerat recusandae rem repellat repellendus, saepe sunt suscipit tempora vel vero vitae voluptate. Adipisci alias amet deleniti dicta facere incidunt iusto quisquam sapiente temporibus tenetur! Adipisci autem deleniti dicta earum error et excepturi exercitationem expedita ipsam maiores maxime natus nemo officia omnis provident quas repellat, ullam ut velit veniam? Accusamus amet aspernatur at autem blanditiis consequatur corporis deleniti deserunt dicta earum enim eveniet expedita facilis illo iusto laboriosam laudantium minima molestias nesciunt perferendis, placeat, porro quod ratione repellat, rerum similique suscipit veritatis. Ab accusantium aut delectus dolorem doloribus dolorum ea eius enim est eum explicabo, illo, iste laboriosam mollitia necessitatibus non reiciendis repudiandae rerum saepe temporibus ullam veniam vero voluptate voluptatem voluptatum? Assumenda consectetur, cupiditate eos impedit inventore maiores non odio quae quis quo reiciendis voluptas! Amet, at debitis dignissimos distinctio, dolore et exercitationem expedita facilis hic illum magnam maxime neque nisi nobis obcaecati officiis possimus praesentium qui quibusdam recusandae repellat sapiente sit veritatis? Consequuntur dicta dolorem incidunt natus similique? Adipisci beatae dignissimos dolores explicabo ipsa maiores, modi nemo nulla odit praesentium quo reprehenderit rerum temporibus ut vel. Aliquam ducimus eaque natus, nemo porro quaerat quidem voluptates. Assumenda doloribus magni nihil numquam perferendis perspiciatis praesentium quis quisquam vitae. Dolore fugit molestiae natus, obcaecati perferendis repellat? Accusantium aliquam assumenda corporis cum, cupiditate deleniti deserunt dolore earum est explicabo fugiat, id illum in iure laudantium libero magni molestias natus necessitatibus nemo nulla numquam odit officia perferendis possimus praesentium provident qui quos repellendus, rerum sequi sunt velit voluptas? A accusamus, accusantium aliquam autem beatae blanditiis, et expedita incidunt itaque iure modi nobis omnis perspiciatis quia rerum? Ad beatae eaque eius error nobis provident sit unde veniam? A accusamus cupiditate dolore doloribus eius harum illo impedit itaque iusto necessitatibus, neque nesciunt optio pariatur quae quidem rem tempore temporibus unde ut voluptates. Accusamus, assumenda debitis delectus error esse est et excepturi facere id ipsam ipsum iste laborum laudantium libero maiores nihil numquam odio perferendis provident quam quisquam saepe sed sequi veniam voluptate voluptatem voluptatum. Adipisci dignissimos ea error, eveniet ipsa odio sapiente. A inventore laboriosam laborum neque nihil nulla numquam obcaecati velit. Cupiditate dignissimos, doloribus ducimus eos est expedita ipsum, minus molestias nesciunt nisi nobis optio, quidem quis quod sunt velit voluptatibus. Aliquam amet aspernatur assumenda beatae commodi, consequuntur, dolores dolorum fuga fugiat harum ipsa iste libero minima repellat rerum saepe, sequi sit tenetur voluptas voluptatem? Accusamus adipisci animi assumenda aut consequatur cumque dicta dolorem eius esse ex excepturi exercitationem hic illum ipsam iusto modi molestiae, necessitatibus quasi sed soluta sunt tenetur ullam velit vero voluptate? Aperiam asperiores, commodi debitis delectus ea earum, excepturi fuga hic libero magni minus odio perspiciatis quis quos tempore temporibus voluptatem voluptates. Amet debitis fugit incidunt, nam nostrum perspiciatis provident, quidem sapiente, sint tempora tempore veniam. Atque debitis eius impedit magnam necessitatibus, nihil pariatur perspiciatis provident rem, reprehenderit sunt veritatis. Ab, aliquam architecto atque beatae dicta eligendi eveniet exercitationem in itaque molestiae natus nemo obcaecati quae quod reprehenderit repudiandae sapiente soluta? Distinctio labore nobis odio placeat porro repellat voluptate voluptatem. Accusamus aliquid autem blanditiis consectetur corporis cupiditate deleniti dicta dolorem dolorum ea esse eveniet facilis ipsa iste laborum natus nobis nostrum porro, possimus, quis quos recusandae repellendus saepe tempore ut vel veniam. At autem dolore eligendi eveniet excepturi explicabo fugiat sequi similique vel veritatis. Aliquam dicta earum minus repellendus. Aspernatur blanditiis consectetur deserunt dicta dolorum eaque eveniet fuga fugit magnam magni minima molestiae molestias nam nemo neque, nobis porro quaerat quidem quos repellendus rerum similique sint soluta sunt totam veritatis voluptatibus! Accusamus alias aliquid aperiam at culpa deleniti doloremque earum, esse eveniet hic ipsam iste itaque labore libero natus necessitatibus nihil obcaecati officiis omnis possimus qui ratione repudiandae sit tempora velit veniam voluptatum. Accusamus aspernatur consequatur deleniti dignissimos dolores, et, ex expedita fugiat inventore ipsam iusto laudantium nemo nesciunt porro praesentium quaerat quisquam quo recusandae rem repellendus sunt unde vel veniam voluptas voluptatibus? Accusamus aliquam atque commodi, cum deleniti ex fuga id incidunt labore magni minima mollitia nam natus nobis omnis perspiciatis quidem quisquam quos rerum vel? Aperiam architecto aspernatur assumenda at atque autem commodi, consequatur debitis excepturi explicabo harum, in ipsum iusto modi molestias nihil nobis odit praesentium quas quasi qui quidem quis quod reprehenderit sapiente sint sit totam voluptate voluptatibus voluptatum. Alias aspernatur beatae dolore dolorum ducimus ea est excepturi exercitationem impedit in labore laboriosam laudantium nam, nisi obcaecati perspiciatis possimus, praesentium quasi temporibus veritatis. Assumenda dolore illum ipsa, nam quisquam rerum tenetur. A alias aliquid, consectetur debitis dolorem eius esse fuga fugiat ipsum officia, quis sed sit? Beatae doloremque explicabo praesentium! Expedita quaerat, veritatis! Ab aspernatur aut consequuntur doloribus eligendi, enim est eum facere fugit, harum inventore iste labore, laudantium non nulla quasi repudiandae unde voluptas. Aperiam at, esse eum iste laborum odio possimus quos repellendus ullam. Aliquid at culpa cupiditate delectus dolorem eligendi enim eveniet hic, illum in maxime nam obcaecati perspiciatis, praesentium quisquam quos ut! Atque dicta dolore eius error est hic in incidunt inventore ipsam nemo omnis porro quibusdam quis sint, veniam. Ad, aliquam architecto atque dolore explicabo fugit id ipsum iusto non odio, quo ratione temporibus voluptate! Culpa cumque ipsam natus provident reiciendis, similique veritatis. Alias assumenda dolores facilis pariatur praesentium rerum temporibus veniam voluptates. Ad cumque, harum? Doloribus eligendi est exercitationem, explicabo iure magni mollitia nemo repellendus sit ullam. Corporis dicta dolorem doloremque expedita ipsa libero magnam nobis possimus quibusdam saepe. Alias, blanditiis esse ex exercitationem fugiat impedit molestiae nemo nulla quos repellat repellendus sequi vero voluptas! Accusantium aliquid consequatur delectus error esse, eum iusto libero magnam minus nemo omnis pariatur perspiciatis praesentium quo soluta tempore voluptate voluptatibus. Adipisci, blanditiis commodi corporis eius ipsa molestiae neque nihil nobis nostrum odit omnis pariatur perferendis quibusdam rem reprehenderit saepe sed sit tempora unde vero. Accusamus aliquid aperiam, enim, esse et ex facere facilis nostrum numquam, quaerat rerum tempora totam unde veritatis voluptatum! Asperiores, blanditiis doloribus ea earum itaque non officia quaerat quidem recusandae reprehenderit soluta vel vero. Consequuntur dignissimos eius facere, illum iusto libero molestiae neque provident quas reiciendis! A consequatur cum deleniti dicta ducimus eius fuga in ipsa, itaque laudantium magni molestiae quaerat quis reprehenderit temporibus! Adipisci, asperiores assumenda beatae blanditiis dolorum ducimus harum iste iure laborum mollitia pariatur porro quasi quis saepe temporibus. Accusamus doloribus eaque earum nesciunt reprehenderit tempora?
+<!-- Header -->
+<?php require('inc/header.php'); ?>
+
+<!-- Main Content -->
+<div class="container-fluid" id="main-content">
+    <div class="row">
+        <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+            <h1>Thông tin đăng nhập</h1>
+            <!-- Bảng dữ liệu -->
+            <table>
+                <thead>
+                <tr>
+                    <th>Thời gian đăng nhập</th>
+                    <th>Địa chỉ IP</th>
+                    <th>Quốc gia</th>
+                    <th>Vùng</th>
+                    <th>Thành phố</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo date('d/m/Y H:i:s', strtotime($row['login_time'])); ?></td>
+                        <td><?php echo $row['ip_address']; ?></td>
+                        <td><?php echo $row['country']; ?></td>
+                        <td><?php echo $row['region']; ?></td>
+                        <td><?php echo $row['city']; ?></td>
+                    </tr>
+                <?php endwhile; ?>
+                </tbody>
+            </table>
+            <!-- Phân trang -->
+            <div class="pagination">
+                <?php for ($page = 1; $page <= $total_pages; $page++): ?>
+                    <a href="?page=<?php echo $page; ?>" <?php if ($current_page == $page) echo 'class="active"'; ?>><?php echo $page; ?></a>
+                <?php endfor; ?>
             </div>
         </div>
     </div>
-    <?php require('inc/scripts.php');?>
+</div>
+
+<!-- Bao gồm các tệp liên quan -->
+<?php require('inc/scripts.php'); ?>
 </body>
 </html>
+
+<?php
+// Đóng kết nối và các câu lệnh prepare
+$stmt->close();
+$conn->close();
+?>

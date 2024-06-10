@@ -7,7 +7,8 @@ session_start();
 if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
     redirect('dashboard.php');
 }
-
+// Đặt múi giờ thành múi giờ Việt Nam
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,14 +50,57 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
     $admin_name = mysqli_real_escape_string($conn,$_POST["admin_name"]);
     $admin_pass = mysqli_real_escape_string($conn,$_POST["admin_pass"]);
     $query = "SELECT * FROM admin_cred WHERE admin_name = '$admin_name'";
+
+
+    // Lấy IP và thời gian hiện tại
+    $ip_address = $_SERVER['REMOTE_ADDR'];
+    $login_time = date('Y-m-d H:i:s');
+
+
+    // Kiểm tra thông tin đăng nhập của admin
+    $sql = "SELECT sr_no, admin_pass FROM admin_cred WHERE admin_name = '$admin_name'";
+
+    $stmt = $conn->prepare($sql);
+//    var_dump($admin_name);
+//    $stmt->bind_param("s", $admin_name);
+    $stmt->execute();
+    $stmt->store_result();  // Thêm dòng này để lưu kết quả
+    $stmt->bind_result($admin_id, $hashed_password);
+    $stmt->fetch();
+
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($admin_pass, $row["admin_pass"])) {
             //        session_start();
+
+            // Kiểm tra địa chỉ IP là localhost hay không
+            if ($ip_address == '127.0.0.1' || $ip_address == '::1') {
+                $country = 'Localhost';
+                $region = 'Localhost';
+                $city = 'Localhost';
+            } else {
+                // Lấy thông tin địa lý từ IP
+                $api_url = "http://ip-api.com/json/$ip_address";
+                $location_info = json_decode(file_get_contents($api_url), true);
+
+                $country = $location_info['country'];
+                $region = $location_info['regionName'];
+                $city = $location_info['city'];
+            }
+
+            // Lưu thông tin đăng nhập vào cơ sở dữ liệu
+            $sql = "INSERT INTO admin_logins (admin_id, login_time, ip_address, country, region, city) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("isssss", $admin_id, $login_time, $ip_address, $country, $region, $city);
+            $stmt->execute();
+            $stmt->close();
+
+
             $_SESSION['adminLogin'] = true;
             $_SESSION['adminId'] = $row['sr_no'];
+
             redirect('dashboard.php');
 
         } else {
