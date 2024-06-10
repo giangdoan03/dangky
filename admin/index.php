@@ -86,6 +86,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $api_url = "http://ip-api.com/json/$ip_address";
                 $location_info = json_decode(file_get_contents($api_url), true);
 
+                var_dump($location_info); die();
+
                 $country = $location_info['country'];
                 $region = $location_info['regionName'];
                 $city = $location_info['city'];
