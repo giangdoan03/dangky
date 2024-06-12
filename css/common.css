@@ -259,8 +259,11 @@ footer#footer {
     .form_tra_cuu {
         display: block !important;
     }
-    #student_id {
+    #student_id, #sdt_nguoi_dang_ky {
         width: 100% !important;
+    }
+    #sdt_nguoi_dang_ky {
+        margin-top: 15px;
     }
     .form_tra_cuu .btn-outline-secondary {
         margin-top: 20px;
