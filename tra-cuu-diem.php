@@ -111,6 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td><?php echo !empty($row["tong_diem_xet_tuyen"]) ? $row["tong_diem_xet_tuyen"] : 'N/A'; ?></td>
                         </tr>
                     </table>
+                    <div class="mau_don_pk" style="text-align: right">
+                        Mãu đơn phúc khảo: <a href="/maudonphuc_khao.doc" download>Tải file mẫu</a><span
+                    </div>
                     <?php if ($row["diem_pk_tieng_viet"] && $row["diem_pk_tieng_anh"] && $row["diem_pk_toan"]) { ?>
                         <h2 class="phuc_khao">Điểm sau khi phúc khảo:</h2>
                         <table style="width: 100%" class="table_phuc_khao">
