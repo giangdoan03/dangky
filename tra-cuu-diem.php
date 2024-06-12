@@ -99,8 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <th>Tiếng Anh</th>
                             <th>Toán</th>
                             <th>Điểm ưu tiên</th>
-                            <th>Điểm sơ tuyển</th>
-                            <th>Tổng điểm xét tuyển</th>
+                            <th>Điểm xét tuyển</th>
+                            <th>Tổng điểm</th>
                         </tr>
                         <tr>
                             <td><?php echo !empty($row["diem_tieng_viet"]) ? $row["diem_tieng_viet"] : 'N/A'; ?></td>
@@ -119,8 +119,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>Tiếng Anh</th>
                                 <th>Toán</th>
                                 <th>Điểm ưu tiên</th>
-                                <th>Điểm sơ tuyển</th>
-                                <th>Tổng điểm xét tuyển</th>
+                                <th>Điểm xét tuyển</th>
+                                <th>Tổng điểm</th>
                             </tr>
                             <tr>
                                 <td><?php echo !empty($row["diem_pk_tieng_viet"]) ? $row["diem_pk_tieng_viet"] : 'N/A'; ?></td>
