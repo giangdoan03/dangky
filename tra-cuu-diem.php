@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sdt_nguoi_dang_ky = isset($_POST['sdt_nguoi_dang_ky']) ? $_POST['sdt_nguoi_dang_ky'] : '';
 
         // Prepare SQL statement
-        $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ? AND (sdt_nguoi_dang_ky = ? OR sdt_nguoi_dang_ky IS NULL)";
+        $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ? AND sdt_nguoi_dang_ky = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $ma_hoc_sinh, $sdt_nguoi_dang_ky);
         $stmt->execute();
