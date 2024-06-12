@@ -261,7 +261,7 @@ if (!empty($_GET['status'])) {
         setTimeout(function() {
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.pushState({ path: newurl }, '', newurl);
-        }, 1000); // 1000ms = 1 giây
+        }, 2000); // 1000ms = 1 giây
     }
 
     // Kiểm tra xem trang có chứa tham số "?status=succ" không
@@ -270,7 +270,7 @@ if (!empty($_GET['status'])) {
         setTimeout(function() {
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.pushState({ path: newurl }, '', newurl);
-        }, 1000); // 1000ms = 1 giây
+        }, 2000); // 1000ms = 1 giây
     }
     // Kiểm tra xem có thông báo thành công không
     var successMessage = document.getElementById("successMessage");
@@ -280,7 +280,7 @@ if (!empty($_GET['status'])) {
         setTimeout(function() {
             successMessage.classList.remove("alert-success"); // Xóa lớp
             successMessage.style.display = "none"; // Hoặc ẩn thông báo
-        }, 1000); // 1000ms = 2 giây
+        }, 2000); // 1000ms = 2 giây
     }
 </script>
 <script>
