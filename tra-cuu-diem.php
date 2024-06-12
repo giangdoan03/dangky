@@ -1,4 +1,8 @@
 <?php
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 require('./admin/inc/essentials.php');
 include('./admin/inc/db_config.php');
 
