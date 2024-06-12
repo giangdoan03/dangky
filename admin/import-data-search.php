@@ -50,25 +50,25 @@ if (isset($_POST['importSubmit'])) {
                 $stmt->close();
 
                 // Chuẩn bị câu lệnh UPDATE
-                $stmt = $conn->prepare("UPDATE tra_cuu SET ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ?, diem_pk_tieng_viet = ?, diem_pk_tieng_anh = ?, diem_pk_toan = ?, tong_diem_xt_sau_pk = ? WHERE id = ?");
+                $stmt = $conn->prepare("UPDATE tra_cuu SET ma_hoc_sinh = ?, ho_ten_dem = ?, ten = ?, ngay_sinh = ?, gioi_tinh = ?, dan_toc = ?, so_bao_danh = ?, sdt_nguoi_dang_ky = ?, phong_kiem_tra = ?, dia_diem_kiem_tra = ?, thoi_gian_co_mat = ?, diem_tieng_viet = ?, diem_tieng_anh = ?, diem_toan = ?, diem_uu_tien = ?, diem_so_tuyen = ?, tong_diem_xet_tuyen = ?, diem_pk_tieng_viet = ?, diem_pk_tieng_anh = ?, diem_pk_toan = ?, tong_diem_xt_sau_pk = ? WHERE id = ?");
                 if ($stmt === false) {
                     die("Lỗi khi chuẩn bị câu lệnh UPDATE: " . $conn->error);
                 }
 
                 // Bind các tham số
-                $stmt->bind_param("ssssssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19], $id);
+                $stmt->bind_param("sssssssssssssssssssssi", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19], $row[20], $id);
             } else {
                 // Đóng câu lệnh SELECT trước khi tạo câu lệnh INSERT mới
                 $stmt->close();
 
                 // Chuẩn bị câu lệnh INSERT
-                $stmt = $conn->prepare("INSERT INTO tra_cuu (ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen, diem_pk_tieng_viet, diem_pk_tieng_anh, diem_pk_toan, tong_diem_xt_sau_pk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO tra_cuu (ma_hoc_sinh, ho_ten_dem, ten, ngay_sinh, gioi_tinh, dan_toc, so_bao_danh, sdt_nguoi_dang_ky, phong_kiem_tra, dia_diem_kiem_tra, thoi_gian_co_mat, diem_tieng_viet, diem_tieng_anh, diem_toan, diem_uu_tien, diem_so_tuyen, tong_diem_xet_tuyen, diem_pk_tieng_viet, diem_pk_tieng_anh, diem_pk_toan, tong_diem_xt_sau_pk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 if ($stmt === false) {
                     die("Lỗi khi chuẩn bị câu lệnh INSERT: " . $conn->error);
                 }
 
                 // Bind các tham số
-                $stmt->bind_param("ssssssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19]);
+                $stmt->bind_param("sssssssssssssssssssss", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18], $row[19], $row[20]);
 
             }
 

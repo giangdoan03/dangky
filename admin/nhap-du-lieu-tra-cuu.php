@@ -94,11 +94,11 @@ if (!empty($_GET['status'])) {
     switch ($_GET['status']) {
         case 'succ':
             $statusType = 'alert-success';
-            $statusMsg = 'Member data has been imported successfully.';
+            $statusMsg = 'Nhập File danh sách tra cứu thành công.';
             break;
         case 'err':
             $statusType = 'alert-danger';
-            $statusMsg = 'Something went wrong, please try again.';
+            $statusMsg = 'Đã có lỗi xảy ra, vui lòng thử lại';
             break;
         case 'invalid_file':
             $statusType = 'alert-danger';
@@ -170,6 +170,7 @@ if (!empty($_GET['status'])) {
                                 <td>Giới tính</td>
                                 <td>Dân tộc</td>
                                 <td>Số báo danh</td>
+                                <td>SĐT người đăng ký</td>
                                 <td>Phòng kiểm tra</td>
                                 <td>Địa điểm kiểm tra</td>
                                 <td>Thời gian có mặt</td>
@@ -206,6 +207,7 @@ if (!empty($_GET['status'])) {
                                         <td><?php echo $row['gioi_tinh']; ?></td>
                                         <td><?php echo $row['dan_toc']; ?></td>
                                         <td><?php echo $row['so_bao_danh']; ?></td>
+                                        <td><?php echo $row['sdt_nguoi_dang_ky']; ?></td>
                                         <td><?php echo $row['phong_kiem_tra']; ?></td>
                                         <td><?php echo $row['dia_diem_kiem_tra']; ?></td>
                                         <td><?php echo $row['thoi_gian_co_mat']; ?></td>
@@ -250,7 +252,7 @@ if (!empty($_GET['status'])) {
     // Hàm xác nhận xóa trước khi xóa
     function confirmDelete(userId) {
         if (confirm("Bạn có chắc chắn muốn xóa bản ghi này không?")) {
-            window.location.href = 'nhap-du-lieu-tra-cuu.php.php?id=' + userId; // Chuyển hướng để xóa
+            window.location.href = 'nhap-du-lieu-tra-cuu.php?id=' + userId; // Chuyển hướng để xóa
         }
     }
     // Kiểm tra xem trang có chứa tham số "?status=succ" không
