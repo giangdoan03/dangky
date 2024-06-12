@@ -45,11 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($responseKeys["success"] && $responseKeys["score"] >= 0.5) {
         $ma_hoc_sinh = isset($_POST['ma_hoc_sinh']) ? $_POST['ma_hoc_sinh'] : '';
+        $sdt_nguoi_dang_ky = isset($_POST['sdt_nguoi_dang_ky']) ? $_POST['sdt_nguoi_dang_ky'] : '';
 
         // Prepare SQL statement
-        $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ?";
+        $sql = "SELECT * FROM tra_cuu WHERE ma_hoc_sinh = ? AND (sdt_nguoi_dang_ky = ? OR sdt_nguoi_dang_ky IS NULL)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $ma_hoc_sinh);
+        $stmt->bind_param("ss", $ma_hoc_sinh, $sdt_nguoi_dang_ky);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -210,12 +211,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3>TRA CỨU KẾT QUẢ</h3>
                 <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
-                        <input type="text" style="width: 400px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
+                        <input type="text" style="width: 220px; margin-right: 10px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
+                        <input type="text" style="width: 220px" class="form-control" placeholder="SĐT người đăng ký hồ sơ" id="sdt_nguoi_dang_ky" name="sdt_nguoi_dang_ky" required>
                         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                         <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
                     </div>
                     <div class="bl_error">
-                        <?php echo $mess_error_captcha; ?>
+                        <?php echo isset($mess_error_captcha) ? $mess_error_captcha : ''; ?>
                     </div>
                 </form>
             </div>
