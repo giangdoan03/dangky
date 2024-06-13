@@ -3,9 +3,9 @@
     --teal_hover: #1dceb5;
 }
 
-* {
-    font-family: 'Poppins', sans-serif;
-}
+/** {*/
+/*    font-family: 'Poppins', sans-serif;*/
+/*}*/
 
 /*.h-font {*/
 /*    font-family: 'Merienda', cursive;*/
@@ -112,7 +112,20 @@ td, th {
 a.item.active {
     font-weight: 900;
 }
-
+.action_tra_cuu p {
+    margin-bottom: 0;
+}
+.action_tra_cuu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 20px;
+}
 @media screen and (max-width: 991px) {
     #dashboard-menu {
         width: 100%;

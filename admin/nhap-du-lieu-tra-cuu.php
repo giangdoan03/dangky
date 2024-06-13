@@ -1,4 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 require('./inc/essentials.php');
 include('./inc/db_config.php');
 //include('./generate_pdf.php');
@@ -21,7 +26,6 @@ adminLogin();
 
 <?php
 // Lấy ID người dùng từ tham số URL
-
 if (isset($_GET['id'])) {
     $userId = $_GET['id'];
     // Truy vấn để xóa người dùng
@@ -89,6 +93,8 @@ $sql_data = "SELECT * FROM tra_cuu LIMIT $start_from, $records_per_page";
 $result_data = $conn->query($sql_data);
 
 
+$statusMsgDelAll = '';
+
 // Get status message
 if (!empty($_GET['status'])) {
     switch ($_GET['status']) {
@@ -110,17 +116,80 @@ if (!empty($_GET['status'])) {
     }
 }
 
+
+function deleteFilesInFolder($folderPath) {
+    $files = glob($folderPath . '/*'); // Lấy tất cả các file trong folder
+
+    foreach($files as $file) {
+        if(is_file($file)) {
+            unlink($file); // Xóa file
+        }
+    }
+}
+
+// Function to delete all data in a table
+
+// Function to delete all data in a table
+function deleteDataInTable($conn, $tableName) {
+    $sql = "DELETE FROM $tableName";
+    if ($conn->query($sql) === TRUE) {
+        return "Dữ liệu trong bảng $tableName đã được xóa thành công.";
+    } else {
+        return "Lỗi khi xóa dữ liệu: " . $conn->error;
+    }
+}
+// Khai báo biến $statusMsg và đặt giá trị ban đầu là rỗng
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_all'])) {
+    // Đường dẫn tương đối tới thư mục (tính từ thư mục gốc của dự án web)
+    $relativeFolderPath = 'dangky/admin/images/new_name';
+
+    // Lấy thông tin domain hiện tại
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $domain = $protocol . "://" . $_SERVER['HTTP_HOST'];
+
+    // Tạo đường dẫn URL đầy đủ
+    $folderUrl = $domain . '/' . $relativeFolderPath;
+
+    // Lấy đường dẫn vật lý tuyệt đối từ đường dẫn tương đối
+    $absoluteFolderPath = $_SERVER['DOCUMENT_ROOT'] . '/' . $relativeFolderPath;
+
+
+    // Kiểm tra nếu thư mục tồn tại
+    if (is_dir($absoluteFolderPath)) {
+        // Tên bảng MySQL
+        $tableName = 'tra_cuu';
+
+        // Xóa file trong folder
+        deleteFilesInFolder($absoluteFolderPath);
+
+        // Xóa dữ liệu trong bảng MySQL
+        deleteDataInTable($conn, $tableName);
+
+        // Set status type based on success or error
+        $statusTypeDelAll = 'Xóa thành công';
+        $type_mess = 'alert-success';
+    } else {
+        echo "Thư mục không tồn tại hoặc không hợp lệ: $absoluteFolderPath<br>";
+        $statusTypeDelAll = 'Đã có lỗi, vui lòng thử lại';
+        $type_mess = 'alert-danger';
+    }
+
+}
+
 ?>
 <div class="container-fluid" id="main-content">
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h3 class="mb-4">Nhập dữ liệu tra cứu</h3>
 
-            <div class="action-in">
+            <div class="action-in action_tra_cuu">
                 <p>Tổng: <strong><?php echo $total_records; ?></strong> thí sinh</p>
 
-                <div class="">
-
+                <div class="btn_reset">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <input type="submit" class="btn btn-outline-danger" onclick="confirmDelete()" name="delete_all" value="Xóa toàn bộ dữ liệu tra cứu">
+                    </form>
                 </div>
             </div>
             <!-- General settings section -->
@@ -130,17 +199,13 @@ if (!empty($_GET['status'])) {
                     <div id="successMessage"class="alert <?php echo $statusType; ?>"><?php echo $statusMsg; ?></div>
                 </div>
             <?php } ?>
+            <?php if (!empty($statusTypeDelAll)) { ?>
+                <div class="alert <?php echo $type_mess; ?>">
+                    <?php echo $statusTypeDelAll; ?>
+                </div>
+            <?php } ?>
             <div class="card border-0 shadow-sm mb-4" id="importFrm">
                 <div class="list-student card-body">
-                    <div class="list-pagination-top">
-                        <?php
-
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            $active_class = ($current_page == $i) ? "active" : "";
-                            echo "<a class='item $active_class' href='?page=$i'>$i</a>";
-                        }
-                        ?>
-                    </div>
                     <div class="row-one">
                         <div class="form-import">
                             <form action="import-data-search.php" method="post" enctype="multipart/form-data">
@@ -157,6 +222,15 @@ if (!empty($_GET['status'])) {
                             </form>
                         </div>
 
+                    </div>
+                    <div class="list-pagination-top">
+                        <?php
+
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            $active_class = ($current_page == $i) ? "active" : "";
+                            echo "<a class='item $active_class' href='?page=$i'>$i</a>";
+                        }
+                        ?>
                     </div>
                     <div class="row">
                         <table class="table table-triped table-bordered">
@@ -281,6 +355,13 @@ if (!empty($_GET['status'])) {
             successMessage.classList.remove("alert-success"); // Xóa lớp
             successMessage.style.display = "none"; // Hoặc ẩn thông báo
         }, 2000); // 1000ms = 2 giây
+    }
+    function confirmDelete() {
+        if (confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu không?")) {
+            console.log('34234234')
+            // Tải lại trang sau 2 giây
+
+        }
     }
 </script>
 <script>
