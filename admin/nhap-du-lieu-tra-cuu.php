@@ -169,6 +169,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_all'])) {
         // Set status type based on success or error
         $statusTypeDelAll = 'Xóa thành công';
         $type_mess = 'alert-success';
+        echo '<script>window.location.replace("' . $_SERVER['PHP_SELF'] . '");</script>';
+        exit;
     } else {
         echo "Thư mục không tồn tại hoặc không hợp lệ: $absoluteFolderPath<br>";
         $statusTypeDelAll = 'Đã có lỗi, vui lòng thử lại';
