@@ -80,9 +80,9 @@ if ($result->num_rows > 0) {
                 <div class="card-body">
                     <h2>Setting Page</h2>
                     <form method="POST">
-                        <input type="radio" name="status" value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>> Open <br>
-                        <input type="radio" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>> Maintenance <br>
-                        <input type="radio" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>> Expired <br>
+                        <input type="radio" name="status" value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>> Mở Form Đăng ký <br>
+                        <input type="radio" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>> Bảo trì hệ thống <br>
+                        <input type="radio" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>> Hết hạn đăng ký <br>
                         <br>
                         <input type="submit" value="Lưu trạng thái">
                     </form>
