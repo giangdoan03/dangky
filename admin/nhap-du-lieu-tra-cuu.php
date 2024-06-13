@@ -189,8 +189,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_all'])) {
                 <p>Tổng: <strong><?php echo $total_records; ?></strong> thí sinh</p>
 
                 <div class="btn_reset">
-                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <input type="submit" class="btn btn-outline-danger" onclick="confirmDelete()" name="delete_all" value="Xóa toàn bộ dữ liệu tra cứu">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return confirmDelete()">
+                        <input type="submit" class="btn btn-outline-danger" name="delete_all" value="Xóa toàn bộ dữ liệu tra cứu">
                     </form>
                 </div>
             </div>
@@ -359,11 +359,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_all'])) {
         }, 2000); // 1000ms = 2 giây
     }
     function confirmDelete() {
-        if (confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu không?")) {
-            console.log('34234234')
-            // Tải lại trang sau 2 giây
-
-        }
+        return confirm("Bạn có chắc chắn muốn xóa tất cả danh sách tra cứu điểm thi không?");
     }
 </script>
 <script>
