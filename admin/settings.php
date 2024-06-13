@@ -84,7 +84,7 @@ if ($result->num_rows > 0) {
                         <input type="radio" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>> Bảo trì hệ thống <br>
                         <input type="radio" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>> Hết hạn đăng ký <br>
                         <br>
-                        <input type="submit" value="Lưu trạng thái">
+                        <input type="submit" class="btn btn-outline-danger" value="Lưu trạng thái">
                     </form>
                 </div>
             </div>
