@@ -78,11 +78,28 @@ if ($result->num_rows > 0) {
             <!-- Shutdown section -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
-                    <h2>Setting Page</h2>
+                    <h5>Setting Page</h5>
                     <form method="POST">
-                        <input type="radio" name="status" value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>> Mở Form Đăng ký <br>
-                        <input type="radio" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>> Bảo trì hệ thống <br>
-                        <input type="radio" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>> Hết hạn đăng ký <br>
+                        <div class="mt-3">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="flexRadioDefault1" name="status" value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Mở Form Đăng ký
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="flexRadioDefault2" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Bảo trì hệ thống
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="flexRadioDefault3" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>>
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    Hết hạn đăng ký
+                                </label>
+                            </div>
+                        </div>
                         <br>
                         <input type="submit" class="btn btn-outline-danger" value="Lưu trạng thái">
                     </form>

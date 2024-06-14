@@ -10,7 +10,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload and Send Emails</title>
+    <title>Gửi mail trúng tuyển</title>
     <?php require('inc/links.php'); ?>
     <style>
         /* Biểu tượng loading spinner */
@@ -45,11 +45,11 @@ adminLogin();
 <div class="container-fluid" id="main-content">
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-            <h1>Upload and Send Emails</h1>
+            <h5>Upload file danh sách và gửi mail trúng tuyển</h5>
             <form id="uploadForm" enctype="multipart/form-data">
                 <input type="file" class="form-control" name="file" id="file" required>
                 <div class="action">
-                    <button type="submit" class="btn btn-outline-primary mt-3" id="uploadButton">Upload and Send Emails</button>
+                    <button type="submit" class="btn btn-outline-primary mt-3" id="uploadButton">Send Emails</button>
                     <div class="spinner" id="loadingIcon"></div> <!-- Spinner loading -->
                 </div>
             </form>
@@ -78,7 +78,7 @@ adminLogin();
         uploadButton.disabled = true; // Tắt nút upload để tránh gửi nhiều lần
         loadingIcon.style.display = 'inline-block'; // Hiển thị spinner loading
 
-        fetch('upload_data_email.php', {
+        fetch('upload_data_email_trung_tuyen.php', {
             method: 'POST',
             body: formData
         })
@@ -106,7 +106,7 @@ adminLogin();
 
         function sendNextBatch() {
             if (index < batches.length) {
-                fetch('send_batch.php', {
+                fetch('send_batch_trung_tuyen.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

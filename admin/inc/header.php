@@ -30,7 +30,10 @@
                         <a class="nav-link text-white" href="xu-ly-anh.php">Xử lý ảnh</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="gui-mail-hang-loat.php">Gửi email thông báo</a>
+                        <a class="nav-link text-white" href="gui-mail-thong-bao-so-bao-danh.php">Gửi email t/b SBD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="gui-mail-thong-bao-trung-tuyen.php">Gửi email t/b trúng tuyển</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="nhap-du-lieu-tra-cuu.php">Nhập dữ liệu tra cứu</a>
