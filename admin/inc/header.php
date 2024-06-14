@@ -33,10 +33,10 @@
                         <a class="nav-link text-white" href="gui-mail-thong-bao-so-bao-danh.php">Gửi email t/b SBD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="gui-mail-thong-bao-trung-tuyen.php">Gửi email t/b trúng tuyển</a>
+                        <a class="nav-link text-white" href="nhap-du-lieu-tra-cuu.php">Nhập dữ liệu tra cứu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="nhap-du-lieu-tra-cuu.php">Nhập dữ liệu tra cứu</a>
+                        <a class="nav-link text-white" href="gui-mail-thong-bao-trung-tuyen.php">Gửi email t/b trúng tuyển</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="user.php">Users</a>
