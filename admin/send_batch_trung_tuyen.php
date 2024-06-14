@@ -118,8 +118,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<table role=\"presentation\" style=\"width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;\">
 								<tr>
 									<td style=\"padding:0;width:100%;\" align=\"left\">
-										<p style=\"margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;\">
-											Copyright 2024 © Bản quyền thuộc về Trường THCS Thanh Xuân<br/><a href=\"http://www.example.com\" style=\"color:#ffffff;text-decoration:underline;\">Unsubscribe</a>
+										<p style=\"margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;text-align: center\">
+											Copyright 2024 © Bản quyền thuộc về Trường THCS Thanh Xuân
 										</p>
 									</td>
 									<td style=\"padding:0;width:50%;\" align=\"right\">
