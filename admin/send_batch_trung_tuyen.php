@@ -45,7 +45,6 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
                 $mail->Subject = $subject;
 
                 $body = replacePlaceholders($template, [
-                    'email' => $recipient['email'],
                     'ho_ten_dem' => $recipient['ho_ten_dem'],
                     'ten' => $recipient['ten'],
                     'ngay_sinh' => $recipient['ngay_sinh'],
