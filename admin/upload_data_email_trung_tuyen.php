@@ -19,12 +19,11 @@ function getRecipientsFromExcel($filePath) {
         $recipient = array_combine($header, $row);
         $recipients[] = [
             'email' => $recipient['email'],
-            'name' => $recipient['name'],
-            'dob' => $recipient['dob'],
-            'sbd' => $recipient['sbd'],
-            'room' => $recipient['room'],
-            'time' => $recipient['time'],
-            'address' => $recipient['address']
+            'ho_ten_dem' => $recipient['ho_ten_dem'],
+            'ten' => $recipient['ten'],
+            'ngay_sinh' => $recipient['ngay_sinh'],
+            'so_bao_danh' => $recipient['so_bao_danh'],
+            'tong_diem' => $recipient['tong_diem'],
         ];
     }
 

@@ -45,12 +45,12 @@ function sendBulkEmail($recipientsBatch, $template, $subject) {
                 $mail->Subject = $subject;
 
                 $body = replacePlaceholders($template, [
-                    'name' => $recipient['name'],
-                    'dob' => $recipient['dob'],
-                    'sbd' => $recipient['sbd'],
-                    'room' => $recipient['room'],
-                    'time' => $recipient['time'],
-                    'address' => $recipient['address']
+                    'email' => $recipient['email'],
+                    'ho_ten_dem' => $recipient['ho_ten_dem'],
+                    'ten' => $recipient['ten'],
+                    'ngay_sinh' => $recipient['ngay_sinh'],
+                    'so_bao_danh' => $recipient['so_bao_danh'],
+                    'tong_diem' => $recipient['tong_diem'],
                 ]);
 
                 $mail->Body = $body;
@@ -89,15 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<tr>
 									<td colspan=\"2\" style=\"padding:0;color:#153643;\">
 										<h1 style=\"font-size:18px;margin:0;font-family:Arial,sans-serif;text-align:center;margin-bottom: 20px;\">THÔNG BÁO TRÚNG TUYỂN VÀO LỚP 6 NĂM HỌC 2024-2025</h1>
-										<p style=\"margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;\">Trường THCS CLC Thanh Xuân chúc mừng em: NGUYỄN VĂN A</p>
+										<p style=\"margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;\">Trường THCS CLC Thanh Xuân chúc mừng em: {{ho_ten_dem}} {{ten}}</p>
 									</td>
 								</tr>
                                 <tr>
-                                    <td><p style=\"margin: 0;\">Ngày sinh: 01/01/2013</p></td>
-                                    <td><p style=\"margin: 0;\">Số báo danh: TX0000</p></td>
+                                    <td><p style=\"margin: 0;\">Ngày sinh: {{ngay_sinh}}</p></td>
+                                    <td><p style=\"margin: 0;\">Số báo danh: {{so_bao_danh}}</p></td>
                                 </tr>
                                 <tr>
-                                    <td colspan=\"2\"><p style=\"margin: 0;\"><strong>Đã trúng tuyển vào lớp 6 năm học 2024-2025 với tổng điểm: 60</strong></p></td>
+                                    <td colspan=\"2\"><p style=\"margin: 0;\"><strong>Đã trúng tuyển vào lớp 6 năm học 2024-2025 với tổng điểm: {{tong_diem}}</strong></p></td>
                                 </tr>
                                 <tr>
                                     <td colspan=\"2\">
