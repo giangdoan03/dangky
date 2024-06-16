@@ -82,8 +82,23 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $city = 'Localhost';
             } else {
                 // Lấy thông tin địa lý từ IP
-                $api_url = "http://ip-api.com/json/";
-                $location_info = json_decode(file_get_contents($api_url), true);
+                $api_url = "http://ip-api.com/json/$ip_address";
+                // Sử dụng cURL để lấy nội dung từ API
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $api_url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                $response = curl_exec($ch);
+                curl_close($ch);
+
+                if ($response === FALSE) {
+                    // Nếu không lấy được nội dung, báo lỗi
+                    die('Error occurred while trying to fetch the API.');
+                }
+
+                // Giải mã JSON
+                $location_info = json_decode($response, true);
+
+                // var_dump($location_info); die();
 
                 $country = $location_info['country'];
                 $region = $location_info['regionName'];
