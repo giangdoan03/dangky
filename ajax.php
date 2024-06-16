@@ -33,23 +33,23 @@ $dien_uu_tien = isset($_POST['dien_uu_tien']) ? mysqli_real_escape_string($conn,
 $diem_uu_tien = isset($_POST['diem_uu_tien']) ? mysqli_real_escape_string($conn, $_POST['diem_uu_tien']) : '';
 $tong_diem_xet_tuyen = isset($_POST['tong_diem_xet_tuyen']) ? mysqli_real_escape_string($conn, $_POST['tong_diem_xet_tuyen']) : '';
 
-$ho_ten_cha =  isset($_POST['hoten_cha']) ? mysqli_real_escape_string($conn, $_POST['hoten_cha']) : '';
+$ho_ten_cha = isset($_POST['hoten_cha']) ? mysqli_real_escape_string($conn, $_POST['hoten_cha']) : '';
 $sdt_cha = isset($_POST['sdt_cha']) ? mysqli_real_escape_string($conn, $_POST['sdt_cha']) : '';
 $ho_ten_me = isset($_POST['hoten_me']) ? mysqli_real_escape_string($conn, $_POST['hoten_me']) : '';
 $sdt_me = isset($_POST['sdt_me']) ? mysqli_real_escape_string($conn, $_POST['sdt_me']) : '';
-$hoten_nguoi_giamho = isset($_POST['hoten_nguoi_giam_ho'] ) ? mysqli_real_escape_string($conn, $_POST['hoten_nguoi_giam_ho']) : '';
+$hoten_nguoi_giamho = isset($_POST['hoten_nguoi_giam_ho']) ? mysqli_real_escape_string($conn, $_POST['hoten_nguoi_giam_ho']) : '';
 $sdt_nguoigiamho = isset($_POST['sdt_nguoigiamho']) ? mysqli_real_escape_string($conn, $_POST['sdt_nguoigiamho']) : '';
 $id_tinh = isset($_POST['province']) ? mysqli_real_escape_string($conn, $_POST['province']) : '';
-$id_huyen =  isset($_POST['district']) ? mysqli_real_escape_string($conn, $_POST['district']) : '';
+$id_huyen = isset($_POST['district']) ? mysqli_real_escape_string($conn, $_POST['district']) : '';
 $nguoi_khai_ho_so = isset($_POST['nguoi_khai_ho_so']) ? mysqli_real_escape_string($conn, $_POST['nguoi_khai_ho_so']) : '';
 $sdt_nguoi_khai_ho_so = isset($_POST['sdt_nguoi_khai_ho_so']) ? mysqli_real_escape_string($conn, $_POST['sdt_nguoi_khai_ho_so']) : '';
 $email_nguoi_khai_ho_so = isset($_POST['email_nguoi_khai_ho_so']) ? mysqli_real_escape_string($conn, $_POST['email_nguoi_khai_ho_so']) : '';
 $address = isset($_POST['address']) ? mysqli_real_escape_string($conn, $_POST['address']) : '';
 
-$anh_hb_tieu_hoc =  isset($_FILES['anh_hb_tieu_hoc']) ? mysqli_real_escape_string($conn, $_FILES['anh_hb_tieu_hoc']['size']) : '';
+$anh_hb_tieu_hoc = isset($_FILES['anh_hb_tieu_hoc']) ? mysqli_real_escape_string($conn, $_FILES['anh_hb_tieu_hoc']['size']) : '';
 $anh_giay_khai_sinh = isset($_FILES['anh_giay_khai_sinh']) ? mysqli_real_escape_string($conn, $_FILES['anh_giay_khai_sinh']['size']) : '';
 $anh_giay_xac_nhan_uu_tien = isset($_FILES['anh_giay_xac_nhan_uu_tien']) ? $_FILES['anh_giay_xac_nhan_uu_tien']['size'] : '';
-$anh_chan_dung =  isset($_FILES['anh_chan_dung']) ? mysqli_real_escape_string($conn, $_FILES['anh_chan_dung']['size']) : '';
+$anh_chan_dung = isset($_FILES['anh_chan_dung']) ? mysqli_real_escape_string($conn, $_FILES['anh_chan_dung']['size']) : '';
 $anh_cccd = isset($_FILES['anh_cccd']) ? mysqli_real_escape_string($conn, $_FILES['anh_cccd']['size']) : '';
 $anh_ban_ck_cu_tru = isset($_FILES['anh_ban_ck_cu_tru']) ? mysqli_real_escape_string($conn, $_FILES['anh_ban_ck_cu_tru']['size']) : '';
 $don_dk_du_tuyen = isset($_FILES['don_dk_du_tuyen']) ? mysqli_real_escape_string($conn, $_FILES['don_dk_du_tuyen']['size']) : '';
@@ -107,7 +107,8 @@ switch ($command) {
 
 }
 
-function validateTenDigitInteger($variable) {
+function validateTenDigitInteger($variable)
+{
     // Check if the variable is a string of exactly 10 digits
     if (preg_match('/^\d{10}$/', $variable)) {
         return true;
@@ -120,13 +121,13 @@ function validateTenDigitInteger($variable) {
 //
 //}
 
-function convertDate($date) {
+function convertDate($date)
+{
     // Kiểm tra định dạng yyyy-mm-dd
     if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
         $dateObject = new DateTime($date);
         return $dateObject->format('d/m/Y');
-    }
-    // Nếu không phải định dạng yyyy-mm-dd, giữ nguyên ngày
+    } // Nếu không phải định dạng yyyy-mm-dd, giữ nguyên ngày
     else {
         return $date;
     }
@@ -136,8 +137,7 @@ function convertDate($date) {
 if (isset($_POST['save_student'])) {
 
     if ($hoten_hocsinh == NULL || $ngaysinh == NULL || $ma_hocsinh == NULL || $noisinh == NULL || $gioitinh == NULL || $dantoc == NULL || $tenlop == NULL || $ten_truong == NULL || $dien_uu_tien == NULL || $diem_uu_tien == NULL || $tong_diem_xet_tuyen == NULL ||
-        $ho_ten_cha == NULL || $sdt_cha == NULL || $ho_ten_me == NULL || $sdt_me == NULL || $id_tinh == NULL || $id_huyen == NULL || $address == NULL || $anh_hb_tieu_hoc == 0 || $anh_giay_khai_sinh == 0 || $anh_chan_dung == 0 || $anh_cccd == 0 || $anh_ban_ck_cu_tru == 0 || $don_dk_du_tuyen == 0)
-    {
+        $ho_ten_cha == NULL || $sdt_cha == NULL || $ho_ten_me == NULL || $sdt_me == NULL || $id_tinh == NULL || $id_huyen == NULL || $address == NULL || $anh_hb_tieu_hoc == 0 || $anh_giay_khai_sinh == 0 || $anh_chan_dung == 0 || $anh_cccd == 0 || $anh_ban_ck_cu_tru == 0 || $don_dk_du_tuyen == 0) {
         $res = [
             'status' => 422,
             'message' => 'All fields are mandatory'
@@ -172,11 +172,21 @@ if (isset($_POST['save_student'])) {
 
         // Thực hiện chèn dữ liệu vào bảng học sinh
 
-        $query_hocsinh = "INSERT INTO hoc_sinh (hoten_hocsinh,ngaysinh,ma_hocsinh,noisinh,gioitinh,dantoc,tenlop,ten_truong,dien_uu_tien,diem_uu_tien,tong_diem_xet_tuyen,id_lop,thoi_gian) 
+        try {
+            $query_hocsinh = "INSERT INTO hoc_sinh (hoten_hocsinh,ngaysinh,ma_hocsinh,noisinh,gioitinh,dantoc,tenlop,ten_truong,dien_uu_tien,diem_uu_tien,tong_diem_xet_tuyen,id_lop,thoi_gian) 
     VALUES ('$hoten_hocsinh','$ngaysinh','$ma_hocsinh','$noisinh','$gioitinh','$dantoc','$tenlop','$ten_truong','$dien_uu_tien','$diem_uu_tien','$tong_diem_xet_tuyen','1','$thoi_gian')";
-        $query_run_hs = mysqli_query($conn, $query_hocsinh);
+            $query_run_hs = mysqli_query($conn, $query_hocsinh);
+        } catch (mysqli_sql_exception $e) {
+            // Bắt lỗi trùng lặp và hiển thị thông báo
+            if ($conn->errno == 1062) {
+                echo "Giá trị 'ma_hocsinh' đã tồn tại. Vui lòng nhập giá trị khác.";
+            } else {
+                echo "Lỗi khi chèn dữ liệu: " . $e->getMessage();
+            }
+        }
 
-        if($query_run_hs != '1') {
+
+        if ($query_run_hs != '1') {
             $res = [
                 'status' => 300,
                 'message' => 'Đã có lỗi trong quá trình gửi Form, Vui lòng thử lại'
@@ -190,7 +200,7 @@ if (isset($_POST['save_student'])) {
 
         $query_ph = "INSERT INTO phu_huynh (ho_ten_cha,sdt_cha,ho_ten_me,sdt_me,hoten_nguoi_giamho,sdt_nguoigiamho,id_tinh,id_huyen,nguoi_khai_ho_so,email_nguoi_khai_ho_so,sdt_nguoi_khai_ho_so,address,id_hocsinh) VALUES ('$ho_ten_cha','$sdt_cha','$ho_ten_me','$sdt_me','$hoten_nguoi_giamho','$sdt_nguoigiamho','$id_tinh','$id_huyen','$nguoi_khai_ho_so','$email_nguoi_khai_ho_so','$sdt_nguoi_khai_ho_so','$address','$id_hoc_sinh')";
         $query_run = mysqli_query($conn, $query_ph);
-        if($query_run != '1') {
+        if ($query_run != '1') {
             $res = [
                 'status' => 300,
                 'message' => 'Đã có lỗi trong quá trình gửi Form, Vui lòng thử lại'
@@ -220,7 +230,7 @@ if (isset($_POST['save_student'])) {
 
                 $sql_diem = "INSERT INTO diem (id_hocsinh,id_monhoc,diem_so,ten_lop,id_lop,ten_nhom,ten_mon_hoc) VALUES ('$id_hoc_sinh', '$id_monhoc', '$score', '$class', '$k2', '$ten_nhom','$subject')";
                 $query_diem = mysqli_query($conn, $sql_diem);
-                if($query_diem != '1') {
+                if ($query_diem != '1') {
                     $res = [
                         'status' => 300,
                         'message' => 'Đã có lỗi trong quá trình gửi Form, Vui lòng thử lại'
@@ -452,7 +462,6 @@ function sendDataGoogleSheet($values)
             'valueInputOption' => 'RAW'
         ];
         $result = $service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
-
 
 
         // Print the response
