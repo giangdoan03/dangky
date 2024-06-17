@@ -59,11 +59,14 @@
         </section>
         <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline circle active" id="top-link" aria-label="Go to top"><i class="icon-angle-up"></i></a>
     </div>
+    <?php
+    $namHienTai = date("Y");
+    ?>
     <div class="absolute-footer dark medium-text-center text-center">
         <div class="container clearfix">
             <div class="footer-primary pull-left">
                 <div class="copyright-footer">
-                    Copyright 2024 © Bản quyền thuộc về Trường THCS Thanh Xuân
+                    Copyright <?php echo $namHienTai; ?> © Bản quyền thuộc về Trường THCS Thanh Xuân
                 </div>
             </div>
         </div>
