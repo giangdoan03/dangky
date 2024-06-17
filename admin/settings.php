@@ -99,6 +99,12 @@ if ($result->num_rows > 0) {
                                     Hết hạn đăng ký
                                 </label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="flexRadioDefault4" name="status" value="Notification" <?php if ($current_status == 'Notification') echo 'checked'; ?>>
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    Thông báo điểm chuẩn
+                                </label>
+                            </div>
                         </div>
                         <br>
                         <input type="submit" class="btn btn-outline-danger" value="Lưu trạng thái">
