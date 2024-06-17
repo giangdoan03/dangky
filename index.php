@@ -165,14 +165,14 @@ if ($result->num_rows > 0) {
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" value="nam" type="radio" name="gioitinh"
-                                               id="flexRadioDefault1">
+                                               id="flexRadioDefault1" checked>
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Nam
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" value="nu" type="radio" name="gioitinh"
-                                               id="flexRadioDefault2" checked>
+                                               id="flexRadioDefault2">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Nữ
                                         </label>
@@ -981,9 +981,9 @@ if ($result->num_rows > 0) {
             }
         });
 
-        // $('#cam_ket').click(function () {
-        //     $('#button_dangKy').prop("disabled", !$("#cam_ket").prop("checked"));
-        // })
+        $('#cam_ket').click(function () {
+            $('#button_dangKy').prop("disabled", !$("#cam_ket").prop("checked"));
+        })
 
 
     });
@@ -992,33 +992,33 @@ if ($result->num_rows > 0) {
         return /^\d{10}$/.test(value);
     }
 
-    document.getElementById('ma_hocsinh').addEventListener('keyup', function () {
-        const inputValue = this.value;
-        const isValid = validateTenDigitInteger(inputValue);
+    // document.getElementById('ma_hocsinh').addEventListener('keyup', function () {
+    //     const inputValue = this.value;
+    //     const isValid = validateTenDigitInteger(inputValue);
+    //
+    //     const checkbox = document.getElementById('cam_ket');
+    //     const button = document.getElementById('button_dangKy');
+    //
+    //     checkbox.checked = isValid;
+    //     button.disabled = !isValid;
+    // });
 
-        const checkbox = document.getElementById('cam_ket');
-        const button = document.getElementById('button_dangKy');
-
-        checkbox.checked = isValid;
-        button.disabled = !isValid;
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var checkbox = document.getElementById("cam_ket");
-        var input = document.getElementById("button_dangKy");
-
-        // Biến điều kiện
-        var condition = true;
-
-        checkbox.addEventListener("change", function () {
-            // Kiểm tra trạng thái của checkbox và điều kiện
-            if (checkbox.checked && !check_unique) {
-                input.disabled = false;
-            } else {
-                input.disabled = true;
-            }
-        });
-    });
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     var checkbox = document.getElementById("cam_ket");
+    //     var input = document.getElementById("button_dangKy");
+    //
+    //     // Biến điều kiện
+    //     var condition = true;
+    //
+    //     checkbox.addEventListener("change", function () {
+    //         // Kiểm tra trạng thái của checkbox và điều kiện
+    //         if (checkbox.checked && !check_unique) {
+    //             input.disabled = false;
+    //         } else {
+    //             input.disabled = true;
+    //         }
+    //     });
+    // });
 
     function loadProvince() {
         $("#province").children().remove();
