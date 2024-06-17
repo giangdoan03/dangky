@@ -104,12 +104,15 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $region = $location_info['regionName'];
                 $city = $location_info['city'];
             }
-
-            // Lưu thông tin đăng nhập vào cơ sở dữ liệu
-            $sql = "INSERT INTO admin_logins (admin_id, login_time, ip_address, country, region, city) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("isssss", $admin_id, $login_time, $ip_address, $country, $region, $city);
-            $stmt->execute();
+            try {
+                // Lưu thông tin đăng nhập vào cơ sở dữ liệu
+                $sql = "INSERT INTO admin_logins (admin_id, login_time, ip_address, country, region, city) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("isssss", $admin_id, $login_time, $ip_address, $country, $region, $city);
+                $stmt->execute();
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
             $stmt->close();
 
 

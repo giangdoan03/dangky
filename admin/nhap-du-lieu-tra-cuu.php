@@ -142,7 +142,7 @@ function deleteDataInTable($conn, $tableName) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_all'])) {
     // Đường dẫn tương đối tới thư mục (tính từ thư mục gốc của dự án web)
-    $relativeFolderPath = 'dangky/admin/images/new_name';
+    $relativeFolderPath = 'admin/images/new_name';
 
     // Lấy thông tin domain hiện tại
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
