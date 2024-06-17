@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<table role=\"presentation\" style=\"width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;\">
 					<tr>
 						<td align=\"center\">
-							<img src=\"https://quantri.quangich.com/UploadImages/Config/thcsthanhxuan/Banner2.png\" alt=\"\" width=\"300\" style=\"height:auto;display:block;width: 100%;\" />
+							<img src=\"./images/bg_banner_tx.png\" alt=\"\" width=\"300\" style=\"height:auto;display:block;width: 100%;\" />
 						</td>
 					</tr>
 					<tr>
