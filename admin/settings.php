@@ -3,7 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 require('./inc/essentials.php');
 include('./inc/db_config.php');
 //include('./generate_pdf.php');
@@ -15,6 +14,7 @@ adminLogin();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['status'])) {
         $status = $_POST['status'];
+        $notificationMessage = isset($_POST['notificationMessage']) ? $conn->real_escape_string($_POST['notificationMessage']) : '';
 
         // Xóa hết dữ liệu cũ trong bảng
         $conn->query("UPDATE status_settings SET is_active = 0");
@@ -22,9 +22,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Cập nhật trạng thái mới
         $conn->query("UPDATE status_settings SET is_active = 1 WHERE status_name = '$status'");
 
-        $message_notify = 'Cập nhật trạng thái thành công.';
+        // Lưu hoặc cập nhật nội dung TinyMCE nếu trạng thái là "Notification"
+        if ($status == 'Notification') {
+            // Kiểm tra nếu bản ghi tồn tại
+            $result = $conn->query("SELECT id FROM notifications WHERE id = 1");
+            if ($result->num_rows > 0) {
+                // Cập nhật bản ghi nếu tồn tại
+                $conn->query("UPDATE notifications SET message = '$notificationMessage' WHERE id = 1");
+            } else {
+                // Thêm bản ghi mới nếu không tồn tại
+                $conn->query("INSERT INTO notifications (id, message) VALUES (1, '$notificationMessage')");
+            }
+        }
 
-//        echo "Cập nhật trạng thái thành công.";
+        $message_notify = 'Cập nhật trạng thái thành công.';
     }
 }
 
@@ -34,6 +45,14 @@ $result = $conn->query("SELECT status_name FROM status_settings WHERE is_active 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $current_status = $row['status_name'];
+}
+
+// Lấy nội dung thông báo hiện tại
+$notificationMessage = '';
+$result = $conn->query("SELECT message FROM notifications WHERE id = 1");
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $notificationMessage = $row['message'];
 }
 ?>
 <!doctype html>
@@ -45,6 +64,17 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel - Settings</title>
     <?php require('inc/links.php'); ?>
+    <style>
+        .top_bar {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .notification-div {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body class="bg-light">
 <?php require('inc/header.php'); ?>
@@ -55,59 +85,53 @@ if ($result->num_rows > 0) {
 
             <?php if (!empty($message_notify)) { ?>
                 <div class="col-xs-12">
-                    <div id="successMessage"class="alert alert-success"><?php echo $message_notify; ?></div>
+                    <div id="successMessage" class="alert alert-success"><?php echo $message_notify; ?></div>
                 </div>
             <?php } ?>
             <!-- General settings section -->
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h5 class="card-title m-0">General Settings</h5>
-                        <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#general-s">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </button>
-                    </div>
-                    <h6 class="card-subtitle mb-2 text-muted mb-1 fw-bold">Site Title</h6>
-                    <p class="card-text" id="site_title"></p>
-                    <h6 class="card-subtitle mb-2 text-muted mb-1 fw-bold">About us</h6>
-                    <p class="card-text" id="site_about">content</p>
-                </div>
-            </div>
-
             <!-- Shutdown section -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
-                    <h5>Setting Page</h5>
                     <form method="POST">
+                        <div class="top_bar">
+                            <h5>Setting Page</h5>
+                            <input type="submit" class="btn btn-outline-primary" value="Lưu trạng thái">
+                        </div>
                         <div class="mt-3">
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="flexRadioDefault1" name="status" value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>>
+                                <input type="radio" class="form-check-input" id="flexRadioDefault1" name="status"
+                                       value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Mở Form Đăng ký
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="flexRadioDefault2" name="status" value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>>
+                                <input type="radio" class="form-check-input" id="flexRadioDefault2" name="status"
+                                       value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>>
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Bảo trì hệ thống
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="flexRadioDefault3" name="status" value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>>
+                                <input type="radio" class="form-check-input" id="flexRadioDefault3" name="status"
+                                       value="Expired" <?php if ($current_status == 'Expired') echo 'checked'; ?>>
                                 <label class="form-check-label" for="flexRadioDefault3">
                                     Hết hạn đăng ký
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="flexRadioDefault4" name="status" value="Notification" <?php if ($current_status == 'Notification') echo 'checked'; ?>>
+                                <input type="radio" class="form-check-input" id="flexRadioDefault4" name="status"
+                                       value="Notification" <?php if ($current_status == 'Notification') echo 'checked'; ?>>
                                 <label class="form-check-label" for="flexRadioDefault4">
-                                    Thông báo điểm chuẩn
+                                    Thông báo
                                 </label>
                             </div>
                         </div>
-                        <br>
-                        <input type="submit" class="btn btn-outline-danger" value="Lưu trạng thái">
+                        <div class="notification-div" id="notificationDiv">
+                            <label for="notificationMessage">Nội dung thông báo:</label>
+                            <textarea class="form-control" id="notificationMessage" name="notificationMessage"
+                                      rows="3"><?php echo $notificationMessage; ?></textarea>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -116,8 +140,37 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 <?php require('inc/scripts.php'); ?>
+<script src="https://cdn.tiny.cloud/1/fsb5zl8xlbwzy1kkp690zztcwr3wnvtfmjhlp5q66vwz79s0/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const notificationRadio = document.getElementById('flexRadioDefault4');
+        const notificationDiv = document.getElementById('notificationDiv');
 
+        function toggleNotificationDiv() {
+            if (notificationRadio.checked) {
+                notificationDiv.style.display = 'block';
+            } else {
+                notificationDiv.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('input[name="status"]').forEach(function (radio) {
+            radio.addEventListener('change', toggleNotificationDiv);
+        });
+
+        // Initial check
+        toggleNotificationDiv();
+
+        // Initialize TinyMCE
+        tinymce.init({
+            selector: '#notificationMessage',
+            menubar: false,
+            plugins: 'link image code',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | alignleft aligncenter alignright | code',
+            tinycomments_mode: 'embedded',
+        });
+    });
 </script>
 </body>
 </html>
