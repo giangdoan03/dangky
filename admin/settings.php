@@ -97,7 +97,7 @@ if ($result->num_rows > 0) {
                             <h5>Setting Page</h5>
                             <input type="submit" class="btn btn-outline-primary" value="Lưu trạng thái">
                         </div>
-                        <div class="mt-3">
+                        <div class="mt-4 mb-4">
                             <div class="form-check form-check-inline">
                                 <input type="radio" class="form-check-input" id="flexRadioDefault1" name="status"
                                        value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>>
