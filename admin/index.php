@@ -75,42 +75,42 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         if (password_verify($admin_pass, $row["admin_pass"])) {
             //        session_start();
 
-            // Kiểm tra địa chỉ IP là localhost hay không
-            if ($ip_address == '127.0.0.1' || $ip_address == '::1') {
-                $country = 'Localhost';
-                $region = 'Localhost';
-                $city = 'Localhost';
-            } else {
-                // Lấy thông tin địa lý từ IP
-                $api_url = "http://ip-api.com/json/$ip_address";
-                // Sử dụng cURL để lấy nội dung từ API
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $api_url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                $response = curl_exec($ch);
-                curl_close($ch);
-
-                if ($response === FALSE) {
-                    // Nếu không lấy được nội dung, báo lỗi
-                    die('Error occurred while trying to fetch the API.');
-                }
-
-                // Giải mã JSON
-                $location_info = json_decode($response, true);
-
-                // var_dump($location_info); die();
-
-                $country = $location_info['country'];
-                $region = $location_info['regionName'];
-                $city = $location_info['city'];
-            }
-
-            // Lưu thông tin đăng nhập vào cơ sở dữ liệu
-            $sql = "INSERT INTO admin_logins (admin_id, login_time, ip_address, country, region, city) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("isssss", $admin_id, $login_time, $ip_address, $country, $region, $city);
-            $stmt->execute();
-            $stmt->close();
+//            // Kiểm tra địa chỉ IP là localhost hay không
+//            if ($ip_address == '127.0.0.1' || $ip_address == '::1') {
+//                $country = 'Localhost';
+//                $region = 'Localhost';
+//                $city = 'Localhost';
+//            } else {
+//                // Lấy thông tin địa lý từ IP
+//                $api_url = "http://ip-api.com/json/$ip_address";
+//                // Sử dụng cURL để lấy nội dung từ API
+//                $ch = curl_init();
+//                curl_setopt($ch, CURLOPT_URL, $api_url);
+//                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//                $response = curl_exec($ch);
+//                curl_close($ch);
+//
+//                if ($response === FALSE) {
+//                    // Nếu không lấy được nội dung, báo lỗi
+//                    die('Error occurred while trying to fetch the API.');
+//                }
+//
+//                // Giải mã JSON
+//                $location_info = json_decode($response, true);
+//
+//                // var_dump($location_info); die();
+//
+//                $country = $location_info['country'];
+//                $region = $location_info['regionName'];
+//                $city = $location_info['city'];
+//            }
+//
+//            // Lưu thông tin đăng nhập vào cơ sở dữ liệu
+//            $sql = "INSERT INTO admin_logins (admin_id, login_time, ip_address, country, region, city) VALUES (?, ?, ?, ?, ?, ?)";
+//            $stmt = $conn->prepare($sql);
+//            $stmt->bind_param("isssss", $admin_id, $login_time, $ip_address, $country, $region, $city);
+//            $stmt->execute();
+//            $stmt->close();
 
 
             $_SESSION['adminLogin'] = true;
