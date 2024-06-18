@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td colspan=\"2\"><p style=\"margin: 0;\"><strong>Mẫu phiếu kê khai thông tin học sinh: <a href=\"/Mẫu Phiếu kê khai thông tin học sinh.docx\" download>Tải file mẫu</a><span</strong></p></td>
+                                    <td colspan=\"2\"><p style=\"margin: 0;\"><strong>Mẫu phiếu kê khai thông tin học sinh: <a href=\"https://taophieu.thcsthanhxuan.vn/Mẫu Phiếu kê khai thông tin học sinh.docx\" download>Tải file mẫu</a><span</strong></p></td>
                                 </tr>
 							</table>
 						</td>
