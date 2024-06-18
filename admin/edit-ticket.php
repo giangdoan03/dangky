@@ -16,7 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $thoi_gian = isset($_POST['thoi_gian']) ? $_POST['thoi_gian'] : '';
     $dia_diem = isset($_POST['dia_diem']) ? $_POST['dia_diem'] : '';
     $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : '';
-    $ten_anh = isset($_POST['ten_anh']) ? $_POST['ten_anh'] : '';
+
+
+    // Xử lý file upload
+    $upload_dir = 'images/new_name/';
+    $ten_anh = '';
+    if (isset($_FILES['ten_anh']) && $_FILES['ten_anh']['error'] == 0) {
+        $ten_anh = basename($_FILES['ten_anh']['name']);
+        $upload_file = $upload_dir . $ten_anh;
+        if (!move_uploaded_file($_FILES['ten_anh']['tmp_name'], $upload_file)) {
+            echo "Error uploading file.";
+            exit;
+        }
+    }
 
     // Cập nhật thông tin học sinh trong cơ sở dữ liệu
     $sql = "UPDATE phieu_du_thi SET 
@@ -77,7 +89,7 @@ if ($result->num_rows > 0) {
     <div class="row">
         <div class="col-lg-10 ms-auto p-4 overflow-hidden">
             <h2>Edit Student</h2>
-            <form id="edit-form" style="margin-top: 30px; width: 1000px">
+            <form id="edit-form" style="margin-top: 30px; width: 1000px" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $ticket['id']; ?>">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Tên học sinh</span>
@@ -115,10 +127,16 @@ if ($result->num_rows > 0) {
                     <span class="input-group-text">Địa chỉ</span>
                     <input type="text" class="form-control" placeholder="Địa chỉ" name="dia_chi" value="<?php echo $ticket['dia_chi']; ?>" required>
                 </div>
+                <div class="image_avatar">
+                    <?php
+                    $path = IMAGE_AVATAR_NEW_NAME;
+                    ?>
+                    <img style="width: 150px; width: 200px" src="<?php echo $path.$ticket['ten_anh'];?>" alt="">
+                </div>
                 <small style="color: red">Nhập đúng tên ảnh upload trong file .zip</small>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Tên ảnh</span>
-                    <input type="text" class="form-control" placeholder="Tên ảnh" name="ten_anh" value="<?php echo $ticket['ten_anh']; ?>" required>
+<!--                    <span class="input-group-text">Tên ảnh</span>-->
+                    <input type="file" class="form-control" placeholder="Tên ảnh" name="ten_anh" required>
                 </div>
                 <a href="nhap-phieu.php">Danh sách phiếu</a>
                 <button type="submit" style="margin-left: 30px" class="btn btn-outline-secondary">Update</button>
@@ -130,13 +148,36 @@ if ($result->num_rows > 0) {
 <?php require('inc/scripts.php'); ?>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+    // $(document).ready(function() {
+    //     $('#edit-form').on('submit', function(e) {
+    //         e.preventDefault();
+    //         $.ajax({
+    //             url: '',
+    //             type: 'POST',
+    //             data: $(this).serialize(),
+    //             success: function(response) {
+    //                 alert('success', response);
+    //                 setTimeout(function() {
+    //                     window.location.reload();
+    //                 }, 1000); // 2 seconds
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 alert('Error: ' + xhr.responseText);
+    //             }
+    //         });
+    //     });
+    // });
+
     $(document).ready(function() {
         $('#edit-form').on('submit', function(e) {
             e.preventDefault();
+            var formData = new FormData(this);
             $.ajax({
                 url: '',
                 type: 'POST',
-                data: $(this).serialize(),
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function(response) {
                     alert('success', response);
                     setTimeout(function() {

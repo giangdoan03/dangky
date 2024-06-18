@@ -186,6 +186,7 @@ if (!empty($_GET['status'])) {
                             $result = $conn->query("SELECT * FROM phieu_du_thi");
                             if ($result->num_rows > 0) {
                                 $path = IMAGE_AVATAR_NEW_NAME;
+//                                echo $path;
                                 $i = 0;
                                 while ($row = $result->fetch_assoc()) {
                                     $i++;
