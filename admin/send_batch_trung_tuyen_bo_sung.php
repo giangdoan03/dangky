@@ -101,12 +101,12 @@ NĂM HỌC 2024-2025
                             </tr>
                             <tr>
                                 <td colspan=\"2\">
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>2.1 Thời gian nộp hồ sơ nhập học:</strong></p>
+                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>* Thời gian nộp hồ sơ nhập học:</strong></p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">CMHS làm thủ tục nhập học từ ngày 22/6/2024 đến hết ngày 23/6/2024, theo thời gian cụ thể như sau: </p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">+ Buổi sáng: từ 7h30 đến 11h00; </p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">+ Buổi chiều: từ 14h00 đến 17h00.</p>
 
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>2.2. Địa điểm làm thủ tục nhập học</strong></p>
+                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>* Địa điểm làm thủ tục nhập học</strong></p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">Tại văn phòng - Trường THCS Thanh Xuân, địa chỉ: 143 Nguyễn Tuân – Thanh Xuân Trung – Thanh Xuân - Hà Nội. </p>
 
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">Hồ sơ nhập học bao gồm:</p>
