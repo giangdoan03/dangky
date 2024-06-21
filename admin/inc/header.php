@@ -39,6 +39,9 @@
                         <a class="nav-link text-white" href="gui-mail-thong-bao-trung-tuyen.php">Gửi email t/b trúng tuyển</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="gui-mail-trung-tuyen-bo-sung.php">Gửi email trúng tuyển bổ sung</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="user.php">Users</a>
                     </li>
                     <li class="nav-item">
