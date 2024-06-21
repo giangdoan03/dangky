@@ -111,11 +111,12 @@ NĂM HỌC 2024-2025
 
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\">Hồ sơ nhập học bao gồm:</p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>+ Bản chính học bạ cấp Tiểu học.</strong></p>
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>+ Phiếu kê khai thông tin học sinh (theo mẫu của nhà trường) kèm theo minh chứng về nơi thường trú (Căn cước công dân, truy cập định danh điện tử VNeID mức 2 của Bố (mẹ) hoặc người giám hộ học sinh đăng ký tuyển sinh hoặc giấy xác nhận thường trú do cơ quan có thẩm quyền cấp để đối chiếu)</strong></p>
+                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>Phiếu kê khai thông tin học sinh (theo mẫu của nhà trường) kèm theo minh chứng về nơi thường trú (Căn cước công dân, truy cập định danh điện tử VNeID mức 2 của Bố (mẹ) hoặc người giám hộ học sinh đăng ký tuyển sinh hoặc giấy xác nhận thường trú do cơ quan có thẩm quyền cấp để đối chiếu)</strong></p>
                                     <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>+ Bản sao giấy khai sinh</strong></p>
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>+ Bản chính giấy xác nhận ưu tiên do cơ quan có thẩm quyền cấp (nếu có)</strong></p>
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>(Trong trường hợp hồ sơ nhập học không khớp với Hồ sơ dự tuyển và không đúng với các quy định trong kế hoạch tuyển sinh của nhà trường kết quả trúng tuyển sẽ bị hủy)</strong></p>
-                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>* Lưu ý: </strong> Sau thời gian trên nếu cha mẹ học sinh không đến làm thủ tục nhập học cho con thì coi như học sinh không có nhu cầu học tại trường THCS Thanh Xuân  năm học 2024 - 2025.</p>
+                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;\"><strong>+ Bản chính giấy xác nhận ưu tiên do cơ quan có thẩm quyền cấp (nếu có)
+                                        (Trong trường hợp hồ sơ nhập học không khớp với Hồ sơ dự tuyển và không đúng với các quy định trong kế hoạch tuyển sinh của nhà trường kết quả trúng tuyển sẽ bị hủy)
+                                    </strong></p>
+                                    <p style=\"margin:0;line-height:25px;font-family:Arial,sans-serif;font-style: italic;\"><strong>* Lưu ý: </strong> Sau thời gian trên nếu cha mẹ học sinh không đến làm thủ tục nhập học cho con thì coi như học sinh không có nhu cầu học tại trường THCS Thanh Xuân  năm học 2024 - 2025.</p>
 
                                 </td>
                             </tr>
