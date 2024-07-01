@@ -280,8 +280,8 @@ footer#footer {
 
 .menu_top li {
     background-color: #4e9e4d40;
-    padding: 3px 20px;
-    /*border: 1px solid #ccc;*/
+    padding: 3px 0;
+    /* border: 1px solid #ccc; */
     margin: 5px;
     text-align: center;
     cursor: pointer;

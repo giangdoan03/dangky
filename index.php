@@ -1174,23 +1174,25 @@ if ($result->num_rows > 0) {
     function setupImagePreview(inputFileId, imagePreviewId) {
         const inputFile = document.getElementById(inputFileId);
         const imagePreview = document.getElementById(imagePreviewId);
-
-        inputFile.addEventListener('change', function () {
-            const file = this.files[0];
-            if (file) {
-                if (file.type === 'application/pdf') {
-                    imagePreview.src = './images/common/default_filetype.png'
-                } else {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        imagePreview.src = e.target.result;
+        if (inputFile) {
+            inputFile.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    if (file.type === 'application/pdf') {
+                        imagePreview.src = './images/common/default_filetype.png'
+                    } else {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            imagePreview.src = e.target.result;
+                        }
+                        reader.readAsDataURL(file);
                     }
-                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.src = ''; // Clear the preview if no file selected
                 }
-            } else {
-                imagePreview.src = ''; // Clear the preview if no file selected
-            }
-        });
+            });
+        }
+
     }
 
     setupImagePreview('anh_hb_tieu_hoc', 'output-1');
@@ -1288,17 +1290,28 @@ if ($result->num_rows > 0) {
     });
 
     function get_total_score() {
-        let diem_quy_doi_1 = document.getElementById('diem_quy_doi_1').value;
-        let diem_quy_doi_2 = document.getElementById('diem_quy_doi_2').value;
-        let diem_quy_doi_3 = document.getElementById('diem_quy_doi_3').value;
-        let diem_quy_doi_4 = document.getElementById('diem_quy_doi_4').value;
-        let diem_quy_doi_5 = document.getElementById('diem_quy_doi_5').value;
+        let diem_quy_doi_1 = document.getElementById('diem_quy_doi_1');
+        let diem_quy_doi_2 = document.getElementById('diem_quy_doi_2');
+        let diem_quy_doi_3 = document.getElementById('diem_quy_doi_3');
+        let diem_quy_doi_4 = document.getElementById('diem_quy_doi_4');
+        let diem_quy_doi_5 = document.getElementById('diem_quy_doi_5');
+        let diem_uu_tien = document.getElementById('diem_uu_tien');
 
-        let diem_uu_tien = document.getElementById('diem_uu_tien').value;
+        console.log(diem_quy_doi_1); // Kiểm tra xem phần tử có được tìm thấy không
+        console.log(diem_quy_doi_2);
+        console.log(diem_quy_doi_3);
+        console.log(diem_quy_doi_4);
+        console.log(diem_quy_doi_5);
+        console.log(diem_uu_tien);
 
-        let tong_diem_quy_doi = Number(diem_quy_doi_1) + Number(diem_quy_doi_2) + Number(diem_quy_doi_3) + Number(diem_quy_doi_4) + Number(diem_quy_doi_5) + Number(diem_uu_tien);
-        document.getElementById('tong_diem_xet_tuyen').value = tong_diem_quy_doi;
+        if (diem_quy_doi_1 && diem_quy_doi_2 && diem_quy_doi_3 && diem_quy_doi_4 && diem_quy_doi_5 && diem_uu_tien) {
+            let tong_diem_quy_doi = Number(diem_quy_doi_1.value || 0) + Number(diem_quy_doi_2.value || 0) + Number(diem_quy_doi_3.value || 0) + Number(diem_quy_doi_4.value || 0) + Number(diem_quy_doi_5.value || 0) + Number(diem_uu_tien.value || 0);
+            document.getElementById('tong_diem_xet_tuyen').value = tong_diem_quy_doi;
+        } else {
+            console.error('Không tìm thấy các phần tử quy đổi điểm trong DOM.');
+        }
     }
+
 
     window.onload = function () {
         get_total_score();
