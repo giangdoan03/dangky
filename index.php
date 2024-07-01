@@ -21,6 +21,7 @@
         .diem_chuan {
             min-height: 500px;
             padding: 50px 0;
+            padding-top: 5px;
         }
         .diem_chuan .container p {
             margin-bottom: 8px;

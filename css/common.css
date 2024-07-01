@@ -263,6 +263,7 @@ footer#footer {
     min-height: 500px;
     background: #ffffff;
     padding: 30px;
+    margin-top: 20px;
 }
 
 .page_content .wrapper {
