@@ -19,10 +19,10 @@
                 <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
             </li>
             <li class="menu-item" data-index="1">
-                <a href="#">Thông tin tuyển sinh</a>
+                <a href="<?php echo base_url(); ?>thong-tin-tuyen-sinh.php">Thông tin tuyển sinh</a>
             </li>
             <li class="menu-item" data-index="2">
-                <a href="#">Đăng ký tuyển sinh</a>
+                <a href="<?php echo base_url(); ?>dang-ky-tuyen-sinh.php">Đăng ký tuyển sinh</a>
             </li>
             <li class="menu-item" data-index="3">
                 <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
