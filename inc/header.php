@@ -15,66 +15,45 @@
             </div>
         </div>
         <ul class="menu_top desktop-menu" id="menu">
-            <li class="menu-item" data-index="0">
-                <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
+            <li class="menu-item">
+                <a class="nav-link" href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
             </li>
-            <li class="menu-item" data-index="1">
-                <a href="<?php echo base_url(); ?>thong-tin-tuyen-sinh.php">Thông tin tuyển sinh</a>
+            <li class="menu-item">
+                <a class="nav-link" href="thong-tin-tuyen-sinh.php">Thông tin tuyển sinh</a>
             </li>
-            <li class="menu-item" data-index="2">
-                <a href="<?php echo base_url(); ?>dang-ky-tuyen-sinh.php">Đăng ký tuyển sinh</a>
+            <li class="menu-item">
+                <a class="nav-link" href="dang-ky-tuyen-sinh.php">Đăng ký tuyển sinh</a>
             </li>
-            <li class="menu-item" data-index="3">
-                <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
+            <li class="menu-item">
+                <a class="nav-link" href="tra-cuu-diem.php">Tra cứu kết quả</a>
             </li>
-            <li class="menu-item" data-index="4">
-                <a href="#">Hướng dẫn đăng ký</a>
+            <li class="menu-item">
+                <a class="nav-link" href="huong-dan-dang-ky.php">Hướng dẫn đăng ký</a>
             </li>
         </ul>
         <!-- Icon cho mobile -->
         <div class="mobile-icon" onclick="toggleMobileMenu()">☰</div>
     </div>
 </div>
-
 <script type="text/javascript">
     function toggleMobileMenu() {
         var menu = document.querySelector('.menu_top');
         menu.classList.toggle('show-mobile-menu');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuItems = document.querySelectorAll('#menu li');
+    // Get the current URL of the page
+    var currentUrl = window.location.href;
 
-        // Function to set active item based on stored index
-        function setActiveItem(index) {
-            menuItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            if (index !== null && index !== undefined) {
-                menuItems[index].classList.add('active');
-            }
+    // Get all menu items
+    var menuItems = document.querySelectorAll('#menu .menu-item .nav-link');
+
+    // Loop through each menu item
+    menuItems.forEach(function(menuItem) {
+        // Check if the menu item's href matches the current URL
+        if (menuItem.href === currentUrl) {
+            // Add the 'active' class to the matching menu item
+            menuItem.classList.add('active');
         }
-
-        // Get the stored active index from LocalStorage
-        const storedIndex = localStorage.getItem('activeMenuItem');
-        if (storedIndex) {
-            setActiveItem(parseInt(storedIndex, 10));
-        }
-
-        // Add click event to each menu item
-        menuItems.forEach((item, index) => {
-            item.addEventListener('click', function() {
-                // Remove active class from all items
-                menuItems.forEach(menuItem => {
-                    menuItem.classList.remove('active');
-                });
-
-                // Add active class to the clicked item
-                item.classList.add('active');
-
-                // Store the active index in LocalStorage
-                localStorage.setItem('activeMenuItem', index);
-            });
-        });
     });
+
 </script>

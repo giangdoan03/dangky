@@ -287,9 +287,10 @@ footer#footer {
     justify-content: flex-end;
 }
 
-.menu_top li {
+.menu_top li a {
+    display: inline-block;
     background-color: #4e9e4d40;
-    padding: 3px 0;
+    padding: 3px 8px;
     /* border: 1px solid #ccc; */
     margin: 5px;
     text-align: center;
@@ -297,8 +298,11 @@ footer#footer {
     transition: background-color 0.3s;
     border-radius: 3px;
 }
+.menu_top li a.active {
+    background: #cccccc;
+}
 
-.menu_top li:hover {
+.menu_top li a:hover {
     background-color: #ddd;
 }
 

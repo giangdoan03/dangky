@@ -23,16 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->query("UPDATE status_settings SET is_active = 1 WHERE status_name = '$status'");
 
         // Lưu hoặc cập nhật nội dung TinyMCE nếu trạng thái là "Notification"
-        if ($status == 'Notification') {
-            // Kiểm tra nếu bản ghi tồn tại
-            $result = $conn->query("SELECT id FROM notifications WHERE id = 1");
-            if ($result->num_rows > 0) {
-                // Cập nhật bản ghi nếu tồn tại
-                $conn->query("UPDATE notifications SET message = '$notificationMessage' WHERE id = 1");
-            } else {
-                // Thêm bản ghi mới nếu không tồn tại
-                $conn->query("INSERT INTO notifications (id, message) VALUES (1, '$notificationMessage')");
-            }
+        // Kiểm tra nếu bản ghi tồn tại
+        $result = $conn->query("SELECT id FROM notifications WHERE id = 1");
+        if ($result->num_rows > 0) {
+            // Cập nhật bản ghi nếu tồn tại
+            $conn->query("UPDATE notifications SET message = '$notificationMessage' WHERE id = 1");
+        } else {
+            // Thêm bản ghi mới nếu không tồn tại
+            $conn->query("INSERT INTO notifications (id, message) VALUES (1, '$notificationMessage')");
         }
 
         $message_notify = 'Cập nhật trạng thái thành công.';
@@ -70,10 +68,10 @@ if ($result->num_rows > 0) {
             justify-content: space-between;
         }
 
-        .notification-div {
-            display: none;
-            margin-top: 10px;
-        }
+        /*.notification-div {*/
+        /*    display: none;*/
+        /*    margin-top: 10px;*/
+        /*}*/
     </style>
 </head>
 <body class="bg-light">
@@ -94,7 +92,7 @@ if ($result->num_rows > 0) {
                 <div class="card-body">
                     <form method="POST">
                         <div class="top_bar">
-                            <h5>Setting Page</h5>
+                            <h5>Cài đặt trang đăng ký tuyển sinh</h5>
                             <input type="submit" class="btn btn-outline-primary" value="Lưu trạng thái">
                         </div>
                         <div class="mt-4 mb-4">
@@ -119,16 +117,10 @@ if ($result->num_rows > 0) {
                                     Hết hạn đăng ký
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="flexRadioDefault4" name="status"
-                                       value="Notification" <?php if ($current_status == 'Notification') echo 'checked'; ?>>
-                                <label class="form-check-label" for="flexRadioDefault4">
-                                    Thông báo
-                                </label>
-                            </div>
                         </div>
+                        <hr>
                         <div class="notification-div" id="notificationDiv">
-                            <label for="notificationMessage">Nội dung thông báo:</label>
+                            <h5>Cài đặt trang thông báo tuyển sinh</h5>
                             <textarea class="form-control" id="notificationMessage" name="notificationMessage"
                                       rows="3"><?php echo $notificationMessage; ?></textarea>
                         </div>
@@ -144,23 +136,23 @@ if ($result->num_rows > 0) {
         referrerpolicy="origin"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const notificationRadio = document.getElementById('flexRadioDefault4');
-        const notificationDiv = document.getElementById('notificationDiv');
-
-        function toggleNotificationDiv() {
-            if (notificationRadio.checked) {
-                notificationDiv.style.display = 'block';
-            } else {
-                notificationDiv.style.display = 'none';
-            }
-        }
-
-        document.querySelectorAll('input[name="status"]').forEach(function (radio) {
-            radio.addEventListener('change', toggleNotificationDiv);
-        });
+        // const notificationRadio = document.getElementById('flexRadioDefault4');
+        // const notificationDiv = document.getElementById('notificationDiv');
+        //
+        // function toggleNotificationDiv() {
+        //     if (notificationRadio.checked) {
+        //         notificationDiv.style.display = 'block';
+        //     } else {
+        //         notificationDiv.style.display = 'none';
+        //     }
+        // }
+        //
+        // document.querySelectorAll('input[name="status"]').forEach(function (radio) {
+        //     radio.addEventListener('change', toggleNotificationDiv);
+        // });
 
         // Initial check
-        toggleNotificationDiv();
+        // toggleNotificationDiv();
 
         // Initialize TinyMCE
         tinymce.init({

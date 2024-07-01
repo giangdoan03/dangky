@@ -923,7 +923,38 @@ if ($result->num_rows > 0) {
         <div style="color: red; padding: 10px; text-align: center; height: 500px">
             <h2>Hết hạn đăng ký hồ sơ</h2>
         </div>
+    <?php } else if ($current_status == 'Notification') {?>
+        <div class="diem_chuan">
+            <div class="container">
+                <div class="page_content">
+                    <?php echo $notificationMessage; ?>
+                </div>
+            </div>
+        </div>
     <?php } ?>
+    <?php
+
+
+    // Hiển thị nội dung tương ứng với trạng thái hiện tại
+//    switch ($current_status) {
+//        case 'Open':
+//            echo '<div style="background-color: green; padding: 10px;">Đang mở</div>';
+//            $status_display = 'Open';
+//            break;
+//        case 'Maintenance':
+//            echo '<div style="background-color: yellow; padding: 10px;">Bảo trì</div>';
+//            $status_display = 'Maintenance';
+//            break;
+//        case 'Expired':
+//            echo '<div style="background-color: red; padding: 10px;">Hết hạn</div>';
+//            $status_display = 'Expired';
+//            break;
+//        default:
+//            echo '<div style="background-color: gray; padding: 10px;">Chưa được thiết lập</div>';
+//            $status_display = 'Open';
+//            break;
+//    }
+//    ?>
 
 </div>
 
