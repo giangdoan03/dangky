@@ -96,43 +96,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <div class="page-register">
-    <div class="bl_header">
-        <div class="container">
-            <div class="header">
-                <div class="banner">
-                    <div class="logo">
-                        <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h1>TRƯỜNG THCS THANH XUÂN</h1>
-                        <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
-                    </div>
-                </div>
-                <div class="bg_truong">
-                    <img src="./images/common/anh_2.png" alt="">
-                </div>
-            </div>
-            <ul class="menu_top desktop-menu">
-                <li class="menu-item">
-                    <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                </li>
-                <li class="menu-item">
-                    <a href="#">Thông tin tuyển sinh</a>
-                </li>
-                <li class="menu-item">
-                    <a href="#">Đăng ký tuyển sinh</a>
-                </li>
-                <li class="menu-item">
-                    <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
-                </li>
-                <li class="menu-item">
-                    <a href="#">Hướng dẫn đăng ký</a>
-                </li>
-            </ul>
-            <!-- Icon cho mobile -->
-            <div class="mobile-icon" onclick="toggleMobileMenu()">☰</div>
-        </div>
-    </div>
+    <?php require('inc/header.php'); ?>
 
 
     <?php if ($current_status == 'Open') { ?>
@@ -1015,10 +979,6 @@ if ($result->num_rows > 0) {
 <!-- Include Bootstrap Datepicker Vietnamese localization -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.vi.min.js"></script>
 <script type="text/javascript">
-    function toggleMobileMenu() {
-        var menu = document.querySelector('.menu_top');
-        menu.classList.toggle('show-mobile-menu');
-    }
 
     $(document).ready(function () {
         $('#datepicker').datepicker({

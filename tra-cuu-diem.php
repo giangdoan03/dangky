@@ -190,29 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="bg-light">
 
 <div class="page-register">
-    <div class="bl_header">
-        <div class="container">
-            <div class="header">
-                <div class="banner">
-                    <div class="logo">
-                        <img src="./images/common/logo_thcs_thanh_xuan.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h1>TRƯỜNG THCS THANH XUÂN</h1>
-                        <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
-                    </div>
-                </div>
-                <div class="menu">
-                    <div class="menu-item">
-                        <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php require('inc/header.php'); ?>
     <div class="page_content">
         <div class="container">
             <div class="wrapper" style="text-align: center">

@@ -210,6 +210,11 @@ footer#footer {
     color: #ffffff;
 }
 
+.menu_top li.active {
+    background-color: #f1f1f1; /* Ví dụ: màu nền khi active */
+    /* Thêm các style khác tùy theo thiết kế của bạn */
+}
+
 #col-525487658 .col-inner a {
     text-decoration: none;
     color: #000000;
