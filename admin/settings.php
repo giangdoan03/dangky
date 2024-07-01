@@ -119,11 +119,30 @@ if ($result->num_rows > 0) {
                             </div>
                         </div>
                         <hr>
+                        <div class="tra_cuu">
+                            <h5>Cài đặt trang tra cứu</h5>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="tra_cuu_1" name="status"
+                                       value="Open" <?php if ($current_status == 'Open') echo 'checked'; ?>>
+                                <label class="form-check-label" for="tra_cuu_1">
+                                    Tra cứu số báo danh
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="tra_cuu_2" name="status"
+                                       value="Maintenance" <?php if ($current_status == 'Maintenance') echo 'checked'; ?>>
+                                <label class="form-check-label" for="tra_cuu_2">
+                                    Tra cứu điểm thi
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="notification-div" id="notificationDiv">
                             <h5>Cài đặt trang thông báo tuyển sinh</h5>
                             <textarea class="form-control" id="notificationMessage" name="notificationMessage"
                                       rows="3"><?php echo $notificationMessage; ?></textarea>
                         </div>
+
                     </form>
                 </div>
             </div>
