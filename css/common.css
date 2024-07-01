@@ -261,6 +261,8 @@ footer#footer {
 
 .page_content {
     min-height: 500px;
+    background: #ffffff;
+    padding: 30px;
 }
 
 .page_content .wrapper {

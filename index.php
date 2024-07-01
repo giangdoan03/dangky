@@ -925,22 +925,9 @@ if ($result->num_rows > 0) {
     <?php } else if ($current_status == 'Notification') {?>
         <div class="diem_chuan">
             <div class="container">
-<!--                <h2 class="title" style="text-align: center">THÔNG BÁO ĐIỂM TRÚNG TUYỂN VÀO LỚP 6 NĂM HỌC 2024-2025</h2>-->
-<!--                <div class="box_content">-->
-<!--                    <p> Hội đồng tuyển sinh Trường THCS CLC Thanh Xuân thông báo điểm trúng tuyển vào lớp 6 năm học 2024 - 2025 là:  <strong>51.40 điểm</strong></p>-->
-<!--                    <p>* <strong>Lưu ý:</strong> Các trường hợp phúc khảo điểm kiểm tra phụ huynh học sinh vào mục <strong>Tra cứu thông tin thí sinh – Tra cứu kết quả</strong> để xem điểm.</p>-->
-<!--                    <p>* Thời gian nộp hồ sơ nhập học:  <strong>ngày 19, 20/06/2024 (Sáng từ 7h30 đến 11h00, Chiều từ 14h00 đến 17h00)</strong></p>-->
-<!--                    <p>* Hồ sơ nhập học bao gồm:</p>-->
-<!--                    <p><strong>+ Bản chính học bạ cấp Tiểu học.</strong></p>-->
-<!--                    <p><strong> + Phiếu kê khai thông tin học sinh (theo mẫu của nhà trường) kèm theo minh chứng về nơi thường trú (Căn cước công dân, truy cập định danh điện tử VNeID mức 2 của Bố (mẹ) hoặc người giám hộ học sinh đăng ký tuyển sinh hoặc giấy xác nhận thường trú do cơ quan có thẩm quyền cấp để đối chiếu)</strong></p>-->
-<!--                    <p><strong>+ Bản sao giấy khai sinh</strong></p>-->
-<!--                    <p><strong>+ Bản chính giấy xác nhận ưu tiên do cơ quan có thẩm quyền cấp (nếu có)</strong></p>-->
-<!--                    <p><strong>(Trong trường hợp hồ sơ nhập học không khớp với Hồ sơ dự tuyển và không đúng với các quy định trong Kế hoạch tuyển sinh của nhà trường kết quả trúng tuyển sẽ bị hủy)</strong></p>-->
-<!--                </div>-->
-
-                <?php echo $notificationMessage; ?>
-
-
+                <div class="page_content">
+                    <?php echo $notificationMessage; ?>
+                </div>
             </div>
         </div>
     <?php } ?>
