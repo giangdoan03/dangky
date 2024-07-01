@@ -112,23 +112,25 @@ if ($result->num_rows > 0) {
                     <img src="./images/common/anh_2.png" alt="">
                 </div>
             </div>
-            <div class="menu">
-                <div class="menu-item">
+            <ul class="menu_top desktop-menu">
+                <li class="menu-item">
                     <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                </div>
-                <div class="menu-item">
+                </li>
+                <li class="menu-item">
                     <a href="#">Thông tin tuyển sinh</a>
-                </div>
-                <div class="menu-item">
+                </li>
+                <li class="menu-item">
                     <a href="#">Đăng ký tuyển sinh</a>
-                </div>
-                <div class="menu-item">
+                </li>
+                <li class="menu-item">
                     <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
-                </div>
-                <div class="menu-item">
+                </li>
+                <li class="menu-item">
                     <a href="#">Hướng dẫn đăng ký</a>
-                </div>
-            </div>
+                </li>
+            </ul>
+            <!-- Icon cho mobile -->
+            <div class="mobile-icon" onclick="toggleMobileMenu()">☰</div>
         </div>
     </div>
 
@@ -1013,6 +1015,11 @@ if ($result->num_rows > 0) {
 <!-- Include Bootstrap Datepicker Vietnamese localization -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.vi.min.js"></script>
 <script type="text/javascript">
+    function toggleMobileMenu() {
+        var menu = document.querySelector('.menu_top');
+        menu.classList.toggle('show-mobile-menu');
+    }
+
     $(document).ready(function () {
         $('#datepicker').datepicker({
             format: 'dd/mm/yyyy',

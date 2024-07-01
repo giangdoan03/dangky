@@ -37,18 +37,22 @@
     top: 80px;
     right: 25px;
 }
+
 .text-red {
     color: red;
 }
+
 .register-content {
     background: #ffffff;
     padding: 15px;
     border-radius: 10px;
     margin: 10px 0;
 }
+
 .img-preview img {
     display: none;
 }
+
 .img-preview img.active {
     display: block;
     width: 100px;
@@ -60,6 +64,7 @@
     margin: 0 auto;
     margin-top: 40px;
 }
+
 #box-title-register {
     display: block;
 }
@@ -75,27 +80,33 @@
 #register-content.inactive {
     display: none;
 }
+
 .banner {
     display: flex;
     align-items: center;
     margin: 20px 0;
 }
+
 .banner h1 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 0;
 }
+
 .banner .logo {
     width: 100px;
 }
+
 .banner .text p {
     margin-bottom: 0;
     font-size: 14px;
     text-align: center;
 }
+
 .banner .text {
     padding-left: 10px;
 }
+
 .banner .logo img {
     width: 100%;
 }
@@ -122,75 +133,92 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .header .menu {
     display: flex;
 }
+
 .menu-item {
     margin-right: 20px;
 }
+
 .menu-item a {
     text-decoration: none;
     font-size: 18px;
     color: #000000;
-    background: #4e9e4d40;
+    /* background: #4e9e4d40; */
     padding: 5px 10px;
     border-radius: 3px;
 }
-.bl_header .menu-item:last-child {
-    margin-right: 0;
-}
+
+/*.bl_header .menu-item:last-child {*/
+/*    margin-right: 0;*/
+/*}*/
+
 .bl_header {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
     background-color: #e9ffea;
     padding-bottom: 10px;
 }
+
 .bg_truong {
     height: 120px;
     width: 500px;
 }
+
 .bg_truong img {
     width: 100%;
     height: 100%;
     border-radius: 20px;
 }
+
 .bl_header .menu {
     display: flex;
     justify-content: flex-end;
     margin: 10px 0;
 }
+
 #section_855073435 {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
 .section {
     min-height: auto;
     padding: 30px 0;
     position: relative;
     width: 100%;
 }
-.col-inner h2, .col-inner h3{
+
+.col-inner h2, .col-inner h3 {
     font-size: 20px;
 }
+
 footer#footer {
     background: #028900;
     color: #ffffff;
 }
+
 .absolute-footer {
     background-color: #5b5b5b;
 }
+
 .copyright-footer {
     padding: 10px 0;
     text-align: center;
     color: #ffffff;
 }
+
 #col-525487658 .col-inner a {
     text-decoration: none;
     color: #ffffff;
 }
+
 .section-content .large-6 {
     flex-basis: 50%;
     max-width: 50%;
 }
+
 .section-content .menu-item a {
     text-decoration: none;
     color: #ffffff;
@@ -204,6 +232,7 @@ footer#footer {
     justify-content: space-evenly;
     margin-top: 30px;
 }
+
 .result tbody, .result td, .result tfoot, .result th, .result thead, .result tr {
     border-color: inherit;
     border-style: solid;
@@ -212,32 +241,106 @@ footer#footer {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
 .student-info h2 {
     font-size: 20px;
     text-align: center;
     margin-top: 30px;
 
 }
+
 .table_phuc_khao {
 
 }
+
 .page_content {
     min-height: 500px;
 }
+
 .page_content .wrapper {
     margin-top: 30px;
 }
+
 .bl_error {
     margin-top: 30px;
 }
+
 .p_dia_chi {
     text-align: center;
 }
+
+/* Style cho menu */
+.menu_top {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_top li {
+    background-color: #4e9e4d40;
+    padding: 10px 20px;
+    /*border: 1px solid #ccc;*/
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 3px;
+}
+
+.menu_top li:hover {
+    background-color: #ddd;
+}
+
+/* Ẩn item trên mobile */
+.menu_top li.hide-on-mobile {
+    display: none;
+}
+
+/* Style cho icon mobile */
+.mobile-icon {
+    display: none; /* Ẩn icon trên desktop */
+    cursor: pointer;
+}
+
+.show-mobile-menu .menu {
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    /* Hiển thị icon trên mobile */
+    .menu_top {
+        flex-direction: column;
+    }
+
+    .menu_top li.hide-on-mobile {
+        display: block;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-icon {
+        display: block; /* Hiển thị icon trên mobile */
+    }
+
+    .show-mobile-menu {
+        display: block;
+    }
+
+    .bg_truong {
+        width: 100%;
+    }
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
 }
+
 @media (max-width: 767px) {
     .table-container {
         overflow-x: auto;
@@ -254,45 +357,58 @@ footer#footer {
     .table-container table table td {
         width: 100px !important;
     }
+
     #row-1982555116 {
         display: block;
     }
+
     #col-525487658 {
         width: 100%;
         max-width: max-content;
     }
+
     .header {
         display: block;
     }
+
     .banner h1 {
         font-size: 15px;
     }
+
     .banner .logo {
         width: 70px;
     }
+
     .banner {
         margin-top: 0;
         padding-top: 20px;
     }
+
     .header .menu {
         display: flex;
         padding-bottom: 10px;
     }
+
     .form_tra_cuu {
         display: block !important;
     }
+
     #student_id, #sdt_nguoi_dang_ky {
         width: 100% !important;
     }
+
     #sdt_nguoi_dang_ky {
         margin-top: 15px;
     }
+
     .form_tra_cuu .btn-outline-secondary {
         margin-top: 20px;
     }
+
     .two-column {
         display: block;
     }
+
     .p_dia_chi {
         text-align: left;
     }
