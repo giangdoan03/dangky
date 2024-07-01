@@ -132,9 +132,31 @@
     text-decoration: none;
     font-size: 18px;
     color: #000000;
+    background: #4e9e4d40;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.bl_header .menu-item:last-child {
+    margin-right: 0;
 }
 .bl_header {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
+    background-color: #e9ffea;
+    padding-bottom: 10px;
+}
+.bg_truong {
+    height: 120px;
+    width: 500px;
+}
+.bg_truong img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.bl_header .menu {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
 }
 #section_855073435 {
     padding-top: 30px;

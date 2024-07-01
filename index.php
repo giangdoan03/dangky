@@ -108,13 +108,25 @@ if ($result->num_rows > 0) {
                         <p>NHÂN CÁCH - TRI THỨC - KỸ NĂNG</p>
                     </div>
                 </div>
-                <div class="menu">
-                    <div class="menu-item">
-                        <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu thông tin thí sinh</a>
-                    </div>
+                <div class="bg_truong">
+                    <img src="./images/common/anh_2.png" alt="">
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#">Thông tin tuyển sinh</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#">Đăng ký tuyển sinh</a>
+                </div>
+                <div class="menu-item">
+                    <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#">Hướng dẫn đăng ký</a>
                 </div>
             </div>
         </div>
