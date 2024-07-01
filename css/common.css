@@ -196,8 +196,8 @@
 }
 
 footer#footer {
-    background: #028900;
-    color: #ffffff;
+    background: #e9ffea;
+    color: #000000;
 }
 
 .absolute-footer {
@@ -212,7 +212,7 @@ footer#footer {
 
 #col-525487658 .col-inner a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
 }
 
 .section-content .large-6 {
@@ -222,7 +222,7 @@ footer#footer {
 
 .section-content .menu-item a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 16px;
 }
 
