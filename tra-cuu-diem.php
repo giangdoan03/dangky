@@ -191,30 +191,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="page-register">
     <?php require('inc/header.php'); ?>
-    <div class="page_content">
+    <div class="page_w">
         <div class="container">
-            <div class="wrapper" style="text-align: center">
-                <h3>TRA CỨU KẾT QUẢ</h3>
-                <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                    <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
-                        <input type="text" style="width: 220px; margin-right: 10px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
-                        <input type="text" style="width: 220px" class="form-control" placeholder="SĐT người đăng ký hồ sơ" id="sdt_nguoi_dang_ky" name="sdt_nguoi_dang_ky" required>
-                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                        <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
-                    </div>
-                    <div class="bl_error">
-                        <?php echo isset($mess_error_captcha) ? $mess_error_captcha : ''; ?>
-                    </div>
-                </form>
+            <div class="page_content">
+                <div class="wrapper" style="text-align: center">
+                    <h3>TRA CỨU KẾT QUẢ</h3>
+                    <form id="lookup-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                        <div class="form_tra_cuu" style="display: flex; align-items: center; justify-content: center; margin-top: 30px">
+                            <input type="text" style="width: 220px; margin-right: 10px" class="form-control" placeholder="Nhập mã học sinh" id="student_id" name="ma_hoc_sinh" required>
+                            <input type="text" style="width: 220px" class="form-control" placeholder="SĐT người đăng ký hồ sơ" id="sdt_nguoi_dang_ky" name="sdt_nguoi_dang_ky" required>
+                            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                            <button class="btn btn-outline-secondary" type="submit" style="margin-left: 10px">Tìm kiếm</button>
+                        </div>
+                        <div class="bl_error">
+                            <?php echo isset($mess_error_captcha) ? $mess_error_captcha : ''; ?>
+                        </div>
+                    </form>
+                </div>
+                <?php
+                // Display student information if available
+                if (!empty($student_info)) {
+                    echo '<div class="result">';
+                    echo $student_info;
+                    echo '</div>';
+                }
+                ?>
             </div>
-            <?php
-            // Display student information if available
-            if (!empty($student_info)) {
-                echo '<div class="result">';
-                echo $student_info;
-                echo '</div>';
-            }
-            ?>
         </div>
     </div>
     <script>
