@@ -15,19 +15,19 @@
             </div>
         </div>
         <ul class="menu_top desktop-menu" id="menu">
-            <li class="menu-item">
+            <li class="menu-item" data-index="0">
                 <a href="https://thcsthanhxuan.edu.vn/homegd14">Trang chủ</a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" data-index="1">
                 <a href="#">Thông tin tuyển sinh</a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" data-index="2">
                 <a href="#">Đăng ký tuyển sinh</a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" data-index="3">
                 <a href="<?php echo base_url(); ?>tra-cuu-diem.php">Tra cứu kết quả</a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" data-index="4">
                 <a href="#">Hướng dẫn đăng ký</a>
             </li>
         </ul>
@@ -42,19 +42,39 @@
         menu.classList.toggle('show-mobile-menu');
     }
 
-    // Lấy danh sách các phần tử <li> trong menu
-    const menuItems = document.querySelectorAll('#menu li');
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuItems = document.querySelectorAll('#menu li');
 
-    // Duyệt qua từng phần tử và gắn sự kiện click
-    menuItems.forEach(item => {
-        item.addEventListener('click', function () {
-            // Xóa class 'active' khỏi tất cả các phần tử <li> trong menu
-            menuItems.forEach(menuItem => {
-                menuItem.classList.remove('active');
+        // Function to set active item based on stored index
+        function setActiveItem(index) {
+            menuItems.forEach(item => {
+                item.classList.remove('active');
             });
+            if (index !== null && index !== undefined) {
+                menuItems[index].classList.add('active');
+            }
+        }
 
-            // Thêm class 'active' cho phần tử <li> hiện tại được click
-            item.classList.add('active');
+        // Get the stored active index from LocalStorage
+        const storedIndex = localStorage.getItem('activeMenuItem');
+        if (storedIndex) {
+            setActiveItem(parseInt(storedIndex, 10));
+        }
+
+        // Add click event to each menu item
+        menuItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                menuItems.forEach(menuItem => {
+                    menuItem.classList.remove('active');
+                });
+
+                // Add active class to the clicked item
+                item.classList.add('active');
+
+                // Store the active index in LocalStorage
+                localStorage.setItem('activeMenuItem', index);
+            });
         });
     });
 </script>
